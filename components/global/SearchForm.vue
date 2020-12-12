@@ -36,8 +36,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
   data () {
     return {
@@ -48,11 +46,7 @@ export default {
   computed: {
     showButton () {
       return this.$route.name === 'search'
-    },
-
-    ...mapState('search', [
-      'fromPage'
-    ])
+    }
   },
 
   mounted () {
@@ -68,7 +62,7 @@ export default {
         })
       } else {
         this.$router.push({
-          path: this.fromPage
+          path: this.$search.fromPage
         })
       }
     },
@@ -77,7 +71,7 @@ export default {
       this.query = ''
 
       this.$router.push({
-        path: this.fromPage
+        path: this.$search.fromPage
       })
     },
 
@@ -87,7 +81,7 @@ export default {
 
         if (!target || !target.classList.contains('search-toggle')) {
           this.query = ''
-          this.$store.commit('search/closeSearch')
+          this.$search.closeSearch()
         }
       }
     }

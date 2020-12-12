@@ -4,7 +4,7 @@
     <InstallPrompt />
 
     <transition name="slidedown">
-      <SearchForm v-if="searchOpen" />
+      <SearchForm v-if="$search.searchOpen" />
     </transition>
 
     <Nav />
@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import CookieConsent from '~/components/global/CookieConsent'
 import InstallPrompt from '~/components/global/InstallPrompt'
 import SearchForm from '~/components/global/SearchForm'
@@ -28,12 +27,6 @@ export default {
     SearchForm,
     Nav,
     Footer
-  },
-
-  computed: {
-    ...mapState('search', [
-      'searchOpen'
-    ])
   }
 }
 </script>

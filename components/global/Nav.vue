@@ -35,7 +35,7 @@
           type="button"
           aria-label="Search"
           aria-haspopup="true"
-          :aria-expanded="`${searchOpen}`"
+          :aria-expanded="`${$search.searchOpen}`"
           @click="toggleSearch"
         >
           <!-- eslint-disable-next-line -->
@@ -47,19 +47,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
-  computed: {
-    ...mapState('search', [
-      'searchOpen'
-    ])
-  },
-
   methods: {
     toggleSearch () {
       if (this.$route.name !== 'search') {
-        this.$store.commit('search/toggleSearch')
+        this.$search.toggleSearch()
       }
     }
   }

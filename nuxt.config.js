@@ -27,7 +27,8 @@ export default {
   plugins: [
     '~/plugins/lazyload',
     '~/plugins/filters',
-    '~/plugins/ga.client'
+    '~/plugins/ga.client',
+    '~/plugins/search'
   ],
 
   /*

@@ -36,7 +36,7 @@ export default {
     next()
 
     if (search && search.value.length) {
-      this.$store.commit('search/closeSearch')
+      this.$search.closeSearch()
     }
   },
 
@@ -83,8 +83,8 @@ export default {
   },
 
   mounted () {
-    this.$store.commit('search/openSearch')
-    this.$store.commit('search/setFromPage', fromPage)
+    this.$seach.openSearch()
+    this.$search.setFromPage(fromPage)
   },
 
   methods: {
