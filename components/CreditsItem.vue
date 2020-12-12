@@ -2,13 +2,15 @@
   <div class="credits-item">
     <nuxt-link
       class="credits-item__link"
-      :to="{ name: 'person-id', params: { id: person.id } }">
+      :to="{ name: 'person-id', params: { id: person.id } }"
+    >
       <div class="credits-item__img">
         <img
           v-if="poster"
           v-lazyload="poster"
           class="lazyload"
-          :alt="person.name">
+          :alt="person.name"
+        >
 
         <span v-else>
           <!-- eslint-disable-next-line -->
@@ -28,26 +30,26 @@
 </template>
 
 <script>
-import { apiImgUrl } from '~/api';
+import { TMDB_IMAGE_URL } from '~/data/consts'
 
 export default {
   props: {
     person: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
 
   computed: {
     poster () {
       if (this.person.profile_path) {
-        return `${apiImgUrl}/w370_and_h556_bestv2${this.person.profile_path}`;
+        return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.person.profile_path}`
       } else {
-        return null;
+        return null
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style lang="scss">

@@ -4,14 +4,16 @@
       <select
         v-if="videoTypes.length > 1"
         v-model="activeType"
-        @change="filterVideos">
+        @change="filterVideos"
+      >
         <option value="all">
           All
         </option>
         <option
           v-for="type in videoTypes"
           :key="`video-type-${type}`"
-          :value="type">
+          :value="type"
+        >
           {{ type }}
         </option>
       </select>
@@ -27,7 +29,8 @@
         :key="`video-${video.id}`"
         :video="video"
         :index="index"
-        @openModal="openModal" />
+        @openModal="openModal"
+      />
     </div>
 
     <Modal
@@ -36,26 +39,27 @@
       type="iframe"
       nav
       :start-at="modalStartAt"
-      @close="closeModal" />
+      @close="closeModal"
+    />
   </div>
 </template>
 
 <script>
-import { getYouTubeVideo } from '~/api';
-import VideosItem from '~/components/VideosItem';
-import Modal from '~/components/Modal';
+import { getYouTubeVideo } from '~/utils/api'
+import VideosItem from '~/components/VideosItem'
+import Modal from '~/components/Modal'
 
 export default {
   components: {
     VideosItem,
-    Modal,
+    Modal
   },
 
   props: {
     videos: {
       type: Array,
-      required: true,
-    },
+      required: true
+    }
   },
 
   data () {
@@ -63,60 +67,60 @@ export default {
       activeType: 'all',
       activeVideos: this.videos,
       modalVisible: false,
-      modalStartAt: 0,
-    };
+      modalStartAt: 0
+    }
   },
 
   computed: {
     videoCount () {
-      return `${this.activeVideos.length} ${this.activeVideos.length > 1 ? 'Videos' : 'Video'}`;
+      return `${this.activeVideos.length} ${this.activeVideos.length > 1 ? 'Videos' : 'Video'}`
     },
 
     videoTypes () {
-      return this.videos.map(video => video.type).filter((video, index, self) => self.indexOf(video) === index);
-    },
+      return this.videos.map(video => video.type).filter((video, index, self) => self.indexOf(video) === index)
+    }
   },
 
   created () {
-    this.handleData();
+    this.handleData()
   },
 
   methods: {
     handleData () {
-      const ids = this.videos.map(video => video.key).join(',');
+      const ids = this.videos.map(video => video.key).join(',')
 
       // video params
       this.videos.forEach((video) => {
-        this.$set(video, 'thumb', `https://img.youtube.com/vi/${video.key}/mqdefault.jpg`);
-        this.$set(video, 'src', `https://www.youtube.com/embed/${video.key}?rel=0&showinfo=0&autoplay=1`);
-        this.$set(video, 'url', `https://youtube.com/watch?v=${video.key}`);
-      });
+        this.$set(video, 'thumb', `https://img.youtube.com/vi/${video.key}/mqdefault.jpg`)
+        this.$set(video, 'src', `https://www.youtube.com/embed/${video.key}?rel=0&showinfo=0&autoplay=1`)
+        this.$set(video, 'url', `https://youtube.com/watch?v=${video.key}`)
+      })
 
       // get video duration from YouTube api
       getYouTubeVideo(ids).then((response) => {
         for (let index = 0; index < this.videos.length; index++) {
           if (response.items[index]) {
-            this.$set(this.videos[index], 'duration', response.items[index].contentDetails.duration);
+            this.$set(this.videos[index], 'duration', response.items[index].contentDetails.duration)
           }
         }
-      });
+      })
     },
 
     filterVideos () {
-      this.activeVideos = this.videos.filter(video => this.activeType === 'all' ? true : video.type === this.activeType);
+      this.activeVideos = this.videos.filter(video => this.activeType === 'all' ? true : video.type === this.activeType)
     },
 
     openModal (index) {
-      this.modalStartAt = index;
-      this.modalVisible = true;
+      this.modalStartAt = index
+      this.modalVisible = true
     },
 
     closeModal () {
-      this.modalVisible = false;
-      this.modalStartAt = 0;
-    },
-  },
-};
+      this.modalVisible = false
+      this.modalStartAt = 0
+    }
+  }
+}
 </script>
 
 <style lang="scss" module>

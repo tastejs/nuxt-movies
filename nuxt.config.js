@@ -1,38 +1,40 @@
-module.exports = {
-  mode: 'universal',
+export default {
+  modern: process.env.NODE_ENV === 'production',
 
-  vue: {
-    config: {
-      productionTip: false,
-      devtools: false,
-    },
-  },
-
+  /*
+  ** App bundle process.env
+  */
   env: {
     FRONTEND_URL: process.env.FRONTEND_URL || '',
     API_KEY: process.env.API_KEY || '',
     API_LANG: process.env.API_LANG || 'en-US',
     API_COUNTRY: process.env.API_COUNTRY || 'GB',
     API_YOUTUBE_KEY: process.env.API_YOUTUBE_KEY || '',
-    GA: process.env.GA || '',
+    GA: process.env.GA || ''
   },
 
-  modules: [
-    '@nuxtjs/dotenv',
-    '@nuxtjs/pwa',
+  /*
+  ** Build-only modules
+  */
+  buildModules: [
+    '@nuxt/sigma',
+    '@nuxtjs/pwa'
   ],
 
+  /*
+  ** Global Plugins
+  */
   plugins: [
-    '~/plugins/lazyload.js',
-    '~/plugins/filters.js',
-    { src: '~/plugins/ga.js', ssr: false },
+    '~/plugins/lazyload',
+    '~/plugins/filters',
+    '~/plugins/ga.client'
   ],
 
   /*
   ** Global CSS
   */
   css: [
-    '@/assets/css/global.scss',
+    '~/assets/css/global.scss'
   ],
 
   /*
@@ -55,19 +57,19 @@ module.exports = {
       { name: 'twitter:description', content: 'Browse Movies, TV Shows and People' },
       { name: 'twitter:site', content: '@jasonujmaalvis' },
       { name: 'twitter:creator', content: '@jasonujmaalvis' },
-      { name: 'twitter:image', content: 'https://movies.jason.codes/icon-medium.png' },
+      { name: 'twitter:image', content: 'https://movies.jason.codes/icon-medium.png' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '//fonts.googleapis.com/css?family=Roboto:300,400,500' },
-    ],
+      { rel: 'stylesheet', href: '//fonts.googleapis.com/css?family=Roboto:300,400,500' }
+    ]
   },
 
   /*
   ** Customize the progress bar color
   */
   loading: {
-    color: '#2196f3',
+    color: '#2196f3'
   },
 
   /*
@@ -78,32 +80,6 @@ module.exports = {
     short_name: 'Movies',
     description: 'Browse Movies, TV Shows and People',
     theme_color: '#2196f3',
-    background_color: '#000000',
-  },
-
-  /*
-  ** Build configuration
-  */
-  build: {
-    loaders: {
-      cssModules: {
-        camelCase: true,
-        localIdentName: '[local]_[hash:base64:5]',
-      },
-    },
-
-    /*
-    ** Run ESLint on save
-    */
-    extend (config, { isDev, isClient }) {
-      if (isDev && isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/,
-        });
-      }
-    },
-  },
-};
+    background_color: '#000000'
+  }
+}

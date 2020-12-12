@@ -5,7 +5,8 @@
       :key="`tab-${index}`"
       :class="[$style.button, { [$style.buttonActive] : active === index }]"
       type="button"
-      @click="clicked(index, item)">
+      @click="clicked(index, item)"
+    >
       {{ item }}
     </button>
   </div>
@@ -16,23 +17,23 @@ export default {
   props: {
     menu: {
       type: Array,
-      required: true,
-    },
+      required: true
+    }
   },
 
   data () {
     return {
-      active: 0,
-    };
+      active: 0
+    }
   },
 
   methods: {
     clicked (index, item) {
-      this.active = index;
-      this.$emit('clicked', item.replace(/\s+/g, '-').toLowerCase());
-    },
-  },
-};
+      this.active = index
+      this.$emit('clicked', item.replace(/\s+/g, '-').toLowerCase())
+    }
+  }
+}
 </script>
 
 <style lang="scss" module>
