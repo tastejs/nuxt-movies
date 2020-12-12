@@ -17,7 +17,7 @@ export default {
   ** Build-only modules
   */
   buildModules: [
-    '@nuxt/sigma',
+    // '@nuxt/sigma',
     '@nuxtjs/pwa'
   ],
 
