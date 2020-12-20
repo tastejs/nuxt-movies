@@ -8,16 +8,19 @@
       :aria-label="label"
       role="dialog"
       :class="modalClass"
-      @click="close">
+      @click="close"
+    >
       <div class="modal__wrap">
         <div
           class="modal__body"
-          @click.stop>
+          @click.stop
+        >
           <button
             class="modal__close"
             aria-label="Close"
             type="button"
-            @click.stop="close">
+            @click.stop="close"
+          >
             <!-- eslint-disable-next-line -->
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5"><path d="M.75.75l13.5 13.5M14.25.75L.75 14.25"/></g></svg>
           </button>
@@ -28,23 +31,27 @@
               :src="activeItem.src"
               frameborder="0"
               allow="autoplay; encrypted-media"
-              allowfullscreen />
+              allowfullscreen
+            />
 
             <img
               v-if="type === 'image' && activeItem"
               v-lazyload="activeItem.src"
               class="lazyload"
-              alt="">
+              alt=""
+            >
           </div>
 
           <div
             v-if="showNav"
-            class="modal__nav">
+            class="modal__nav"
+          >
             <button
               class="modal__arrow modal__arrow--prev"
               aria-label="Previous"
               type="button"
-              @click.stop="previous">
+              @click.stop="previous"
+            >
               <!-- eslint-disable-next-line -->
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M17.9 23.2L6.1 12 17.9.8"></path></svg>
             </button>
@@ -58,7 +65,8 @@
               aria-label="Next"
               type="button"
               title="Next"
-              @click.stop="next">
+              @click.stop="next"
+            >
               <!-- eslint-disable-next-line -->
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M6.1 23.2L17.9 12 6.1.8"></path></svg>
             </button>
@@ -70,67 +78,67 @@
 </template>
 
 <script>
-import { debounce } from '~/mixins/Functions';
+import { debounce } from '~/mixins/Functions'
 
-let focusedElBeforeOpen;
-let focusableEls;
-let firstFocusableEl;
-let lastFocusableEl;
+let focusedElBeforeOpen
+let focusableEls
+let firstFocusableEl
+let lastFocusableEl
 
 export default {
   props: {
     data: {
       type: Array,
       required: false,
-      default: function () {
-        return [];
-      },
+      default () {
+        return []
+      }
     },
 
     type: {
       type: String,
       required: false,
-      default: 'image',
+      default: 'image'
     },
 
     modifier: {
       type: String,
       required: false,
-      default: '',
+      default: ''
     },
 
     nav: {
       type: Boolean,
       required: false,
-      default: false,
+      default: false
     },
 
     startAt: {
       type: Number,
       required: false,
-      default: 0,
+      default: 0
     },
 
     ariaLabel: {
       type: String,
       required: false,
-      default: '',
-    },
-  },
-
-  head () {
-    return {
-      bodyAttrs: {
-        class: 'modal-open',
-      },
-    };
+      default: ''
+    }
   },
 
   data () {
     return {
       selected: null,
-      activeItem: null,
-    };
+      activeItem: null
+    }
+  },
+
+  head () {
+    return {
+      bodyAttrs: {
+        class: 'modal-open'
+      }
+    }
   },
 
   computed: {
@@ -138,146 +146,146 @@ export default {
       return {
         'modal--nav': this.showNav,
         [`modal--${this.type}`]: true,
-        [this.modifier]: true,
-      };
+        [this.modifier]: true
+      }
     },
 
     showNav () {
-      return this.nav && this.data.length > 1;
+      return this.nav && this.data.length > 1
     },
 
     label () {
       if (this.ariaLabel) {
-        return this.ariaLabel;
+        return this.ariaLabel
       } else if (this.activeItem && this.activeItem.name) {
-        return this.activeItem.name;
+        return this.activeItem.name
       } else {
-        return null;
+        return null
       }
-    },
+    }
   },
 
   watch: {
     selected () {
-      this.activeItem = this.data[this.selected];
-    },
+      this.activeItem = this.data[this.selected]
+    }
   },
 
   created () {
-    this.selected = this.startAt;
+    this.selected = this.startAt
   },
 
   beforeMount () {
-    window.addEventListener('keydown', this.handleKeyDown);
-    focusedElBeforeOpen = document.activeElement;
+    window.addEventListener('keydown', this.handleKeyDown)
+    focusedElBeforeOpen = document.activeElement
   },
 
   mounted () {
-    focusableEls = this.$refs.modal.querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex="0"]');
-    focusableEls = Array.prototype.slice.call(focusableEls);
+    focusableEls = this.$refs.modal.querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex="0"]')
+    focusableEls = Array.prototype.slice.call(focusableEls)
 
-    firstFocusableEl = focusableEls[0];
-    lastFocusableEl = focusableEls[focusableEls.length - 1];
+    firstFocusableEl = focusableEls[0]
+    lastFocusableEl = focusableEls[focusableEls.length - 1]
 
     // focus on the first element
-    firstFocusableEl.focus();
+    firstFocusableEl.focus()
 
     // calculate iframe size for responsive sizing on resize
     if (this.type === 'iframe') {
-      this.handleIframeSize();
-      window.addEventListener('resize', this.resizeIframeSize);
+      this.handleIframeSize()
+      window.addEventListener('resize', this.resizeIframeSize)
     }
   },
 
   beforeDestroy () {
-    window.removeEventListener('keydown', this.handleKeyDown);
+    window.removeEventListener('keydown', this.handleKeyDown)
 
     if (this.type === 'iframe') {
-      window.removeEventListener('resize', this.resizeIframeSize);
+      window.removeEventListener('resize', this.resizeIframeSize)
     }
 
     if (focusedElBeforeOpen) {
-      focusedElBeforeOpen.focus();
+      focusedElBeforeOpen.focus()
     }
   },
 
   methods: {
     previous () {
-      this.selected = ((this.selected - 1) + this.data.length) % this.data.length;
+      this.selected = ((this.selected - 1) + this.data.length) % this.data.length
     },
 
     next () {
-      this.selected = (this.selected + 1) % this.data.length;
+      this.selected = (this.selected + 1) % this.data.length
     },
 
     close () {
-      this.$emit('close');
+      this.$emit('close')
     },
 
     handleKeyDown (e) {
       if (e.keyCode === 27) { // esc key
-        this.close();
+        this.close()
       } else if (this.nav && e.keyCode === 39) { // right arrow
-        this.next();
+        this.next()
       } else if (this.nav && e.keyCode === 37) { // left arrow
-        this.previous();
+        this.previous()
       } else if (e.keyCode === 9) { // tab
         if (focusableEls.length === 1) {
-          e.preventDefault();
-          return;
+          e.preventDefault()
+          return
         }
 
         if (e.shiftKey) {
-          this.handleBackwardTab(e);
+          this.handleBackwardTab(e)
         } else {
-          this.handleForwardTab(e);
+          this.handleForwardTab(e)
         }
       }
     },
 
     handleForwardTab (e) {
       if (document.activeElement === lastFocusableEl) {
-        e.preventDefault();
-        firstFocusableEl.focus();
+        e.preventDefault()
+        firstFocusableEl.focus()
       }
     },
 
     handleBackwardTab (e) {
       if (document.activeElement === firstFocusableEl) {
-        e.preventDefault();
-        lastFocusableEl.focus();
+        e.preventDefault()
+        lastFocusableEl.focus()
       }
     },
 
     handleIframeSize () {
-      const aspectRatio = 16 / 9;
-      const styles = getComputedStyle(this.$refs.modal);
-      let maxWidth = this.$refs.modal.offsetWidth;
-      let maxHeight = this.$refs.modal.offsetHeight;
-      let width;
-      let height;
+      const aspectRatio = 16 / 9
+      const styles = getComputedStyle(this.$refs.modal)
+      let maxWidth = this.$refs.modal.offsetWidth
+      let maxHeight = this.$refs.modal.offsetHeight
+      let width
+      let height
 
-      maxWidth -= parseFloat(styles.paddingRight) + parseFloat(styles.paddingLeft);
-      maxHeight -= parseFloat(styles.paddingTop) + parseFloat(styles.paddingBottom);
+      maxWidth -= parseFloat(styles.paddingRight) + parseFloat(styles.paddingLeft)
+      maxHeight -= parseFloat(styles.paddingTop) + parseFloat(styles.paddingBottom)
 
-      width = maxWidth;
-      height = maxHeight;
+      width = maxWidth
+      height = maxHeight
 
       if (maxHeight > maxWidth / aspectRatio) {
-        height = maxWidth / aspectRatio;
+        height = maxWidth / aspectRatio
       } else if (maxWidth > maxHeight * aspectRatio) {
-        width = maxHeight * aspectRatio;
+        width = maxHeight * aspectRatio
       }
 
-      this.$refs.modal.querySelector('.modal__iframe').style.width = `${width}px`;
-      this.$refs.modal.querySelector('.modal__iframe').style.height = `${height}px`;
+      this.$refs.modal.querySelector('.modal__iframe').style.width = `${width}px`
+      this.$refs.modal.querySelector('.modal__iframe').style.height = `${height}px`
     },
 
     resizeIframeSize: debounce(function () {
-      this.handleIframeSize();
-    }, 600),
-  },
-};
+      this.handleIframeSize()
+    }, 600)
+  }
+}
 </script>
 
 <style lang="scss">

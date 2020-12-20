@@ -9,13 +9,15 @@
 
         <span
           v-if="episodes"
-          :class="$style.episodes">
+          :class="$style.episodes"
+        >
           {{ episodes }}
         </span>
 
         <span
           v-if="role"
-          :class="$style.role">
+          :class="$style.role"
+        >
           {{ role }}
         </span>
       </nuxt-link>
@@ -28,58 +30,58 @@ export default {
   props: {
     year: {
       type: String,
-      required: true,
+      required: true
     },
 
     credit: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
 
   computed: {
     media () {
       if (this.credit.media_type) {
-        return this.credit.media_type;
+        return this.credit.media_type
       } else if (this.credit.name) {
-        return 'tv';
+        return 'tv'
       } else {
-        return 'movie';
+        return 'movie'
       }
     },
 
     name () {
-      return this.credit.title ? this.credit.title : this.credit.name;
+      return this.credit.title ? this.credit.title : this.credit.name
     },
 
     role () {
-      const character = this.credit.character;
-      const job = this.credit.job;
+      const character = this.credit.character
+      const job = this.credit.job
 
       if (character) {
-        return `as ${character}`;
+        return `as ${character}`
       } else if (job) {
-        return `as ${job}`;
+        return `as ${job}`
       } else {
-        return false;
+        return false
       }
     },
 
     episodes () {
-      const episodes = this.credit.episode_count;
+      const episodes = this.credit.episode_count
 
       if (episodes) {
         if (episodes > 1) {
-          return `(${episodes} episodes)`;
+          return `(${episodes} episodes)`
         } else {
-          return `(${episodes} episode)`;
+          return `(${episodes} episode)`
         }
       } else {
-        return false;
+        return false
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style lang="scss" module>

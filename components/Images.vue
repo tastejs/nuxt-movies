@@ -17,7 +17,8 @@
         :image="image"
         :index="index"
         :type="type"
-        @openModal="openModal" />
+        @openModal="openModal"
+      />
     </div>
 
     <Modal
@@ -27,82 +28,83 @@
       aria-label="Images"
       nav
       :start-at="modalStartAt"
-      @close="closeModal" />
+      @close="closeModal"
+    />
   </div>
 </template>
 
 <script>
-import { apiImgUrl } from '~/api';
-import ImagesItem from '~/components/ImagesItem';
-import Modal from '~/components/Modal';
+import { TMDB_IMAGE_URL } from '~/data/consts'
+import ImagesItem from '~/components/ImagesItem'
+import Modal from '~/components/Modal'
 
 export default {
   components: {
     ImagesItem,
-    Modal,
+    Modal
   },
 
   props: {
     title: {
       type: String,
-      required: true,
+      required: true
     },
 
     type: {
       type: String,
-      required: true,
+      required: true
     },
 
     images: {
       type: Array,
-      required: true,
-    },
+      required: true
+    }
   },
 
   data () {
     return {
       modalVisible: false,
-      modalStartAt: 0,
-    };
+      modalStartAt: 0
+    }
   },
 
   computed: {
     imagesCount () {
-      return `${this.images.length} ${this.images.length > 1 ? 'Images' : 'Image'}`;
-    },
+      return `${this.images.length} ${this.images.length > 1 ? 'Images' : 'Image'}`
+    }
   },
 
   created () {
-    this.handleData();
+    this.handleData()
   },
 
   methods: {
     handleData () {
-      let thumb;
+      let thumb
 
       if (this.type === 'poster') {
-        thumb = `${apiImgUrl}/w370_and_h556_bestv2`;
+        thumb = `${TMDB_IMAGE_URL}/w370_and_h556_bestv2`
       } else {
-        thumb = `${apiImgUrl}/w533_and_h300_bestv2`;
+        thumb = `${TMDB_IMAGE_URL}/w533_and_h300_bestv2`
       }
 
-      this.images.map((image) => {
-        image.thumb = `${thumb}${image.file_path}`;
-        image.src = `${apiImgUrl}/original${image.file_path}`;
-      });
+      this.images.forEach((image) => {
+        image.thumb = `${thumb}${image.file_path}`
+        image.src = `${TMDB_IMAGE_URL}/original${image.file_path}`
+      })
     },
 
     openModal (index) {
-      this.modalStartAt = index;
-      this.modalVisible = true;
+      this.modalStartAt = index
+      this.modalVisible = true
     },
 
     closeModal () {
-      this.modalVisible = false;
-      this.modalStartAt = 0;
-    },
-  },
-};
+      this.modalVisible = false
+      this.modalStartAt = 0
+    }
+  }
+}
 </script>
 
 <style lang="scss" module>

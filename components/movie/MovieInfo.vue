@@ -6,7 +6,8 @@
           v-if="poster"
           v-lazyload="poster"
           class="lazyload"
-          :alt="name">
+          :alt="name"
+        >
 
         <span v-else>
           <!-- eslint-disable-next-line -->
@@ -18,7 +19,8 @@
     <div :class="$style.right">
       <div
         v-if="item.overview"
-        :class="$style.overview">
+        :class="$style.overview"
+      >
         <h2 :class="$style.title">
           Storyline
         </h2>
@@ -53,7 +55,8 @@
 
             <div
               :class="$style.value"
-              v-html="directors" />
+              v-html="directors"
+            />
           </li>
           <li v-if="item.budget">
             <div :class="$style.label">
@@ -80,7 +83,8 @@
 
             <div
               :class="$style.value"
-              v-html="formatGenres(item.genres)" />
+              v-html="formatGenres(item.genres)"
+            />
           </li>
           <li v-if="item.status">
             <div :class="$style.label">
@@ -114,56 +118,61 @@
 
       <div :class="$style.external">
         <ExternalLinks
-          :links="item.external_ids" />
+          :links="item.external_ids"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { apiImgUrl } from '~/api';
-import { name, directors } from '~/mixins/Details';
-import ExternalLinks from '~/components/ExternalLinks';
+import { TMDB_IMAGE_URL } from '~/data/consts'
+import { name, directors } from '~/mixins/Details'
+import ExternalLinks from '~/components/ExternalLinks'
 
 export default {
   components: {
-    ExternalLinks,
+    ExternalLinks
   },
 
   mixins: [
     name,
-    directors,
+    directors
   ],
 
   props: {
     item: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
 
   computed: {
     poster () {
       if (this.item.poster_path) {
-        return `${apiImgUrl}/w370_and_h556_bestv2${this.item.poster_path}`;
+        return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.item.poster_path}`
       } else {
-        return false;
+        return false
       }
-    },
+    }
   },
 
   created () {
     if (this.item.homepage) {
-      this.item.external_ids.homepage = this.item.homepage;
+      // ray test touch <
+      // TODO: avoid mutating props
+      // eslint-disable-next-line vue/no-mutating-props
+      this.item.external_ids.homepage = this.item.homepage
+      // ray test touch >
     }
   },
 
   methods: {
     formatGenres (genres) {
-      return genres.map(genre => `<a href="/genre/${genre.id}/movie">${genre.name}</a>`).join(', ');
-    },
-  },
-};
+      return genres.map(genre => `<a href="/genre/${genre.id}/movie">${genre.name}</a>`).join(', ')
+    }
+  }
+}
 </script>
 
 <style lang="scss" module>
