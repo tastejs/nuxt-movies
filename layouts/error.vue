@@ -23,22 +23,22 @@ export default {
   props: {
     error: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
 
   head () {
     return {
-      title: this.message,
-    };
+      title: this.message
+    }
   },
 
   computed: {
     message () {
-      return this.error.message || `An error occurred`;
-    },
-  },
-};
+      return this.error.message || 'An error occurred'
+    }
+  }
+}
 </script>
 
 <style lang="scss" module>

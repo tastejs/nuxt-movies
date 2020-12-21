@@ -1,4 +1,4 @@
-# nuxt-movies
+# vue-movies
 
 Progressive web app featuring movies and tv shows from [The Movie Database (TMDb)](https://developers.themoviedb.org/3) API. Built using [Vue.js](https://github.com/vuejs/vue) and [Nuxt.js](https://github.com/nuxt/nuxt.js).
 

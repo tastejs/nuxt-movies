@@ -8,7 +8,8 @@
             :class="$style.play"
             type="button"
             aria-label="Play Trailer"
-            @click="openModal">
+            @click="openModal"
+          >
             <!-- eslint-disable-next-line -->
             <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55"><circle cx="27.5" cy="27.5" r="26.75" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.97 40.81L40.64 27.5 20.97 14.19v26.62z"/></svg>
           </button>
@@ -18,14 +19,16 @@
             v-lazyload="backdrop"
             class="lazyload"
             :class="$style.image"
-            :alt="name">
+            :alt="name"
+          >
         </div>
       </div>
 
       <div :class="$style.pane">
         <transition
           appear
-          name="hero">
+          name="hero"
+        >
           <div>
             <h1 :class="$style.name">
               <template v-if="isSingle">
@@ -42,10 +45,12 @@
             <div :class="$style.meta">
               <div
                 v-if="stars || item.vote_count"
-                :class="$style.rating">
+                :class="$style.rating"
+              >
                 <div
                   v-if="stars"
-                  :class="$style.stars">
+                  :class="$style.stars"
+                >
                   <div :style="{ width: `${stars}%` }" />
                 </div>
 
@@ -71,7 +76,8 @@
               class="button button--icon"
               :class="$style.trailer"
               type="button"
-              @click="openModal">
+              @click="openModal"
+            >
               <!-- eslint-disable-next-line -->
               <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M3 22v-20l18 10-18 10z"/></svg></span>
               <span class="txt">Watch Trailer</span>
@@ -85,17 +91,18 @@
       v-if="modalVisible"
       :data="trailer"
       type="iframe"
-      @close="closeModal" />
+      @close="closeModal"
+    />
   </div>
 </template>
 
 <script>
-import { name, stars, yearStart, cert, backdrop, trailer } from '~/mixins/Details';
-import Modal from '~/components/Modal';
+import { name, stars, yearStart, cert, backdrop, trailer } from '~/mixins/Details'
+import Modal from '~/components/Modal'
 
 export default {
   components: {
-    Modal,
+    Modal
   },
 
   mixins: [
@@ -104,39 +111,39 @@ export default {
     yearStart,
     cert,
     backdrop,
-    trailer,
+    trailer
   ],
 
   props: {
     item: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
 
   data () {
     return {
       isSingle: this.item.id === this.$route.params.id,
-      modalVisible: false,
-    };
+      modalVisible: false
+    }
   },
 
   computed: {
     type () {
-      return this.item.title ? 'movie' : 'tv';
-    },
+      return this.item.title ? 'movie' : 'tv'
+    }
   },
 
   methods: {
     openModal () {
-      this.modalVisible = true;
+      this.modalVisible = true
     },
 
     closeModal () {
-      this.modalVisible = false;
-    },
-  },
-};
+      this.modalVisible = false
+    }
+  }
+}
 </script>
 
 <style lang="scss" module>
