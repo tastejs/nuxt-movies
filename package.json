@@ -16,7 +16,7 @@
   },
   "lint-staged": {
     "*.+(js|vue)": [
-      "lint-fix"
+      "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
     ]
   },
   "husky": {
