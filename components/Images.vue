@@ -17,8 +17,7 @@
         :image="image"
         :index="index"
         :type="type"
-        @openModal="openModal"
-      />
+        @openModal="openModal" />
     </div>
 
     <Modal
@@ -28,15 +27,14 @@
       aria-label="Images"
       nav
       :start-at="modalStartAt"
-      @close="closeModal"
-    />
+      @close="closeModal" />
   </div>
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/data/consts'
-import ImagesItem from '~/components/ImagesItem'
-import Modal from '~/components/Modal'
+import { TMDB_IMAGE_URL } from '~/data/consts';
+import ImagesItem from '~/components/ImagesItem';
+import Modal from '~/components/Modal';
 
 export default {
   components: {
@@ -61,50 +59,50 @@ export default {
     }
   },
 
-  data () {
+  data() {
     return {
       modalVisible: false,
       modalStartAt: 0
-    }
+    };
   },
 
   computed: {
-    imagesCount () {
-      return `${this.images.length} ${this.images.length > 1 ? 'Images' : 'Image'}`
+    imagesCount() {
+      return `${this.images.length} ${this.images.length > 1 ? 'Images' : 'Image'}`;
     }
   },
 
-  created () {
-    this.handleData()
+  created() {
+    this.handleData();
   },
 
   methods: {
-    handleData () {
-      let thumb
+    handleData() {
+      let thumb;
 
       if (this.type === 'poster') {
-        thumb = `${TMDB_IMAGE_URL}/w370_and_h556_bestv2`
+        thumb = `${TMDB_IMAGE_URL}/w370_and_h556_bestv2`;
       } else {
-        thumb = `${TMDB_IMAGE_URL}/w533_and_h300_bestv2`
+        thumb = `${TMDB_IMAGE_URL}/w533_and_h300_bestv2`;
       }
 
       this.images.forEach((image) => {
-        image.thumb = `${thumb}${image.file_path}`
-        image.src = `${TMDB_IMAGE_URL}/original${image.file_path}`
-      })
+        image.thumb = `${thumb}${image.file_path}`;
+        image.src = `${TMDB_IMAGE_URL}/original${image.file_path}`;
+      });
     },
 
-    openModal (index) {
-      this.modalStartAt = index
-      this.modalVisible = true
+    openModal(index) {
+      this.modalStartAt = index;
+      this.modalVisible = true;
     },
 
-    closeModal () {
-      this.modalVisible = false
-      this.modalStartAt = 0
+    closeModal() {
+      this.modalVisible = false;
+      this.modalStartAt = 0;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" module>

@@ -5,61 +5,60 @@
       :title="title"
       :items="items"
       :loading="loading"
-      @loadMore="loadMore"
-    />
+      @loadMore="loadMore" />
   </main>
 </template>
 
 <script>
-import { search } from '~/utils/api'
-import SearchResults from '~/components/search/SearchResults'
-let fromPage = '/'
+import { search } from '~/utils/api';
+import SearchResults from '~/components/search/SearchResults';
+let fromPage = '/';
 
 export default {
   components: {
     SearchResults
   },
 
-  beforeRouteEnter (to, from, next) {
-    fromPage = from.path
-    next()
+  beforeRouteEnter(to, from, next) {
+    fromPage = from.path;
+    next();
   },
 
-  beforeRouteUpdate (to, from, next) {
-    next()
-    this.getResults()
+  beforeRouteUpdate(to, from, next) {
+    next();
+    this.getResults();
   },
 
-  beforeRouteLeave (to, from, next) {
-    const search = document.getElementById('search')
+  beforeRouteLeave(to, from, next) {
+    const search = document.getElementById('search');
 
-    next()
+    next();
 
     if (search && search.value.length) {
-      this.$search.closeSearch()
+      this.$search.closeSearch();
     }
   },
 
-  async asyncData ({ query, error, redirect }) {
+  async asyncData({ query, error, redirect }) {
     try {
       if (query.q) {
-        const items = await search(query.q, 1)
-        return { items }
+        const items = await search(query.q, 1);
+        return { items };
       } else {
-        redirect('/')
+        redirect('/');
       }
     } catch {
-      error({ message: 'Page not found' })
+      error({ message: 'Page not found' });
     }
   },
 
-  data () {
+  data() {
     return {
       loading: false
-    }
+    };
   },
 
-  head () {
+  head() {
     return {
       title: 'Search',
       meta: [
@@ -69,58 +68,58 @@ export default {
       bodyAttrs: {
         class: 'page page-search'
       }
-    }
+    };
   },
 
   computed: {
-    query () {
-      return this.$route.query.q ? this.$route.query.q : ''
+    query() {
+      return this.$route.query.q ? this.$route.query.q : '';
     },
 
-    title () {
-      return this.query ? `Results For: ${this.query}` : ''
+    title() {
+      return this.query ? `Results For: ${this.query}` : '';
     }
   },
 
-  mounted () {
-    this.$seach.openSearch()
-    this.$search.setFromPage(fromPage)
+  mounted() {
+    this.$seach.openSearch();
+    this.$search.setFromPage(fromPage);
   },
 
   methods: {
-    async getResults () {
+    async getResults() {
       // if no search query
       if (!this.query.length) {
-        this.items = null
-        return
+        this.items = null;
+        return;
       }
 
       // trigger ajax call;
-      const data = await search(this.query)
+      const data = await search(this.query);
 
       // if no results, do nothing
       if (!data.total_results) {
-        this.items = null
-        return
+        this.items = null;
+        return;
       }
 
       // update the items
-      this.items = data
+      this.items = data;
     },
 
-    loadMore () {
-      this.loading = true
+    loadMore() {
+      this.loading = true;
 
       search(this.query, this.items.page + 1).then((response) => {
-        this.items.results = this.items.results.concat(response.results)
-        this.items.page = response.page
-        this.loading = false
+        this.items.results = this.items.results.concat(response.results);
+        this.items.page = response.page;
+        this.loading = false;
       }).catch(() => {
-        this.loading = false
-      })
+        this.loading = false;
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="scss">

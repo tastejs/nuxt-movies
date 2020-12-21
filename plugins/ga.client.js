@@ -1,5 +1,5 @@
-import { get } from 'tiny-cookie'
-import { supportsLocalStorage } from '~/mixins/Functions'
+import { get } from 'tiny-cookie';
+import { supportsLocalStorage } from '~/mixins/Functions';
 
 /* eslint-disable */
 export default ({ app }) => {

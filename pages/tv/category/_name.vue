@@ -1,23 +1,21 @@
 <template>
   <main class="main">
     <TopNav
-      :title="metaTitle"
-    />
+      :title="metaTitle" />
 
     <Listing
       v-if="items && items.results.length"
       :title="title"
       :items="items"
       :loading="loading"
-      @loadMore="loadMore"
-    />
+      @loadMore="loadMore" />
   </main>
 </template>
 
 <script>
-import { getTrending, getTvShows, getListItem } from '~/utils/api'
-import TopNav from '~/components/global/TopNav'
-import Listing from '~/components/Listing'
+import { getTrending, getTvShows, getListItem } from '~/utils/api';
+import TopNav from '~/components/global/TopNav';
+import Listing from '~/components/Listing';
 
 export default {
   components: {
@@ -25,22 +23,22 @@ export default {
     Listing
   },
 
-  async asyncData ({ params, error }) {
+  async asyncData({ params, error }) {
     try {
-      const items = params.name === 'trending' ? await getTrending('tv') : await getTvShows(params.name)
-      return { items }
+      const items = params.name === 'trending' ? await getTrending('tv') : await getTvShows(params.name);
+      return { items };
     } catch {
-      error({ message: 'Page not found' })
+      error({ message: 'Page not found' });
     }
   },
 
-  data () {
+  data() {
     return {
       loading: false
-    }
+    };
   },
 
-  head () {
+  head() {
     return {
       title: this.metaTitle,
       meta: [
@@ -50,41 +48,41 @@ export default {
       bodyAttrs: {
         class: 'topnav-active'
       }
-    }
+    };
   },
 
   computed: {
-    metaTitle () {
-      return this.title
+    metaTitle() {
+      return this.title;
     },
 
-    title () {
-      return getListItem('tv', this.$route.params.name).title
+    title() {
+      return getListItem('tv', this.$route.params.name).title;
     }
   },
 
   methods: {
-    loadMore () {
-      this.loading = true
+    loadMore() {
+      this.loading = true;
 
       if (this.$route.params.name === 'trending') {
         getTrending('tv', this.items.page + 1).then((response) => {
-          this.items.results = this.items.results.concat(response.results)
-          this.items.page = response.page
-          this.loading = false
+          this.items.results = this.items.results.concat(response.results);
+          this.items.page = response.page;
+          this.loading = false;
         }).catch(() => {
-          this.loading = false
-        })
+          this.loading = false;
+        });
       } else {
         getTvShows(this.$route.params.name, this.items.page + 1).then((response) => {
-          this.items.results = this.items.results.concat(response.results)
-          this.items.page = response.page
-          this.loading = false
+          this.items.results = this.items.results.concat(response.results);
+          this.items.page = response.page;
+          this.loading = false;
         }).catch(() => {
-          this.loading = false
-        })
+          this.loading = false;
+        });
       }
     }
   }
-}
+};
 </script>

@@ -6,8 +6,7 @@
           v-if="poster"
           v-lazyload="poster"
           class="lazyload"
-          :alt="name"
-        >
+          :alt="name">
 
         <span v-else>
           <!-- eslint-disable-next-line -->
@@ -19,13 +18,15 @@
     <div :class="$style.right">
       <div
         v-if="item.overview"
-        :class="$style.overview"
-      >
+        :class="$style.overview">
         <h2 :class="$style.title">
           Storyline
         </h2>
 
-        <div v-html="item.overview" />
+        <!-- ray test touch < -->
+        <!-- <div v-html="item.overview" /> -->
+        <div>{{ item.overview }}</div>
+        <!-- ray test touch > -->
       </div>
 
       <div :class="$style.stats">
@@ -53,10 +54,14 @@
               Director
             </div>
 
-            <div
+            <!-- ray test touch < -->
+            <!-- <div
               :class="$style.value"
-              v-html="directors"
-            />
+              v-html="directors" /> -->
+            <div :class="$style.value">
+              {{ directors }}
+            </div>
+            <!-- ray test touch > -->
           </li>
           <li v-if="item.budget">
             <div :class="$style.label">
@@ -81,10 +86,14 @@
               Genre
             </div>
 
-            <div
+            <!-- ray test touch < -->
+            <!-- <div
               :class="$style.value"
-              v-html="formatGenres(item.genres)"
-            />
+              v-html="formatGenres(item.genres)" /> -->
+            <div :class="$style.value">
+              {{ formatGenres(item.genres) }}
+            </div>
+            <!-- ray test touch > -->
           </li>
           <li v-if="item.status">
             <div :class="$style.label">
@@ -118,17 +127,16 @@
 
       <div :class="$style.external">
         <ExternalLinks
-          :links="item.external_ids"
-        />
+          :links="item.external_ids" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/data/consts'
-import { name, directors } from '~/mixins/Details'
-import ExternalLinks from '~/components/ExternalLinks'
+import { TMDB_IMAGE_URL } from '~/data/consts';
+import { name, directors } from '~/mixins/Details';
+import ExternalLinks from '~/components/ExternalLinks';
 
 export default {
   components: {
@@ -148,31 +156,31 @@ export default {
   },
 
   computed: {
-    poster () {
+    poster() {
       if (this.item.poster_path) {
-        return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.item.poster_path}`
+        return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.item.poster_path}`;
       } else {
-        return false
+        return false;
       }
     }
   },
 
-  created () {
+  created() {
     if (this.item.homepage) {
       // ray test touch <
       // TODO: avoid mutating props
       // eslint-disable-next-line vue/no-mutating-props
-      this.item.external_ids.homepage = this.item.homepage
+      this.item.external_ids.homepage = this.item.homepage;
       // ray test touch >
     }
   },
 
   methods: {
-    formatGenres (genres) {
-      return genres.map(genre => `<a href="/genre/${genre.id}/movie">${genre.name}</a>`).join(', ')
+    formatGenres(genres) {
+      return genres.map(genre => `<a href="/genre/${genre.id}/movie">${genre.name}</a>`).join(', ');
     }
   }
-}
+};
 </script>
 
 <style lang="scss" module>
