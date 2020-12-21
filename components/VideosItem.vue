@@ -3,18 +3,21 @@
     <a
       :class="$style.link"
       :href="video.url"
-      @click.prevent="handleVideo(index)">
+      @click.prevent="handleVideo(index)"
+    >
 
       <div :class="$style.image">
         <img
           v-if="video.thumb"
           v-lazyload="video.thumb"
           class="lazyload"
-          :alt="video.name">
+          :alt="video.name"
+        >
 
         <div
           v-if="video.duration"
-          :class="$style.duration">
+          :class="$style.duration"
+        >
           {{ formatDuration(video.duration) }}
         </div>
 
@@ -40,77 +43,77 @@ export default {
   props: {
     video: {
       type: Object,
-      required: true,
+      required: true
     },
 
     index: {
       type: Number,
-      required: true,
-    },
+      required: true
+    }
   },
 
   methods: {
     handleVideo (index) {
       // send the event up to the parent
-      this.$emit('openModal', index);
+      this.$emit('openModal', index)
     },
 
     getSeconds (duration) {
-      let a = duration.match(/\d+/g);
+      let a = duration.match(/\d+/g)
 
-      if (duration.indexOf('M') >= 0 && duration.indexOf('H') === -1 && duration.indexOf('S') === -1) {
-        a = [0, a[0], 0];
+      if (duration.includes('M') && !duration.includes('H') && !duration.includes('S')) {
+        a = [0, a[0], 0]
       }
 
-      if (duration.indexOf('H') >= 0 && duration.indexOf('M') === -1) {
-        a = [a[0], 0, a[1]];
+      if (duration.includes('H') && !duration.includes('M')) {
+        a = [a[0], 0, a[1]]
       }
 
-      if (duration.indexOf('H') >= 0 && duration.indexOf('M') === -1 && duration.indexOf('S') === -1) {
-        a = [a[0], 0, 0];
+      if (duration.includes('H') && !duration.includes('M') && !duration.includes('S')) {
+        a = [a[0], 0, 0]
       }
 
-      duration = 0;
+      duration = 0
 
       if (a.length === 3) {
-        duration = duration + parseInt(a[0]) * 3600;
-        duration = duration + parseInt(a[1]) * 60;
-        duration = duration + parseInt(a[2]);
+        duration = duration + parseInt(a[0]) * 3600
+        duration = duration + parseInt(a[1]) * 60
+        duration = duration + parseInt(a[2])
       }
 
       if (a.length === 2) {
-        duration = duration + parseInt(a[0]) * 60;
-        duration = duration + parseInt(a[1]);
+        duration = duration + parseInt(a[0]) * 60
+        duration = duration + parseInt(a[1])
       }
 
       if (a.length === 1) {
-        duration = duration + parseInt(a[0]);
+        duration = duration + parseInt(a[0])
       }
 
-      return duration;
+      return duration
     },
 
     formatDuration (duration) {
-      const seconds = this.getSeconds(duration);
-      let secondsLeft = seconds;
+      const seconds = this.getSeconds(duration)
+      let secondsLeft = seconds
 
       // hours
       // const hours = Math.floor(secondsLeft / 3600);
-      secondsLeft = secondsLeft % 3600;
+      secondsLeft = secondsLeft % 3600
 
       // mins
-      const mins = Math.floor(secondsLeft / 60);
-      secondsLeft = secondsLeft % 60;
+      const mins = Math.floor(secondsLeft / 60)
+      secondsLeft = secondsLeft % 60
 
       // prepend 0 if less than 10
       if (secondsLeft < 10) {
-        secondsLeft = `0${secondsLeft}`;
+        secondsLeft = `0${secondsLeft}`
       }
 
-      return `${mins}:${secondsLeft}`;
-    },
-  },
-};
+      return `${mins}:${secondsLeft}`
+    }
+  }
+}
 </script>
 
 <style lang="scss" module>
