@@ -1,6 +1,8 @@
 export default {
   modern: process.env.NODE_ENV === 'production',
 
+  serverMiddleware: [require.resolve('./api/swr.js')],
+
   /*
   ** App bundle process.env
   */
