@@ -30,7 +30,7 @@ export default {
   },
 
   mounted() {
-    window.addEventListener('beforeinstallprompt', (event) => {
+    window.addEventListener('beforeinstallprompt', event => {
       event.preventDefault();
 
       if (!this.getVisited()) {
@@ -67,7 +67,7 @@ export default {
       this.isOpen = false;
       installEvent.prompt();
 
-      installEvent.userChoice.then((choice) => {
+      installEvent.userChoice.then(choice => {
         if (choice.outcome !== 'accepted') {
           this.setVisited();
         }

@@ -3,6 +3,7 @@ import Vue from 'vue';
 /**
  * Function called when image has loaded
  */
+
 const imageLoaded = function (e) {
   e.target.parentElement.classList.remove('lazyerror', 'lazyloading');
   e.target.parentElement.classList.add('lazyloaded');
@@ -11,6 +12,7 @@ const imageLoaded = function (e) {
 /**
  * Function called when image has error
  */
+
 const imageError = function (e) {
   e.target.parentElement.classList.remove('lazyloaded', 'lazyloading');
   e.target.parentElement.classList.add('lazyerror');
@@ -19,6 +21,7 @@ const imageError = function (e) {
 /**
  * Function to load the image
  */
+
 const loadImage = function (el, path) {
   // setup loading state
   el.parentElement.classList.remove('lazyerror', 'lazyloaded');
@@ -37,16 +40,17 @@ const loadImage = function (el, path) {
 /**
  * Lazy loading images
  */
+
 Vue.directive('lazyload', {
   inserted(el, binding) {
     function handleIntersect(entries, observer) {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          /* eslint-disable-next-line */
-          return;
-        } else {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
           loadImage(el, binding.value);
           observer.unobserve(el);
+        } else {
+          /* eslint-disable-next-line */
+          return;
         }
       });
     }
@@ -65,10 +69,10 @@ Vue.directive('lazyload', {
     }
 
     // If IntersectionObserver is not supported, fallback and just load the images
-    if (!window.IntersectionObserver) {
-      loadImage(el, binding.value);
-    } else {
+    if (window.IntersectionObserver) {
       createObserver();
+    } else {
+      loadImage(el, binding.value);
     }
   },
 

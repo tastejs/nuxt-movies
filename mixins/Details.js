@@ -75,7 +75,10 @@ export const cert = {
     cert() {
       // movie
       if (this.item.release_dates) {
-        const releases = this.item.release_dates.results.find(release => release.iso_3166_1 === process.env.API_COUNTRY || release.iso_3166_1 === 'US');
+        const releases =
+          this.item.release_dates.results.find(
+            release => release.iso_3166_1 === process.env.API_COUNTRY || release.iso_3166_1 === 'US'
+          );
 
         if (!releases) { return null; }
 
@@ -84,7 +87,10 @@ export const cert = {
         if (item) { return item.certification; }
       // tv
       } else if (this.item.content_ratings) {
-        const releases = this.item.content_ratings.results.find(release => release.iso_3166_1 === process.env.API_COUNTRY || release.iso_3166_1 === 'US');
+        const releases =
+          this.item.content_ratings.results.find(
+            release => release.iso_3166_1 === process.env.API_COUNTRY || release.iso_3166_1 === 'US'
+          );
 
         if (!releases) { return null; }
 
@@ -128,7 +134,9 @@ export const directors = {
       const people = this.item.credits.crew;
 
       if (people) {
-        return people.filter(person => person.job === 'Director').map(person => `<a href="/person/${person.id}">${person.name}</a>`).join(', ');
+        return people.filter(
+          person => person.job === 'Director').map(person => `<a href="/person/${person.id}">${person.name}</a>`
+        ).join(', ');
       }
     }
   }

@@ -169,7 +169,7 @@ export default {
       results = this.removeDuplicates(results);
 
       // remove adult
-      results = results.filter((item) => {
+      results = results.filter(item => {
         if (item.adult) { return false; }
         return true;
       });

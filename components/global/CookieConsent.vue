@@ -2,7 +2,17 @@
   <div
     v-if="isOpen"
     class="alert alert--alt">
-    <p>We use cookies and other tracking technologies to improve your browsing experience on our website. By using our website, you consent to our use of cookies and other tracking technologies. <a target="_blank" href="https://jason.codes/cookie-policy" rel="noopener">Find out more</a>.</p>
+    <p>
+      {{ `
+        We use cookies and other tracking technologies to improve your browsing experience on our website.
+         By using our website, you consent to our use of cookies and other tracking technologies.
+      ` }}
+      &nbsp;
+      <a target="_blank" href="https://jason.codes/cookie-policy" rel="noopener">
+        Find out more
+      </a>
+      .
+    </p>
 
     <div>
       <button

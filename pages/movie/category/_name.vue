@@ -66,7 +66,7 @@ export default {
       this.loading = true;
 
       if (this.$route.params.name === 'trending') {
-        getTrending('movie', this.items.page + 1).then((response) => {
+        getTrending('movie', this.items.page + 1).then(response => {
           this.items.results = this.items.results.concat(response.results);
           this.items.page = response.page;
           this.loading = false;
@@ -74,7 +74,7 @@ export default {
           this.loading = false;
         });
       } else {
-        getMovies(this.$route.params.name, this.items.page + 1).then((response) => {
+        getMovies(this.$route.params.name, this.items.page + 1).then(response => {
           this.items.results = this.items.results.concat(response.results);
           this.items.page = response.page;
           this.loading = false;

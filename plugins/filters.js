@@ -64,7 +64,7 @@ Vue.filter('truncate', function (text, length, clamp) {
 
   while (last > 0 && tcText[last] !== ' ' && tcText[last] !== clamp[0]) { last -= 1; }
 
-  // Fix for case when text dont have any `space`
+  // Fix for case when text don't have any `space`
   last = last || length - clamp.length;
 
   tcText = tcText.slice(0, last);
@@ -85,7 +85,20 @@ Vue.filter('arrayToList', function (array) {
 Vue.filter('fullDate', function (string) {
   const dateArray = string.split('-');
   const date = dateArray[2].substr(0, 1) === '0' ? dateArray[2].substr(1, 1) : dateArray[2];
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ];
 
   return `${date} ${months[dateArray[1] - 1]} ${dateArray[0]}`;
 });

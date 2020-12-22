@@ -89,7 +89,7 @@ export default {
         this.activeEpisodes = season.episodes;
       } else {
         // get episodes for a certain season
-        getTvShowEpisodes(this.$route.params.id, this.activeSeason).then((response) => {
+        getTvShowEpisodes(this.$route.params.id, this.activeSeason).then(response => {
           season.episodes = response.episodes;
           this.activeEpisodes = season.episodes;
         });

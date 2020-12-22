@@ -80,7 +80,6 @@ export default {
   created() {
     // if show exists, limit the results
     if (this.show) {
-      // ray test touch <
       // TODO: avoid mutating props
       // eslint-disable-next-line vue/no-mutating-props
       this.items.results = this.items.results.splice(0, this.show);
@@ -88,7 +87,6 @@ export default {
       this.items.total_pages = 1;
       // eslint-disable-next-line vue/no-mutating-props
       this.items.total_results = this.show;
-      // ray test touch >
     }
   },
 

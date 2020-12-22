@@ -205,7 +205,7 @@ export default {
       // if recommended don't exist, retrieve them
       if (this.recommended !== null) { return; }
 
-      getTvShowRecommended(this.$route.params.id).then((response) => {
+      getTvShowRecommended(this.$route.params.id).then(response => {
         this.recommended = response;
       });
     }

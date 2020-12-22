@@ -1,13 +1,13 @@
 /**
  * Debounce
  */
-export const debounce = function (func, delay) {
+
+export const debounce = function (func, delay, ...args) {
   let timeoutID;
 
   return function () {
     clearTimeout(timeoutID);
 
-    const args = arguments;
     const that = this;
 
     timeoutID = setTimeout(function () {
@@ -19,6 +19,7 @@ export const debounce = function (func, delay) {
 /**
  * Check if localStorage is supported
  */
+
 export const supportsLocalStorage = function () {
   let supports = true;
 

@@ -23,10 +23,7 @@
           Storyline
         </h2>
 
-        <!-- ray test touch < -->
-        <!-- <div v-html="item.overview" /> -->
         <div>{{ item.overview }}</div>
-        <!-- ray test touch > -->
       </div>
 
       <div :class="$style.stats">
@@ -63,28 +60,18 @@
               Creator
             </div>
 
-            <!-- ray test touch < -->
-            <!-- <div
-              :class="$style.value"
-              v-html="creators" /> -->
             <div :class="$style.value">
               {{ creators }}
             </div>
-            <!-- ray test touch > -->
           </li>
           <li v-if="item.genres && item.genres.length">
             <div :class="$style.label">
               Genre
             </div>
 
-            <!-- ray test touch < -->
-            <!-- <div
-              :class="$style.value"
-              v-html="formatGenres(item.genres)" /> -->
             <div :class="$style.value">
               {{ formatGenres(item.genres) }}
             </div>
-            <!-- ray test touch > -->
           </li>
           <li v-if="item.number_of_seasons">
             <div :class="$style.label">
@@ -176,11 +163,9 @@ export default {
 
   created() {
     if (this.item.homepage) {
-      // ray test touch <
       // TODO: avoid mutating props
       // eslint-disable-next-line vue/no-mutating-props
       this.item.external_ids.homepage = this.item.homepage;
-      // ray test touch >
     }
   },
 

@@ -139,7 +139,7 @@ export default {
       // group by department
       const categories = this.createCategories(items);
 
-      categories.forEach((category) => {
+      categories.forEach(category => {
         // group credits (by year)
         let groups = this.groupItems(category.groups);
 
@@ -179,7 +179,7 @@ export default {
         this.active_category = 'all';
         this.categories = this.getCategories();
       } else {
-        getCredits(this.$route.params.id, media).then((response) => {
+        getCredits(this.$route.params.id, media).then(response => {
           const cast = this.handleCast(response.cast);
           const crew = this.handleCrew(response.crew);
 
@@ -197,14 +197,15 @@ export default {
       if (this.active_category === 'all') {
         this.active_credits = this.$data[this.active_media];
       } else {
-        this.active_credits = this.$data[this.active_media].filter(category => category.name.toLowerCase() === this.active_category);
+        this.active_credits =
+          this.$data[this.active_media].filter(category => category.name.toLowerCase() === this.active_category);
       }
     },
 
     createCategories(items) {
       const categories = [];
 
-      items.forEach((item) => {
+      items.forEach(item => {
         const exists = categories.find(category => category.name === item.department);
 
         if (exists) {

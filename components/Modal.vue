@@ -173,7 +173,16 @@ export default {
   },
 
   mounted() {
-    focusableEls = this.$refs.modal.querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex="0"]');
+    focusableEls =
+      this.$refs.modal.querySelectorAll(`
+        a[href],
+        area[href],
+        input:not([disabled]),
+        select:not([disabled]),
+        textarea:not([disabled]),
+        button:not([disabled]),
+        [tabindex="0"]
+      `);
     focusableEls = Array.prototype.slice.call(focusableEls);
 
     firstFocusableEl = focusableEls[0];

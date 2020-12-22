@@ -187,7 +187,7 @@ export default {
       // if recommended don't exist, retrieve them
       if (this.recommended !== null) { return; }
 
-      getMovieRecommended(this.$route.params.id).then((response) => {
+      getMovieRecommended(this.$route.params.id).then(response => {
         this.recommended = response;
       });
     }

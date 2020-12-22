@@ -27,10 +27,7 @@
             :src="avatar"
             :alt="person.name">
 
-          <!-- ray test touch < -->
-          <!-- <div v-html="formatContent(person.biography)" /> -->
           <div>{{ formatContent(person.biography) }}</div>
-          <!-- ray test touch > -->
         </div>
       </div>
 
@@ -127,11 +124,9 @@ export default {
 
   created() {
     if (this.person.homepage) {
-      // ray test touch <
       // TODO: avoid mutating props
       // eslint-disable-next-line vue/no-mutating-props
       this.person.external_ids.homepage = this.person.homepage;
-      // ray test touch >
     }
   },
 
@@ -145,10 +140,10 @@ export default {
       let endDate;
       let age;
 
-      if (!died) {
-        endDate = new Date();
-      } else {
+      if (died) {
         endDate = new Date(died);
+      } else {
+        endDate = new Date();
       }
 
       const month = endDate.getMonth() - startDate.getMonth();
