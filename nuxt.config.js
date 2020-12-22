@@ -83,4 +83,4 @@ export default {
     theme_color: '#2196f3',
     background_color: '#000000'
   }
-}
+};

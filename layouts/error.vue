@@ -27,18 +27,18 @@ export default {
     }
   },
 
-  head () {
+  head() {
     return {
       title: this.message
-    }
+    };
   },
 
   computed: {
-    message () {
-      return this.error.message || 'An error occurred'
+    message() {
+      return this.error.message || 'An error occurred';
     }
   }
-}
+};
 </script>
 
 <style lang="scss" module>

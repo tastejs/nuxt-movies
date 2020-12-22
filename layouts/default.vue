@@ -14,11 +14,11 @@
 </template>
 
 <script>
-import CookieConsent from '~/components/global/CookieConsent'
-import InstallPrompt from '~/components/global/InstallPrompt'
-import SearchForm from '~/components/global/SearchForm'
-import Nav from '~/components/global/Nav'
-import Footer from '~/components/global/Footer'
+import CookieConsent from '~/components/global/CookieConsent';
+import InstallPrompt from '~/components/global/InstallPrompt';
+import SearchForm from '~/components/global/SearchForm';
+import Nav from '~/components/global/Nav';
+import Footer from '~/components/global/Footer';
 
 export default {
   components: {
@@ -28,5 +28,5 @@ export default {
     Nav,
     Footer
   }
-}
+};
 </script>

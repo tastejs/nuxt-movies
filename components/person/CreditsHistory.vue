@@ -10,8 +10,7 @@
           id="credits_category"
           v-model="active_category"
           :disabled="!categories.length || categories.length === 1"
-          @change="filterCredits"
-        >
+          @change="filterCredits">
           <option value="all">
             All
           </option>
@@ -19,8 +18,7 @@
           <option
             v-for="(category) in categories"
             :key="`credit-filter-${category.toLowerCase()}`"
-            :value="category.toLowerCase()"
-          >
+            :value="category.toLowerCase()">
             {{ category }}
           </option>
         </select>
@@ -34,8 +32,7 @@
         <select
           id="credits_media"
           v-model="active_media"
-          @change="getCredits"
-        >
+          @change="getCredits">
           <option value="combined_credits">
             All
           </option>
@@ -52,8 +49,7 @@
     <div
       v-for="category in active_credits"
       :key="`credits-${category.name.toLowerCase()}`"
-      :class="$style.category"
-    >
+      :class="$style.category">
       <h2 :class="$style.title">
         {{ category.name }}
       </h2>
@@ -63,8 +59,7 @@
           <CreditsHistoryGroup
             v-for="group in category.groups"
             :key="`credit-${category.name.toLowerCase()}-${group.year}`"
-            :group="group"
-          />
+            :group="group" />
         </tbody>
       </table>
     </div>
@@ -72,8 +67,8 @@
 </template>
 
 <script>
-import { getCredits } from '~/utils/api'
-import CreditsHistoryGroup from '~/components/person/CreditsHistoryGroup'
+import { getCredits } from '~/utils/api';
+import CreditsHistoryGroup from '~/components/person/CreditsHistoryGroup';
 
 export default {
   components: {
@@ -87,7 +82,7 @@ export default {
     }
   },
 
-  data () {
+  data() {
     return {
       active_media: 'combined_credits',
       active_category: 'all',
@@ -96,175 +91,196 @@ export default {
       combined_credits: [],
       movie_credits: [],
       tv_credits: []
-    }
+    };
   },
 
-  created () {
-    const cast = this.handleCast(this.credits.cast)
-    const crew = this.handleCrew(this.credits.crew)
+  created() {
+    const cast = this.handleCast(this.credits.cast);
+    const crew = this.handleCrew(this.credits.crew);
 
-    if (cast) { this.$data[this.active_media].push({ name: 'Acting', groups: cast }) }
-    if (crew) { this.$data[this.active_media] = [...this.$data[this.active_media], ...crew] }
+    if (cast) {
+      this.$data[this.active_media].push({ name: 'Acting', groups: cast });
+    }
+    if (crew) {
+      this.$data[this.active_media] = [...this.$data[this.active_media], ...crew];
+    }
 
     // set the active credits
-    this.active_credits = this.$data[this.active_media]
+    this.active_credits = this.$data[this.active_media];
 
     // set the category filter
-    this.categories = this.getCategories()
+    this.categories = this.getCategories();
   },
 
   methods: {
-    handleCast (items) {
-      if (!items || !items.length) { return }
+    handleCast(items) {
+      if (!items || !items.length) {
+        return;
+      }
 
       // group credits (by year)
-      let groups = this.groupItems(items)
+      let groups = this.groupItems(items);
 
       // get blank group (no year)
-      const blankGroup = groups.find(group => group.year === '')
+      const blankGroup = groups.find(group => group.year === '');
 
       // remove blank group
-      if (blankGroup) { groups = groups.filter(group => group.year !== '') }
+      if (blankGroup) {
+        groups = groups.filter(group => group.year !== '');
+      }
 
       // sort groups by year
-      this.sortGroups(groups)
+      this.sortGroups(groups);
 
       // add blank group to the start
-      if (blankGroup) { groups.unshift(blankGroup) }
+      if (blankGroup) {
+        groups.unshift(blankGroup);
+      }
 
       // sort credits in the group by date
-      groups.forEach(group => this.sortCredits(group.credits))
+      groups.forEach(group => this.sortCredits(group.credits));
 
-      return groups
+      return groups;
     },
 
-    handleCrew (items) {
-      if (!items || !items.length) { return }
+    handleCrew(items) {
+      if (!items || !items.length) {
+        return;
+      }
 
       // group by department
-      const categories = this.createCategories(items)
+      const categories = this.createCategories(items);
 
-      categories.forEach((category) => {
+      categories.forEach(category => {
         // group credits (by year)
-        let groups = this.groupItems(category.groups)
+        let groups = this.groupItems(category.groups);
 
         // get blank group (no year)
-        const blankGroup = groups.find(group => group.year === '')
+        const blankGroup = groups.find(group => group.year === '');
 
         // remove blank group
-        if (blankGroup) { groups = groups.filter(group => group.year !== '') }
+        if (blankGroup) {
+          groups = groups.filter(group => group.year !== '');
+        }
 
         // sort groups by year
-        this.sortGroups(groups)
+        this.sortGroups(groups);
 
         // add blank group to the start
-        if (blankGroup) { groups.unshift(blankGroup) }
+        if (blankGroup) {
+          groups.unshift(blankGroup);
+        }
 
         // sort credits in the group by date
-        groups.forEach(group => this.sortCredits(group.credits))
+        groups.forEach(group => this.sortCredits(group.credits));
 
         // set items to the new group
-        category.groups = groups
-      })
+        category.groups = groups;
+      });
 
-      return categories
+      return categories;
     },
 
-    getCategories () {
-      return this.active_credits.map(category => category.name)
+    getCategories() {
+      return this.active_credits.map(category => category.name);
     },
 
-    getCredits () {
-      const media = this.active_media
+    getCredits() {
+      const media = this.active_media;
 
       // if we already have the credits, just show them
       // else do api call
       if (this.$data[media] && this.$data[media].length) {
-        this.active_credits = this.$data[media]
-        this.active_category = 'all'
-        this.categories = this.getCategories()
+        this.active_credits = this.$data[media];
+        this.active_category = 'all';
+        this.categories = this.getCategories();
       } else {
-        getCredits(this.$route.params.id, media).then((response) => {
-          const cast = this.handleCast(response.cast)
-          const crew = this.handleCrew(response.crew)
+        getCredits(this.$route.params.id, media).then(response => {
+          const cast = this.handleCast(response.cast);
+          const crew = this.handleCrew(response.crew);
 
-          if (cast) { this.$data[media].push({ name: 'Acting', groups: cast }) }
-          if (crew) { this.$data[media] = [...this.$data[media], ...crew] }
+          if (cast) {
+            this.$data[media].push({ name: 'Acting', groups: cast });
+          }
+          if (crew) {
+            this.$data[media] = [...this.$data[media], ...crew];
+          }
 
-          this.active_credits = this.$data[media]
-          this.active_category = 'all'
-          this.categories = this.getCategories()
-        })
+          this.active_credits = this.$data[media];
+          this.active_category = 'all';
+          this.categories = this.getCategories();
+        });
       }
     },
 
-    filterCredits () {
+    filterCredits() {
       if (this.active_category === 'all') {
-        this.active_credits = this.$data[this.active_media]
+        this.active_credits = this.$data[this.active_media];
       } else {
-        this.active_credits = this.$data[this.active_media].filter(category => category.name.toLowerCase() === this.active_category)
+        this.active_credits =
+          this.$data[this.active_media].filter(category => category.name.toLowerCase() === this.active_category);
       }
     },
 
-    createCategories (items) {
-      const categories = []
+    createCategories(items) {
+      const categories = [];
 
-      items.forEach((item) => {
-        const exists = categories.find(category => category.name === item.department)
+      items.forEach(item => {
+        const exists = categories.find(category => category.name === item.department);
 
         if (exists) {
-          exists.groups.push(item)
+          exists.groups.push(item);
         } else {
           categories.push({
             name: item.department,
             groups: [item]
-          })
+          });
         }
-      })
+      });
 
-      return categories
+      return categories;
     },
 
-    groupItems (items) {
+    groupItems(items) {
       return items.reduce(function (arr, current) {
-        const date = current.release_date ? current.release_date : current.first_air_date
-        const year = date ? date.split('-')[0] : ''
-        const exists = arr.find(item => item.year === year)
+        const date = current.release_date ? current.release_date : current.first_air_date;
+        const year = date ? date.split('-')[0] : '';
+        const exists = arr.find(item => item.year === year);
 
         if (exists) {
-          exists.credits.push(current)
+          exists.credits.push(current);
         } else {
           arr.push({
             year,
             credits: [current]
-          })
+          });
         }
 
-        return arr
-      }, [])
+        return arr;
+      }, []);
     },
 
-    sortGroups (items) {
-      return items.sort((a, b) => a.year > b.year ? -1 : 1)
+    sortGroups(items) {
+      return items.sort((a, b) => a.year > b.year ? -1 : 1);
     },
 
-    sortCredits (items) {
+    sortCredits(items) {
       // sort items in the group by date
       return items.sort((a, b) => {
-        const aDate = a.release_date ? a.release_date : a.first_air_date
-        const bDate = b.release_date ? b.release_date : b.first_air_date
+        const aDate = a.release_date ? a.release_date : a.first_air_date;
+        const bDate = b.release_date ? b.release_date : b.first_air_date;
 
         if (aDate > bDate) {
-          return -1
+          return -1;
         } else if (aDate < bDate) {
-          return 1
+          return 1;
         }
 
-        return 0
-      })
+        return 0;
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="scss" module>

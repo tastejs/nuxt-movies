@@ -5,8 +5,7 @@
         v-if="poster"
         v-lazyload="poster"
         class="lazyload"
-        :alt="episode.name"
-      >
+        :alt="episode.name">
 
       <span v-else>
         <!-- eslint-disable-next-line -->
@@ -24,15 +23,14 @@
 
     <div
       v-if="episode.air_date"
-      :class="$style.aired"
-    >
+      :class="$style.aired">
       {{ episode.air_date | fullDate }}
     </div>
   </div>
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/data/consts'
+import { TMDB_IMAGE_URL } from '~/data/consts';
 
 export default {
   props: {
@@ -43,15 +41,15 @@ export default {
   },
 
   computed: {
-    poster () {
+    poster() {
       if (this.episode.still_path) {
-        return `${TMDB_IMAGE_URL}/w400${this.episode.still_path}`
+        return `${TMDB_IMAGE_URL}/w400${this.episode.still_path}`;
       } else {
-        return null
+        return null;
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss" module>

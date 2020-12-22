@@ -17,4 +17,4 @@ export const lists = {
     { title: 'Currently Airing TV Shows', query: 'on_the_air' },
     { title: 'TV Shows Airing Today', query: 'airing_today' }
   ]
-}
+};

@@ -6,11 +6,11 @@
 </template>
 
 <script>
-import Nav from '~/components/global/Nav'
+import Nav from '~/components/global/Nav';
 
 export default {
   components: {
     Nav
   }
-}
+};
 </script>

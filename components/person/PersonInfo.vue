@@ -6,8 +6,7 @@
           v-if="avatar"
           v-lazyload="avatar"
           class="lazyload"
-          :alt="person.name"
-        >
+          :alt="person.name">
 
         <span v-else>
           <!-- eslint-disable-next-line -->
@@ -26,10 +25,9 @@
           <img
             v-if="avatar"
             :src="avatar"
-            :alt="person.name"
-          >
+            :alt="person.name">
 
-          <div v-html="formatContent(person.biography)" />
+          <div>{{ formatContent(person.biography) }}</div>
         </div>
       </div>
 
@@ -79,16 +77,15 @@
       <div :class="$style.external">
         <ExternalLinks
           media="person"
-          :links="person.external_ids"
-        />
+          :links="person.external_ids" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/data/consts'
-import ExternalLinks from '~/components/ExternalLinks'
+import { TMDB_IMAGE_URL } from '~/data/consts';
+import ExternalLinks from '~/components/ExternalLinks';
 
 export default {
   components: {
@@ -103,65 +100,63 @@ export default {
   },
 
   computed: {
-    avatar () {
+    avatar() {
       if (this.person.profile_path) {
-        return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.person.profile_path}`
+        return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.person.profile_path}`;
       } else {
-        return null
+        return null;
       }
     },
 
-    age () {
-      const born = this.person.birthday
-      const died = this.person.deathday
+    age() {
+      const born = this.person.birthday;
+      const died = this.person.deathday;
 
       if (born && !died) {
-        return this.getAge(born)
+        return this.getAge(born);
       } else if (born && died) {
-        return this.getAge(born, died)
+        return this.getAge(born, died);
       } else {
-        return false
+        return false;
       }
     }
   },
 
-  created () {
+  created() {
     if (this.person.homepage) {
-      // ray test touch <
       // TODO: avoid mutating props
       // eslint-disable-next-line vue/no-mutating-props
-      this.person.external_ids.homepage = this.person.homepage
-      // ray test touch >
+      this.person.external_ids.homepage = this.person.homepage;
     }
   },
 
   methods: {
-    formatContent (string) {
-      return string.split('\n').filter(section => section !== '').map(section => `<p>${section}</p>`).join('')
+    formatContent(string) {
+      return string.split('\n').filter(section => section !== '').map(section => `<p>${section}</p>`).join('');
     },
 
-    getAge (born, died) {
-      const startDate = new Date(born)
-      let endDate
-      let age
+    getAge(born, died) {
+      const startDate = new Date(born);
+      let endDate;
+      let age;
 
-      if (!died) {
-        endDate = new Date()
+      if (died) {
+        endDate = new Date(died);
       } else {
-        endDate = new Date(died)
+        endDate = new Date();
       }
 
-      const month = endDate.getMonth() - startDate.getMonth()
-      age = endDate.getFullYear() - startDate.getFullYear()
+      const month = endDate.getMonth() - startDate.getMonth();
+      age = endDate.getFullYear() - startDate.getFullYear();
 
       if (month < 0 || (month === 0 && endDate.getDate() < startDate.getDate())) {
-        age--
+        age--;
       }
 
-      return age
+      return age;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" module>
