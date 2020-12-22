@@ -98,8 +98,12 @@ export default {
     const cast = this.handleCast(this.credits.cast);
     const crew = this.handleCrew(this.credits.crew);
 
-    if (cast) { this.$data[this.active_media].push({ name: 'Acting', groups: cast }); }
-    if (crew) { this.$data[this.active_media] = [...this.$data[this.active_media], ...crew]; }
+    if (cast) {
+      this.$data[this.active_media].push({ name: 'Acting', groups: cast });
+    }
+    if (crew) {
+      this.$data[this.active_media] = [...this.$data[this.active_media], ...crew];
+    }
 
     // set the active credits
     this.active_credits = this.$data[this.active_media];
@@ -110,7 +114,9 @@ export default {
 
   methods: {
     handleCast(items) {
-      if (!items || !items.length) { return; }
+      if (!items || !items.length) {
+        return;
+      }
 
       // group credits (by year)
       let groups = this.groupItems(items);
@@ -119,13 +125,17 @@ export default {
       const blankGroup = groups.find(group => group.year === '');
 
       // remove blank group
-      if (blankGroup) { groups = groups.filter(group => group.year !== ''); }
+      if (blankGroup) {
+        groups = groups.filter(group => group.year !== '');
+      }
 
       // sort groups by year
       this.sortGroups(groups);
 
       // add blank group to the start
-      if (blankGroup) { groups.unshift(blankGroup); }
+      if (blankGroup) {
+        groups.unshift(blankGroup);
+      }
 
       // sort credits in the group by date
       groups.forEach(group => this.sortCredits(group.credits));
@@ -134,7 +144,9 @@ export default {
     },
 
     handleCrew(items) {
-      if (!items || !items.length) { return; }
+      if (!items || !items.length) {
+        return;
+      }
 
       // group by department
       const categories = this.createCategories(items);
@@ -147,13 +159,17 @@ export default {
         const blankGroup = groups.find(group => group.year === '');
 
         // remove blank group
-        if (blankGroup) { groups = groups.filter(group => group.year !== ''); }
+        if (blankGroup) {
+          groups = groups.filter(group => group.year !== '');
+        }
 
         // sort groups by year
         this.sortGroups(groups);
 
         // add blank group to the start
-        if (blankGroup) { groups.unshift(blankGroup); }
+        if (blankGroup) {
+          groups.unshift(blankGroup);
+        }
 
         // sort credits in the group by date
         groups.forEach(group => this.sortCredits(group.credits));
@@ -183,8 +199,12 @@ export default {
           const cast = this.handleCast(response.cast);
           const crew = this.handleCrew(response.crew);
 
-          if (cast) { this.$data[media].push({ name: 'Acting', groups: cast }); }
-          if (crew) { this.$data[media] = [...this.$data[media], ...crew]; }
+          if (cast) {
+            this.$data[media].push({ name: 'Acting', groups: cast });
+          }
+          if (crew) {
+            this.$data[media] = [...this.$data[media], ...crew];
+          }
 
           this.active_credits = this.$data[media];
           this.active_category = 'all';

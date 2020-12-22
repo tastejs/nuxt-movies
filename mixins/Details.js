@@ -80,11 +80,15 @@ export const cert = {
             release => release.iso_3166_1 === process.env.API_COUNTRY || release.iso_3166_1 === 'US'
           );
 
-        if (!releases) { return null; }
+        if (!releases) {
+          return null;
+        }
 
         const item = releases.release_dates.find(date => date.certification !== '');
 
-        if (item) { return item.certification; }
+        if (item) {
+          return item.certification;
+        }
       // tv
       } else if (this.item.content_ratings) {
         const releases =
@@ -92,7 +96,9 @@ export const cert = {
             release => release.iso_3166_1 === process.env.API_COUNTRY || release.iso_3166_1 === 'US'
           );
 
-        if (!releases) { return null; }
+        if (!releases) {
+          return null;
+        }
 
         return releases.rating;
       }
@@ -109,13 +115,17 @@ export const trailer = {
       let videos = this.item.videos.results;
 
       // if no videos, do nothing
-      if (!videos.length) { return null; }
+      if (!videos.length) {
+        return null;
+      }
 
       // filter by type of video
       videos = videos.find(video => video.type === 'Trailer');
 
       // if no trailer found, do nothing
-      if (!videos) { return null; }
+      if (!videos) {
+        return null;
+      }
 
       return [{
         name: videos.name,

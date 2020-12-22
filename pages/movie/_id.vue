@@ -171,10 +171,14 @@ export default {
       menu.push('Overview');
 
       // videos
-      if (this.showVideos) { menu.push('Videos'); }
+      if (this.showVideos) {
+        menu.push('Videos');
+      }
 
       // images
-      if (this.showImages) { menu.push('Photos'); }
+      if (this.showImages) {
+        menu.push('Photos');
+      }
 
       this.menu = menu;
     },
@@ -185,7 +189,9 @@ export default {
 
     initRecommended() {
       // if recommended don't exist, retrieve them
-      if (this.recommended !== null) { return; }
+      if (this.recommended !== null) {
+        return;
+      }
 
       getMovieRecommended(this.$route.params.id).then(response => {
         this.recommended = response;

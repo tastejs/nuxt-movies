@@ -136,7 +136,9 @@ export default {
       menu.push('Credits');
 
       // images
-      if (this.showImages) { menu.push('Photos'); }
+      if (this.showImages) {
+        menu.push('Photos');
+      }
 
       this.menu = menu;
     },
@@ -147,7 +149,9 @@ export default {
 
     initKnownFor() {
       // if recommendations don't exist, retrieve them
-      if (this.knownFor !== null) { return; }
+      if (this.knownFor !== null) {
+        return;
+      }
 
       const department = this.person.known_for_department;
       let results;
@@ -163,14 +167,18 @@ export default {
       }
 
       // if no results, return
-      if (!results) { return; }
+      if (!results) {
+        return;
+      }
 
       // remove duplicates
       results = this.removeDuplicates(results);
 
       // remove adult
       results = results.filter(item => {
-        if (item.adult) { return false; }
+        if (item.adult) {
+          return false;
+        }
         return true;
       });
 

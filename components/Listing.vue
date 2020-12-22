@@ -102,7 +102,9 @@ export default {
     getScrollPosition: debounce(function () {
       if (this.items.page < this.items.total_pages) {
         const bottomOfWindow = (window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 600;
-        if (bottomOfWindow && !this.loading) { this.loadMore(); }
+        if (bottomOfWindow && !this.loading) {
+          this.loadMore();
+        }
       } else {
         // remove scroll event, no more pages to load
         window.removeEventListener('scroll', this.getScrollPosition);
