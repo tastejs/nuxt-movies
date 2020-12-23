@@ -2,14 +2,12 @@
   <div :class="[$style.item, $style[type]]">
     <a
       :href="image.thumb"
-      @click.prevent="handleGallery(index)"
-    >
+      @click.prevent="handleGallery(index)">
       <div :class="$style.image">
         <img
           v-lazyload="image.thumb"
           class="lazyload"
-          alt=""
-        >
+          alt="">
       </div>
     </a>
   </div>
@@ -35,11 +33,11 @@ export default {
   },
 
   methods: {
-    handleGallery (index) {
-      this.$emit('openModal', index)
+    handleGallery(index) {
+      this.$emit('openModal', index);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" module>

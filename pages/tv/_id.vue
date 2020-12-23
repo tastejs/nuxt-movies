@@ -1,39 +1,32 @@
 <template>
   <main class="main">
     <TopNav
-      :title="metaTitle"
-    />
+      :title="metaTitle" />
 
     <Hero
-      :item="item"
-    />
+      :item="item" />
 
     <MediaNav
       :menu="menu"
-      @clicked="navClicked"
-    />
+      @clicked="navClicked" />
 
     <template v-if="activeMenu === 'overview'">
       <TvInfo
-        :item="item"
-      />
+        :item="item" />
 
       <Credits
         v-if="showCredits"
-        :people="item.credits.cast"
-      />
+        :people="item.credits.cast" />
     </template>
 
     <template v-if="activeMenu === 'episodes' && showEpisodes">
       <Episodes
-        :number-of-seasons="item.number_of_seasons"
-      />
+        :number-of-seasons="item.number_of_seasons" />
     </template>
 
     <template v-if="activeMenu === 'videos' && showVideos">
       <Videos
-        :videos="item.videos.results"
-      />
+        :videos="item.videos.results" />
     </template>
 
     <template v-if="activeMenu === 'photos' && showImages">
@@ -41,39 +34,36 @@
         v-if="item.images.backdrops.length"
         title="Backdrops"
         type="backdrop"
-        :images="item.images.backdrops"
-      />
+        :images="item.images.backdrops" />
 
       <Images
         v-if="item.images.posters.length"
         title="Posters"
         type="poster"
-        :images="item.images.posters"
-      />
+        :images="item.images.posters" />
     </template>
 
     <ListingCarousel
       v-if="recommended && recommended.results.length"
       title="More Like This"
 
-      :items="recommended"
-    />
+      :items="recommended" />
   </main>
 </template>
 
 <script>
-import { getTvShow, getTvShowRecommended } from '~/utils/api'
-import { TMDB_IMAGE_URL } from '~/data/consts'
-import { name, yearStart, yearEnd } from '~/mixins/Details'
-import TopNav from '~/components/global/TopNav'
-import Hero from '~/components/Hero'
-import MediaNav from '~/components/MediaNav'
-import TvInfo from '~/components/tv/TvInfo'
-import Videos from '~/components/Videos'
-import Images from '~/components/Images'
-import Credits from '~/components/Credits'
-import Episodes from '~/components/tv/Episodes'
-import ListingCarousel from '~/components/ListingCarousel'
+import { getTvShow, getTvShowRecommended } from '~/utils/api';
+import { TMDB_IMAGE_URL } from '~/data/consts';
+import { name, yearStart, yearEnd } from '~/mixins/Details';
+import TopNav from '~/components/global/TopNav';
+import Hero from '~/components/Hero';
+import MediaNav from '~/components/MediaNav';
+import TvInfo from '~/components/tv/TvInfo';
+import Videos from '~/components/Videos';
+import Images from '~/components/Images';
+import Credits from '~/components/Credits';
+import Episodes from '~/components/tv/Episodes';
+import ListingCarousel from '~/components/ListingCarousel';
 
 export default {
   components: {
@@ -94,29 +84,29 @@ export default {
     yearEnd
   ],
 
-  async asyncData ({ params, error }) {
+  async asyncData({ params, error }) {
     try {
-      const item = await getTvShow(params.id)
+      const item = await getTvShow(params.id);
 
       if (item.adult) {
-        error({ message: 'This tv show is not available' })
+        error({ message: 'This tv show is not available' });
       } else {
-        return { item }
+        return { item };
       }
     } catch {
-      error({ message: 'Page not found' })
+      error({ message: 'Page not found' });
     }
   },
 
-  data () {
+  data() {
     return {
       menu: [],
       activeMenu: 'overview',
       recommended: null
-    }
+    };
   },
 
-  head () {
+  head() {
     return {
       title: this.metaTitle,
       meta: [
@@ -129,96 +119,104 @@ export default {
       bodyAttrs: {
         class: 'topnav-active'
       }
-    }
+    };
   },
 
   computed: {
-    metaTitle () {
+    metaTitle() {
       if (this.item.status === 'Ended' && this.yearStart && this.yearEnd) {
-        return `${this.name} (TV Series ${this.yearStart}-${this.yearEnd})`
+        return `${this.name} (TV Series ${this.yearStart}-${this.yearEnd})`;
       } else if (this.yearStart) {
-        return `${this.name} (TV Series ${this.yearStart}-)`
+        return `${this.name} (TV Series ${this.yearStart}-)`;
       } else {
-        return `${this.name} (TV Series)`
+        return `${this.name} (TV Series)`;
       }
     },
 
-    metaDescription () {
+    metaDescription() {
       if (this.item.overview) {
-        return this.truncate(this.item.overview, 200)
+        return this.truncate(this.item.overview, 200);
       } else {
-        return ''
+        return '';
       }
     },
 
-    metaImage () {
+    metaImage() {
       if (this.item.poster_path) {
-        return `${TMDB_IMAGE_URL}/w500${this.item.poster_path}`
+        return `${TMDB_IMAGE_URL}/w500${this.item.poster_path}`;
       } else {
-        return ''
+        return '';
       }
     },
 
-    showCredits () {
-      const credits = this.item.credits
-      return credits && credits.cast && credits.cast.length
+    showCredits() {
+      const credits = this.item.credits;
+      return credits && credits.cast && credits.cast.length;
     },
 
-    showEpisodes () {
-      return this.item.number_of_seasons
+    showEpisodes() {
+      return this.item.number_of_seasons;
     },
 
-    showVideos () {
-      const videos = this.item.videos
-      return videos && videos.results && videos.results.length
+    showVideos() {
+      const videos = this.item.videos;
+      return videos && videos.results && videos.results.length;
     },
 
-    showImages () {
-      const images = this.item.images
-      return images && ((images.backdrops && images.backdrops.length) || (images.posters && images.posters.length))
+    showImages() {
+      const images = this.item.images;
+      return images && ((images.backdrops && images.backdrops.length) || (images.posters && images.posters.length));
     }
   },
 
-  created () {
-    this.createMenu()
-    this.initRecommended()
+  created() {
+    this.createMenu();
+    this.initRecommended();
   },
 
   methods: {
-    truncate (string, length) {
-      return this.$options.filters.truncate(string, length)
+    truncate(string, length) {
+      return this.$options.filters.truncate(string, length);
     },
 
-    createMenu () {
-      const menu = []
+    createMenu() {
+      const menu = [];
 
       // overview
-      menu.push('Overview')
+      menu.push('Overview');
 
       // episodes
-      if (this.showEpisodes) { menu.push('Episodes') }
+      if (this.showEpisodes) {
+        menu.push('Episodes');
+      }
 
       // videos
-      if (this.showVideos) { menu.push('Videos') }
+      if (this.showVideos) {
+        menu.push('Videos');
+      }
 
       // images
-      if (this.showImages) { menu.push('Photos') }
+      if (this.showImages) {
+        menu.push('Photos');
+      }
 
-      this.menu = menu
+      this.menu = menu;
     },
 
-    navClicked (label) {
-      this.activeMenu = label
+    navClicked(label) {
+      this.activeMenu = label;
     },
 
-    initRecommended () {
+    initRecommended() {
       // if recommended don't exist, retrieve them
-      if (this.recommended !== null) { return }
+      if (this.recommended !== null) {
+        return;
+      }
 
-      getTvShowRecommended(this.$route.params.id).then((response) => {
-        this.recommended = response
-      })
+      getTvShowRecommended(this.$route.params.id).then(response => {
+        this.recommended = response;
+      });
     }
   }
-}
+};
 </script>

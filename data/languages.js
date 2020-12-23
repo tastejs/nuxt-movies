@@ -189,4 +189,4 @@ export const languages = [
   { iso_639_1: 'ch', english_name: 'Chamorro' },
   { iso_639_1: 'be', english_name: 'Belarusian' },
   { iso_639_1: 'yo', english_name: 'Yoruba' }
-]
+];

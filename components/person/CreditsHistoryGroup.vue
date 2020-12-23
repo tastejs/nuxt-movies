@@ -7,8 +7,7 @@
             v-for="credit in group.credits"
             :key="`credit-${credit.credit_id}`"
             :year="group.year"
-            :credit="credit"
-          />
+            :credit="credit" />
         </tbody>
       </table>
     </td>
@@ -16,7 +15,7 @@
 </template>
 
 <script>
-import CreditsHistoryItem from '~/components/person/CreditsHistoryItem'
+import CreditsHistoryItem from '~/components/person/CreditsHistoryItem';
 
 export default {
   components: {
@@ -29,7 +28,7 @@ export default {
       required: true
     }
   }
-}
+};
 </script>
 
 <style lang="scss" module>

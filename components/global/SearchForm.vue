@@ -2,12 +2,10 @@
   <div :class="$style.form">
     <form
       autocomplete="off"
-      @submit.prevent
-    >
+      @submit.prevent>
       <label
         class="visuallyhidden"
-        for="search"
-      >Search</label>
+        for="search">Search</label>
 
       <div :class="$style.field">
         <input
@@ -18,15 +16,13 @@
           type="text"
           placeholder="Search for a movie, tv show or person..."
           @keyup="goToRoute"
-          @blur="unFocus"
-        >
+          @blur="unFocus">
 
         <button
           v-if="showButton"
           type="button"
           aria-label="Close"
-          @click="goBack"
-        >
+          @click="goBack">
           <!-- eslint-disable-next-line -->
           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5"><path d="M.75.75l13.5 13.5M14.25.75L.75 14.25"/></g></svg>
         </button>
@@ -37,56 +33,56 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       query: this.$route.query.q ? this.$route.query.q : ''
-    }
+    };
   },
 
   computed: {
-    showButton () {
-      return this.$route.name === 'search'
+    showButton() {
+      return this.$route.name === 'search';
     }
   },
 
-  mounted () {
-    this.$refs.input.focus()
+  mounted() {
+    this.$refs.input.focus();
   },
 
   methods: {
-    goToRoute () {
+    goToRoute() {
       if (this.query) {
         this.$router.push({
           name: 'search',
           query: { q: this.query }
-        })
+        });
       } else {
         this.$router.push({
           path: this.$search.fromPage
-        })
+        });
       }
     },
 
-    goBack () {
-      this.query = ''
+    goBack() {
+      this.query = '';
 
       this.$router.push({
         path: this.$search.fromPage
-      })
+      });
     },
 
-    unFocus (e) {
+    unFocus(e) {
       if (this.$route.name !== 'search') {
-        const target = e.relatedTarget
+        const target = e.relatedTarget;
 
         if (!target || !target.classList.contains('search-toggle')) {
-          this.query = ''
-          this.$search.closeSearch()
+          this.query = '';
+          this.$search.closeSearch();
         }
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss" module>
