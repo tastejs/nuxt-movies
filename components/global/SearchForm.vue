@@ -58,7 +58,7 @@ export default {
         });
       } else {
         this.$router.push({
-          path: this.$search.fromPage
+          path: this.$search.getSearchFromPagePath()
         });
       }
     },
@@ -67,7 +67,7 @@ export default {
       this.query = '';
 
       this.$router.push({
-        path: this.$search.fromPage
+        path: this.$search.getSearchFromPagePath()
       });
     },
 
@@ -77,7 +77,7 @@ export default {
 
         if (!target || !target.classList.contains('search-toggle')) {
           this.query = '';
-          this.$search.closeSearch();
+          this.$search.closeSearchForm();
         }
       }
     }
