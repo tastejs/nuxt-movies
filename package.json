@@ -9,6 +9,7 @@
   "scripts": {
     "analyze": "nuxt build --analyze",
     "build": "nuxt build",
+    "generate": "nuxt generate",
     "dev": "nuxt",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint-fix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
