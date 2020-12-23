@@ -4,7 +4,7 @@
     <InstallPrompt />
 
     <transition name="slidedown">
-      <SearchForm v-if="$search.searchOpen" />
+      <SearchForm v-if="searchFormOpen" />
     </transition>
 
     <Nav />
@@ -27,6 +27,11 @@ export default {
     SearchForm,
     Nav,
     Footer
+  },
+  computed: {
+    searchFormOpen() {
+      return this.$search.checkSearchFormOpen();
+    }
   }
 };
 </script>

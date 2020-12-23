@@ -12,7 +12,7 @@
 <script>
 import { search } from '~/utils/api';
 import SearchResults from '~/components/search/SearchResults';
-let fromPage = '/';
+let fromPagePath = '/';
 
 export default {
   components: {
@@ -20,7 +20,7 @@ export default {
   },
 
   beforeRouteEnter(to, from, next) {
-    fromPage = from.path;
+    fromPagePath = from.path;
     next();
   },
 
@@ -35,7 +35,7 @@ export default {
     next();
 
     if (search && search.value.length) {
-      this.$search.closeSearch();
+      this.$search.closeSearchForm();
     }
   },
 
@@ -82,8 +82,8 @@ export default {
   },
 
   mounted() {
-    this.$seach.openSearch();
-    this.$search.setFromPage(fromPage);
+    this.$search.openSearchForm();
+    this.$search.setFromPage(fromPagePath);
   },
 
   methods: {

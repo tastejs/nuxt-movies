@@ -2,25 +2,33 @@ import Vue from 'vue';
 
 export default function (_ctx, inject) {
   const state = Vue.observable({
-    searchOpen: false,
-    fromPage: '/'
+    searchFormOpen: false,
+    fromPagePath: '/'
   });
 
   inject('search', {
-    toggleSearch() {
-      state.searchOpen = !state.searchOpen;
+    toggleSearchForm() {
+      state.searchFormOpen = !state.searchFormOpen;
     },
 
-    openSearch() {
-      state.searchOpen = true;
+    openSearchForm() {
+      state.searchFormOpen = true;
     },
 
-    closeSearch() {
-      state.searchOpen = false;
+    closeSearchForm() {
+      state.searchFormOpen = false;
     },
 
     setFromPage(page) {
-      state.fromPage = page;
+      state.fromPagePath = page;
+    },
+
+    checkSearchFormOpen() {
+      return state.searchFormOpen;
+    },
+
+    getSearchFromPagePath() {
+      return state.fromPagePath;
     }
   });
 }
