@@ -1,28 +1,27 @@
 <template>
   <main class="main">
-    <Hero
-      :item="featured" />
+    <Hero :item="featured" />
 
     <ListingCarousel
-      v-if="popular && popular.results.length"
+      v-if="popularShown"
       :title="popularTitle"
       :view-all-url="popularUrl"
       :items="popular" />
 
     <ListingCarousel
-      v-if="topRated && topRated.results.length"
+      v-if="topRatedShown"
       :title="topRatedTitle"
       :view-all-url="topRatedUrl"
       :items="topRated" />
 
     <ListingCarousel
-      v-if="onAir && onAir.results.length"
+      v-if="onAirShown"
       :title="onAirTitle"
       :view-all-url="onAirUrl"
       :items="onAir" />
 
     <ListingCarousel
-      v-if="airingToday && airingToday.results.length"
+      v-if="airingTodayShown"
       :title="airingTodayTitle"
       :view-all-url="airingTodayUrl"
       :items="airingToday" />
@@ -30,7 +29,11 @@
 </template>
 
 <script>
-import { getTvShows, getTvShow, getListItem } from '~/utils/api';
+import {
+  getTvShows,
+  getTvShow,
+  getListItem
+} from '~/utils/api';
 import Hero from '~/components/Hero';
 import ListingCarousel from '~/components/ListingCarousel';
 
@@ -48,9 +51,18 @@ export default {
       const airingToday = await getTvShows('airing_today');
       const featured = await getTvShow(popular.results[0].id);
 
-      return { popular, topRated, onAir, airingToday, featured };
+      return {
+        popular,
+        topRated,
+        onAir,
+        airingToday,
+        featured
+      };
     } catch {
-      error({ statusCode: 504, message: 'Data not available' });
+      error({
+        statusCode: 504,
+        message: 'Data not available'
+      });
     }
   },
 
@@ -58,19 +70,40 @@ export default {
     return {
       title: 'TV Shows',
       meta: [
-        { hid: 'og:title', property: 'og:title', content: 'TV Shows' },
-        { hid: 'og:url', property: 'og:url', content: `${process.env.FRONTEND_URL}${this.$route.path}` }
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'TV Shows'
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `${process.env.FRONTEND_URL}${this.$route.path}`
+        }
       ]
     };
   },
 
   computed: {
+    popularShown() {
+      return this.popular?.results.length;
+    },
+
     popularTitle() {
       return getListItem('tv', 'popular').title;
     },
 
     popularUrl() {
-      return { name: 'tv-category-name', params: { name: 'popular' } };
+      return {
+        name: 'tv-category-name',
+        params: {
+          name: 'popular'
+        }
+      };
+    },
+
+    topRatedShown() {
+      return this.topRated?.results.length;
     },
 
     topRatedTitle() {
@@ -78,7 +111,16 @@ export default {
     },
 
     topRatedUrl() {
-      return { name: 'tv-category-name', params: { name: 'top_rated' } };
+      return {
+        name: 'tv-category-name',
+        params: {
+          name: 'top_rated'
+        }
+      };
+    },
+
+    onAirShown() {
+      return this.onAir?.results.length;
     },
 
     onAirTitle() {
@@ -86,7 +128,16 @@ export default {
     },
 
     onAirUrl() {
-      return { name: 'tv-category-name', params: { name: 'on_the_air' } };
+      return {
+        name: 'tv-category-name',
+        params: {
+          name: 'on_the_air'
+        }
+      };
+    },
+
+    airingTodayShown() {
+      return this.airingToday?.results.length;
     },
 
     airingTodayTitle() {
@@ -94,7 +145,12 @@ export default {
     },
 
     airingTodayUrl() {
-      return { name: 'tv-category-name', params: { name: 'airing_today' } };
+      return {
+        name: 'tv-category-name',
+        params: {
+          name: 'airing_today'
+        }
+      };
     }
   }
 };
