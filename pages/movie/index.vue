@@ -1,28 +1,27 @@
 <template>
   <main class="main">
-    <Hero
-      :item="featured" />
+    <Hero :item="featured" />
 
     <ListingCarousel
-      v-if="popular && popular.results.length"
+      v-if="popularShown"
       :title="popularTitle"
       :view-all-url="popularUrl"
       :items="popular" />
 
     <ListingCarousel
-      v-if="topRated && topRated.results.length"
+      v-if="topRatedShown"
       :title="topRatedTitle"
       :view-all-url="topRatedUrl"
       :items="topRated" />
 
     <ListingCarousel
-      v-if="upcoming && upcoming.results.length"
+      v-if="upcomingShown"
       :title="upcomingTitle"
       :view-all-url="upcomingUrl"
       :items="upcoming" />
 
     <ListingCarousel
-      v-if="nowPlaying && nowPlaying.results.length"
+      v-if="nowPlayingShown"
       :title="nowPlayingTitle"
       :view-all-url="nowPlayingUrl"
       :items="nowPlaying" />
@@ -30,7 +29,11 @@
 </template>
 
 <script>
-import { getMovies, getMovie, getListItem } from '~/utils/api';
+import {
+  getMovies,
+  getMovie,
+  getListItem
+} from '~/utils/api';
 import Hero from '~/components/Hero';
 import ListingCarousel from '~/components/ListingCarousel';
 
@@ -48,9 +51,18 @@ export default {
       const nowPlaying = await getMovies('now_playing');
       const featured = await getMovie(upcoming.results[0].id);
 
-      return { popular, topRated, upcoming, nowPlaying, featured };
+      return {
+        popular,
+        topRated,
+        upcoming,
+        nowPlaying,
+        featured
+      };
     } catch {
-      error({ statusCode: 504, message: 'Data not available' });
+      error({
+        statusCode: 504,
+        message: 'Data not available'
+      });
     }
   },
 
@@ -58,19 +70,40 @@ export default {
     return {
       title: 'Movies',
       meta: [
-        { hid: 'og:title', property: 'og:title', content: 'Movies' },
-        { hid: 'og:url', property: 'og:url', content: `${process.env.FRONTEND_URL}${this.$route.path}` }
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'Movies'
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `${process.env.FRONTEND_URL}${this.$route.path}`
+        }
       ]
     };
   },
 
   computed: {
+    popularShown() {
+      return this.popular?.results.length;
+    },
+
     popularTitle() {
       return getListItem('movie', 'popular').title;
     },
 
     popularUrl() {
-      return { name: 'movie-category-name', params: { name: 'popular' } };
+      return {
+        name: 'movie-category-name',
+        params: {
+          name: 'popular'
+        }
+      };
+    },
+
+    topRatedShown() {
+      return this.topRated?.results.length;
     },
 
     topRatedTitle() {
@@ -78,7 +111,16 @@ export default {
     },
 
     topRatedUrl() {
-      return { name: 'movie-category-name', params: { name: 'top_rated' } };
+      return {
+        name: 'movie-category-name',
+        params: {
+          name: 'top_rated'
+        }
+      };
+    },
+
+    upcomingShown() {
+      return this.upcoming?.results.length;
     },
 
     upcomingTitle() {
@@ -86,7 +128,16 @@ export default {
     },
 
     upcomingUrl() {
-      return { name: 'movie-category-name', params: { name: 'upcoming' } };
+      return {
+        name: 'movie-category-name',
+        params: {
+          name: 'upcoming'
+        }
+      };
+    },
+
+    nowPlayingShown() {
+      return this.nowPlaying?.results.length;
     },
 
     nowPlayingTitle() {
@@ -94,7 +145,12 @@ export default {
     },
 
     nowPlayingUrl() {
-      return { name: 'movie-category-name', params: { name: 'now_playing' } };
+      return {
+        name: 'movie-category-name',
+        params: {
+          name: 'now_playing'
+        }
+      };
     }
   }
 };
