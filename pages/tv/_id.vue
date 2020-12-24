@@ -1,35 +1,36 @@
+<!-- TODO: should use enums for menu options (overview/episodes/videos/photos) -->
+<!-- TODO: should use `fetch` Re: https://nuxtjs.org/blog/understanding-how-fetch-works-in-nuxt-2-12 -->
+<!-- TODO: could use query parameters for selected active menu to be persisted -->
+<!-- TODO: could use nested pages for menu -->
+
 <template>
   <main class="main">
-    <TopNav
-      :title="metaTitle" />
+    <!-- TODO: double-check -->
+    <TopNav :title="metaTitle" />
 
-    <Hero
-      :item="item" />
+    <Hero :item="item" />
 
     <MediaNav
       :menu="menu"
       @clicked="navClicked" />
 
     <template v-if="activeMenu === 'overview'">
-      <TvInfo
-        :item="item" />
+      <TvInfo :item="item" />
 
       <Credits
-        v-if="showCredits"
+        v-if="creditsShown"
         :people="item.credits.cast" />
     </template>
 
-    <template v-if="activeMenu === 'episodes' && showEpisodes">
-      <Episodes
-        :number-of-seasons="item.number_of_seasons" />
+    <template v-if="activeMenu === 'episodes' && episodesShown">
+      <Episodes :number-of-seasons="item.number_of_seasons" />
     </template>
 
-    <template v-if="activeMenu === 'videos' && showVideos">
-      <Videos
-        :videos="item.videos.results" />
+    <template v-if="activeMenu === 'videos' && videosShown">
+      <Videos :videos="item.videos.results" />
     </template>
 
-    <template v-if="activeMenu === 'photos' && showImages">
+    <template v-if="activeMenu === 'photos' && imagesShown">
       <Images
         v-if="item.images.backdrops.length"
         title="Backdrops"
@@ -44,17 +45,20 @@
     </template>
 
     <ListingCarousel
-      v-if="recommended && recommended.results.length"
+      v-if="recommendedItemsShown"
       title="More Like This"
-
-      :items="recommended" />
+      :items="recommendedItems" />
   </main>
 </template>
 
 <script>
 import { getTvShow, getTvShowRecommended } from '~/utils/api';
 import { TMDB_IMAGE_URL } from '~/data/consts';
-import { name, yearStart, yearEnd } from '~/mixins/Details';
+import {
+  name,
+  yearStart,
+  yearEnd
+} from '~/mixins/Details';
 import TopNav from '~/components/global/TopNav';
 import Hero from '~/components/Hero';
 import MediaNav from '~/components/MediaNav';
@@ -84,7 +88,10 @@ export default {
     yearEnd
   ],
 
-  async asyncData({ params, error }) {
+  async asyncData({
+    params,
+    error
+  }) {
     try {
       const item = await getTvShow(params.id);
 
@@ -102,7 +109,7 @@ export default {
     return {
       menu: [],
       activeMenu: 'overview',
-      recommended: null
+      recommendedItems: null
     };
   },
 
@@ -110,11 +117,31 @@ export default {
     return {
       title: this.metaTitle,
       meta: [
-        { hid: 'og:title', property: 'og:title', content: this.metaTitle },
-        { hid: 'og:description', property: 'og:description', content: this.metaDescription },
-        { hid: 'description', name: 'description', content: this.metaDescription },
-        { hid: 'og:image', property: 'og:image', content: this.metaImage },
-        { hid: 'og:url', property: 'og:url', content: `${process.env.FRONTEND_URL}${this.$route.path}` }
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.metaTitle
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.metaDescription
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.metaDescription
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: this.metaImage
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `${process.env.FRONTEND_URL}${this.$route.path}`
+        }
       ],
       bodyAttrs: {
         class: 'topnav-active'
@@ -149,23 +176,27 @@ export default {
       }
     },
 
-    showCredits() {
+    creditsShown() {
       const credits = this.item.credits;
-      return credits && credits.cast && credits.cast.length;
+      return credits?.cast?.length;
     },
 
-    showEpisodes() {
+    episodesShown() {
       return this.item.number_of_seasons;
     },
 
-    showVideos() {
+    videosShown() {
       const videos = this.item.videos;
-      return videos && videos.results && videos.results.length;
+      return videos?.results?.length;
     },
 
-    showImages() {
+    imagesShown() {
       const images = this.item.images;
-      return images && ((images.backdrops && images.backdrops.length) || (images.posters && images.posters.length));
+      return images?.backdrops?.length || images?.posters?.length;
+    },
+
+    recommendedItemsShown() {
+      return this.recommendedItems?.results.length;
     }
   },
 
@@ -186,17 +217,17 @@ export default {
       menu.push('Overview');
 
       // episodes
-      if (this.showEpisodes) {
+      if (this.episodesShown) {
         menu.push('Episodes');
       }
 
       // videos
-      if (this.showVideos) {
+      if (this.videosShown) {
         menu.push('Videos');
       }
 
       // images
-      if (this.showImages) {
+      if (this.imagesShown) {
         menu.push('Photos');
       }
 
@@ -208,13 +239,13 @@ export default {
     },
 
     initRecommended() {
-      // if recommended don't exist, retrieve them
-      if (this.recommended !== null) {
+      // if recommendedItems don't exist, retrieve them
+      if (this.recommendedItems !== null) {
         return;
       }
 
       getTvShowRecommended(this.$route.params.id).then(response => {
-        this.recommended = response;
+        this.recommendedItems = response;
       });
     }
   }
