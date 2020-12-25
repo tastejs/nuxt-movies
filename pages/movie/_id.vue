@@ -1,7 +1,9 @@
+<!-- TODO: < -->
 <!-- TODO: should use enums for menu options (overview/episodes/videos/photos) -->
 <!-- TODO: should use `fetch` Re: https://nuxtjs.org/blog/understanding-how-fetch-works-in-nuxt-2-12 -->
-<!-- TODO: could use query parameters for selected active menu to be persisted -->
+<!-- TODO: could use a query parameter for the selected active menu to be persisted -->
 <!-- TODO: could use nested pages for menu -->
+<!-- TODO: > -->
 
 <template>
   <main class="main">

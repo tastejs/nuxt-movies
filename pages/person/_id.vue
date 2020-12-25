@@ -180,8 +180,10 @@ export default {
       const department = this.person.known_for_department;
       let results;
 
+      // TODO: <
       // TODO: could use switch
       // TODO: should use enums for department types
+      // TODO: >
       if (department === 'Acting') {
         results = this.person.combined_credits.cast;
       } else if (department === 'Directing') {
