@@ -27,7 +27,8 @@
             :src="avatar"
             :alt="person.name">
 
-          <div>{{ formatContent(person.biography) }}</div>
+          <!-- eslint-disable-next-line vue/no-v-html -->
+          <div v-html="formatContent(person.biography)" />
         </div>
       </div>
 

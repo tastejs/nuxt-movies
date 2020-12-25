@@ -23,7 +23,8 @@
           Storyline
         </h2>
 
-        <div>{{ item.overview }}</div>
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <div v-html="item.overview" />
       </div>
 
       <div :class="$style.stats">
@@ -60,18 +61,16 @@
               Creator
             </div>
 
-            <div :class="$style.value">
-              {{ creators }}
-            </div>
+            <!-- eslint-disable-next-line vue/no-v-html -->
+            <div :class="$style.value" v-html="creators" />
           </li>
           <li v-if="item.genres && item.genres.length">
             <div :class="$style.label">
               Genre
             </div>
 
-            <div :class="$style.value">
-              {{ formatGenres(item.genres) }}
-            </div>
+            <!-- eslint-disable-next-line vue/no-v-html -->
+            <div :class="$style.value" v-html="formatGenres(item.genres)" />
           </li>
           <li v-if="item.number_of_seasons">
             <div :class="$style.label">

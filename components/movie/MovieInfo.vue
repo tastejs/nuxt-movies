@@ -23,7 +23,8 @@
           Storyline
         </h2>
 
-        <div>{{ item.overview }}</div>
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <div v-html="item.overview" />
       </div>
 
       <div :class="$style.stats">
@@ -51,9 +52,8 @@
               Director
             </div>
 
-            <div :class="$style.value">
-              {{ directors }}
-            </div>
+            <!-- eslint-disable-next-line vue/no-v-html -->
+            <div :class="$style.value" v-html="directors" />
           </li>
           <li v-if="item.budget">
             <div :class="$style.label">
@@ -78,9 +78,8 @@
               Genre
             </div>
 
-            <div :class="$style.value">
-              {{ formatGenres(item.genres) }}
-            </div>
+            <!-- eslint-disable-next-line vue/no-v-html -->
+            <div :class="$style.value" v-html="formatGenres(item.genres)" />
           </li>
           <li v-if="item.status">
             <div :class="$style.label">
