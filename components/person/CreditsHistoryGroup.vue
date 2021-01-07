@@ -1,9 +1,10 @@
+
 <template>
   <tr :class="$style.group">
     <td :class="$style.row">
       <table>
         <tbody>
-          <CreditsHistoryItem
+          <CreditsHistoryGroupItem
             v-for="credit in group.credits"
             :key="`credit-${credit.credit_id}`"
             :year="group.year"
@@ -15,11 +16,11 @@
 </template>
 
 <script>
-import CreditsHistoryItem from '~/components/person/CreditsHistoryItem';
+import CreditsHistoryGroupItem from '~/components/person/CreditsHistoryGroupItem';
 
 export default {
   components: {
-    CreditsHistoryItem
+    CreditsHistoryGroupItem
   },
 
   props: {

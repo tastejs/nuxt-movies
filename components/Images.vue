@@ -1,3 +1,4 @@
+
 <template>
   <div class="spacing">
     <div :class="$style.head">
@@ -20,6 +21,7 @@
         @openModal="openModal" />
     </div>
 
+    <!-- TODO: could be lazy-loaded -->
     <Modal
       v-if="modalVisible"
       :data="images"

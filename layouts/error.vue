@@ -1,3 +1,4 @@
+
 <template>
   <div :class="$style.block">
     <div :class="$style.error">
@@ -5,13 +6,21 @@
         {{ message }}
       </div>
 
-      <!-- eslint-disable -->
       <div :class="$style.message">
-        <p v-if="error.statusCode === 504">Looks like we are unable to fetch the data right now, please come back and try again soon.</p>
-        <p v-else>Looks like you've followed a broken link or entered a URL that doesn't exist on this site.</p>
-        <p>Back to our <nuxt-link to="/">home page</nuxt-link>.</p>
+        <p v-if="error.statusCode === 504">
+          Looks like we are unable to fetch the data right now, please come back and try again soon.
+        </p>
+        <p v-else>
+          Looks like you've followed a broken link or entered a URL that doesn't exist on this site.
+        </p>
+        <p>
+          Back to our&nbsp;
+          <nuxt-link to="/">
+            home page
+          </nuxt-link>
+          .
+        </p>
       </div>
-      <!-- eslint-enable -->
     </div>
   </div>
 </template>

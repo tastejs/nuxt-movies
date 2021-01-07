@@ -1,5 +1,8 @@
+
 <template>
-  <transition name="modal" appear>
+  <transition
+    name="modal"
+    appear>
     <div
       ref="modal"
       class="modal"
@@ -18,8 +21,20 @@
             aria-label="Close"
             type="button"
             @click.stop="close">
-            <!-- eslint-disable-next-line -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5"><path d="M.75.75l13.5 13.5M14.25.75L.75 14.25"/></g></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15"
+              height="15"
+              viewBox="0 0 15 15">
+              <g
+                fill="none"
+                stroke="#fff"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+                stroke-width="1.5">
+                <path d="M.75.75l13.5 13.5M14.25.75L.75 14.25" />
+              </g>
+            </svg>
           </button>
 
           <div :class="`modal__${type}`">
@@ -45,8 +60,20 @@
               aria-label="Previous"
               type="button"
               @click.stop="previous">
-              <!-- eslint-disable-next-line -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M17.9 23.2L6.1 12 17.9.8"></path></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24">
+                <path
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-miterlimit="10"
+                  d="M17.9 23.2L6.1 12 17.9.8" />
+              </svg>
             </button>
 
             <div class="modal__count">
@@ -59,8 +86,20 @@
               type="button"
               title="Next"
               @click.stop="next">
-              <!-- eslint-disable-next-line -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M6.1 23.2L17.9 12 6.1.8"></path></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24">
+                <path
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-miterlimit="10"
+                  d="M6.1 23.2L17.9 12 6.1.8" />
+              </svg>
             </button>
           </div>
         </div>
@@ -149,7 +188,7 @@ export default {
     label() {
       if (this.ariaLabel) {
         return this.ariaLabel;
-      } else if (this.activeItem && this.activeItem.name) {
+      } else if (this.activeItem?.name) {
         return this.activeItem.name;
       } else {
         return null;

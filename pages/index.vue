@@ -1,3 +1,4 @@
+
 <template>
   <main class="main">
     <Hero :item="featured" />
