@@ -21,7 +21,9 @@ module.exports = {
       }
     },
     upload: {
-      target: 'temporary-public-storage'
+      target: 'lhci',
+      serverBaseUrl: 'https://rocky-taiga-72405.herokuapp.com',
+      token: '10faf6b0-db14-4445-a9d0-75d60f425dab'
     }
   }
 };
