@@ -1,5 +1,5 @@
 import { $fetch } from 'ohmyfetch/node';
-import { TMDB_API_URL, TMDB_API_PARAMS } from '../data/consts';
+import { TMDB_API_URL, TMDB_API_PARAMS } from '../config/tmdb';
 import { lists } from '../data/lists';
 
 function fetchTMD(url, params) {

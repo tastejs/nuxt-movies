@@ -1,4 +1,4 @@
-import { TMDB_IMAGE_URL } from '~/data/consts';
+import { TMDB_IMAGE_URL } from '~/config/tmdb';
 
 /**
  * Name
