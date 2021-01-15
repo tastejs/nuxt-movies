@@ -2,7 +2,7 @@
 /**
  * Different languages with full name
  */
-const languages = [
+const LANGUAGES = [
   { iso_639_1: 'xx', english_name: 'No Language' },
   { iso_639_1: 'aa', english_name: 'Afar' },
   { iso_639_1: 'af', english_name: 'Afrikaans' },
@@ -192,4 +192,4 @@ const languages = [
   { iso_639_1: 'yo', english_name: 'Yoruba' }
 ];
 
-export default languages;
+export default LANGUAGES;

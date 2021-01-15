@@ -1,6 +1,6 @@
 import { $fetch } from 'ohmyfetch/node';
-import { TMDB_API_URL, TMDB_API_PARAMS } from '../config/tmdb';
-import { lists } from '../data/lists';
+import { TMDB_API_URL, TMDB_API_PARAMS } from '~/config/tmdb';
+import LISTS from '~/utils/constants/lists';
 
 function fetchTMD(url, params) {
   return $fetch(url, {
@@ -15,9 +15,9 @@ function fetchTMD(url, params) {
 
 export function getListItem(type, query) {
   if (type === 'movie') {
-    return lists.movie.find(list => list.query === query);
+    return LISTS.MOVIE.find(list => list.QUERY === query);
   } else if (type === 'tv') {
-    return lists.tv.find(list => list.query === query);
+    return LISTS.TV.find(list => list.QUERY === query);
   }
 }
 
