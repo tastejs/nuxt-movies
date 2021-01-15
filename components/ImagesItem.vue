@@ -1,3 +1,4 @@
+
 <template>
   <div :class="[$style.item, $style[type]]">
     <a

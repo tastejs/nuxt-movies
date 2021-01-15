@@ -1,7 +1,8 @@
+
 <template>
   <tr :class="$style.item">
     <td :class="$style.year">
-      {{ year ? year : '—' }}
+      {{ year || '—' }}
     </td>
     <td>
       <nuxt-link :to="{ name: `${media}-id`, params: { id: credit.id } }">
@@ -49,7 +50,7 @@ export default {
     },
 
     name() {
-      return this.credit.title ? this.credit.title : this.credit.name;
+      return this.credit.title || this.credit.name;
     },
 
     role() {

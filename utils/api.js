@@ -120,7 +120,7 @@ export function getCredits(id, type) {
  */
 
 export function getGenreList(media) {
-  return fetchTMD(`genre/${media}/list`, { language: undefined });
+  return fetchTMD(`genre/${media}/list`, { language: undefined }).then(res => res.genres);
 }
 
 /**

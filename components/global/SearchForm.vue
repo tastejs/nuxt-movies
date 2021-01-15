@@ -1,3 +1,4 @@
+
 <template>
   <div :class="$style.form">
     <form
@@ -5,7 +6,9 @@
       @submit.prevent>
       <label
         class="visuallyhidden"
-        for="search">Search</label>
+        for="search">
+        Search
+      </label>
 
       <div :class="$style.field">
         <input
@@ -17,14 +20,25 @@
           placeholder="Search for a movie, tv show or person..."
           @keyup="goToRoute"
           @blur="unFocus">
-
         <button
           v-if="showButton"
           type="button"
           aria-label="Close"
           @click="goBack">
-          <!-- eslint-disable-next-line -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5"><path d="M.75.75l13.5 13.5M14.25.75L.75 14.25"/></g></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            viewBox="0 0 15 15">
+            <g
+              fill="none"
+              stroke="#fff"
+              stroke-linecap="round"
+              stroke-miterlimit="10"
+              stroke-width="1.5">
+              <path d="M.75.75l13.5 13.5M14.25.75L.75 14.25" />
+            </g>
+          </svg>
         </button>
       </div>
     </form>
@@ -32,16 +46,18 @@
 </template>
 
 <script>
+const SEARCH_PATHNAME = 'search';
+
 export default {
   data() {
     return {
-      query: this.$route.query.q ? this.$route.query.q : ''
+      query: this.$route.query.q ?? ''
     };
   },
 
   computed: {
     showButton() {
-      return this.$route.name === 'search';
+      return this.$route.name === SEARCH_PATHNAME;
     }
   },
 
@@ -53,7 +69,7 @@ export default {
     goToRoute() {
       if (this.query) {
         this.$router.push({
-          name: 'search',
+          name: SEARCH_PATHNAME,
           query: { q: this.query }
         });
       } else {
@@ -71,11 +87,12 @@ export default {
       });
     },
 
-    unFocus(e) {
-      if (this.$route.name !== 'search') {
-        const target = e.relatedTarget;
+    unFocus(event) {
+      if (this.$route.name !== SEARCH_PATHNAME) {
+        const target = event.relatedTarget;
 
-        if (!target || !target.classList.contains('search-toggle')) {
+        // TODO: `search-toggle` is hardcoded
+        if (!target?.classList.contains('search-toggle')) {
           this.query = '';
           this.$search.closeSearchForm();
         }

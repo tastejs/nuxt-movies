@@ -1,3 +1,4 @@
+
 <template>
   <div class="spacing">
     <div :class="$style.head">

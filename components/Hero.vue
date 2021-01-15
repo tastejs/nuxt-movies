@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <div :class="$style.hero">
@@ -9,8 +10,28 @@
             type="button"
             aria-label="Play Trailer"
             @click="openModal">
-            <!-- eslint-disable-next-line -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55"><circle cx="27.5" cy="27.5" r="26.75" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.97 40.81L40.64 27.5 20.97 14.19v26.62z"/></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="55"
+              height="55"
+              viewBox="0 0 55 55">
+              <circle
+                cx="27.5"
+                cy="27.5"
+                r="26.75"
+                fill="none"
+                stroke="#fff"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5" />
+              <path
+                fill="none"
+                stroke="#fff"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M20.97 40.81L40.64 27.5 20.97 14.19v26.62z" />
+            </svg>
           </button>
 
           <img
@@ -72,8 +93,16 @@
               :class="$style.trailer"
               type="button"
               @click="openModal">
-              <!-- eslint-disable-next-line -->
-              <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M3 22v-20l18 10-18 10z"/></svg></span>
+              <span class="icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="#fff">
+                  <path d="M3 22v-20l18 10-18 10z" />
+                </svg>
+              </span>
               <span class="txt">Watch Trailer</span>
             </button>
           </div>
@@ -90,7 +119,14 @@
 </template>
 
 <script>
-import { name, stars, yearStart, cert, backdrop, trailer } from '~/mixins/Details';
+import {
+  name,
+  stars,
+  yearStart,
+  cert,
+  backdrop,
+  trailer
+} from '~/mixins/Details';
 import Modal from '~/components/Modal';
 
 export default {

@@ -1,10 +1,9 @@
+
 <template>
   <main class="main">
-    <TopNav
-      :title="metaTitle" />
+    <TopNav :title="metaTitle" />
 
-    <PersonInfo
-      :person="person" />
+    <PersonInfo :person="person" />
 
     <MediaNav
       :menu="menu"
@@ -12,16 +11,15 @@
 
     <template v-if="activeMenu === 'known-for'">
       <Listing
-        v-if="knownFor && knownFor.results.length"
+        v-if="knownForShown"
         :items="knownFor" />
     </template>
 
     <template v-if="activeMenu === 'credits'">
-      <CreditsHistory
-        :credits="person.combined_credits" />
+      <CreditsHistory :credits="person.combined_credits" />
     </template>
 
-    <template v-if="activeMenu === 'photos' && showImages">
+    <template v-if="activeMenu === 'photos' && imagesShown">
       <Images
         v-if="person.images.profiles.length"
         title="Photos"
@@ -51,7 +49,10 @@ export default {
     Listing
   },
 
-  async asyncData({ params, error }) {
+  async asyncData({
+    params,
+    error
+  }) {
     try {
       const person = await getPerson(params.id);
 
@@ -77,11 +78,31 @@ export default {
     return {
       title: this.metaTitle,
       meta: [
-        { hid: 'og:title', property: 'og:title', content: this.metaTitle },
-        { hid: 'og:description', property: 'og:description', content: this.metaDescription },
-        { hid: 'description', name: 'description', content: this.metaDescription },
-        { hid: 'og:image', property: 'og:image', content: this.metaImage },
-        { hid: 'og:url', property: 'og:url', content: `${process.env.FRONTEND_URL}${this.$route.path}` }
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.metaTitle
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.metaDescription
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.metaDescription
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: this.metaImage
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `${process.env.FRONTEND_URL}${this.$route.path}`
+        }
       ],
       bodyAttrs: {
         class: 'topnav-active'
@@ -110,9 +131,13 @@ export default {
       }
     },
 
-    showImages() {
+    imagesShown() {
       const images = this.person.images;
-      return images && (images.profiles && images.profiles.length);
+      return images?.profiles?.length;
+    },
+
+    knownForShown() {
+      return this.knownFor?.results.length;
     }
   },
 
@@ -136,7 +161,7 @@ export default {
       menu.push('Credits');
 
       // images
-      if (this.showImages) {
+      if (this.imagesShown) {
         menu.push('Photos');
       }
 
@@ -148,7 +173,7 @@ export default {
     },
 
     initKnownFor() {
-      // if recommendations don't exist, retrieve them
+      // if knownFor don't exist, retrieve them
       if (this.knownFor !== null) {
         return;
       }
@@ -156,6 +181,10 @@ export default {
       const department = this.person.known_for_department;
       let results;
 
+      // TODO: <
+      // TODO: could use switch
+      // TODO: should use enums for department types
+      // TODO: >
       if (department === 'Acting') {
         results = this.person.combined_credits.cast;
       } else if (department === 'Directing') {

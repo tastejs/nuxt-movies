@@ -1,3 +1,4 @@
+
 <template>
   <div class="spacing">
     <div :class="$style.head">
@@ -6,6 +7,7 @@
           Department
         </label>
 
+        <!-- TODO: should componentize this element -->
         <select
           id="credits_category"
           v-model="active_category"
@@ -33,6 +35,7 @@
           id="credits_media"
           v-model="active_media"
           @change="getCredits">
+          <!-- TODO: `combined_credits`, `movie_credits`, and `tv_credits` are hardcoded -->
           <option value="combined_credits">
             All
           </option>
@@ -83,6 +86,7 @@ export default {
   },
 
   data() {
+    // TODO: should use camelCase
     return {
       active_media: 'combined_credits',
       active_category: 'all',
@@ -114,7 +118,7 @@ export default {
 
   methods: {
     handleCast(items) {
-      if (!items || !items.length) {
+      if (!items?.length) {
         return;
       }
 
@@ -144,7 +148,7 @@ export default {
     },
 
     handleCrew(items) {
-      if (!items || !items.length) {
+      if (!items?.length) {
         return;
       }
 
@@ -190,7 +194,7 @@ export default {
 
       // if we already have the credits, just show them
       // else do api call
-      if (this.$data[media] && this.$data[media].length) {
+      if (this.$data[media]?.length) {
         this.active_credits = this.$data[media];
         this.active_category = 'all';
         this.categories = this.getCategories();
@@ -243,8 +247,8 @@ export default {
 
     groupItems(items) {
       return items.reduce(function (arr, current) {
-        const date = current.release_date ? current.release_date : current.first_air_date;
-        const year = date ? date.split('-')[0] : '';
+        const date = current.release_date || current.first_air_date;
+        const year = date?.split('-')[0] ?? '';
         const exists = arr.find(item => item.year === year);
 
         if (exists) {

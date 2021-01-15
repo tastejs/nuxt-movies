@@ -1,7 +1,8 @@
+
 <template>
   <main class="main">
     <SearchResults
-      v-if="items && items.results.length"
+      v-if="searchResultsShown"
       :title="title"
       :items="items"
       :loading="loading"
@@ -26,20 +27,30 @@ export default {
 
   beforeRouteUpdate(to, from, next) {
     next();
+    // TODO: <
+    // TODO: could use `fetch` Re: https://nuxtjs.org/blog/understanding-how-fetch-works-in-nuxt-2-12
+    // TODO: >
     this.getResults();
   },
 
   beforeRouteLeave(to, from, next) {
+    // TODO: <
+    // TODO: double-check
+    // TODO: >
     const search = document.getElementById('search');
 
     next();
 
-    if (search && search.value.length) {
+    if (search?.value.length) {
       this.$search.closeSearchForm();
     }
   },
 
-  async asyncData({ query, error, redirect }) {
+  async asyncData({
+    query,
+    error,
+    redirect
+  }) {
     try {
       if (query.q) {
         const items = await search(query.q, 1);
@@ -54,6 +65,9 @@ export default {
 
   data() {
     return {
+      // TODO: <
+      // TODO: should use enums for loading state
+      // TODO: >
       loading: false
     };
   },
@@ -62,8 +76,16 @@ export default {
     return {
       title: 'Search',
       meta: [
-        { hid: 'og:title', property: 'og:title', content: 'Search' },
-        { hid: 'og:url', property: 'og:url', content: `${process.env.FRONTEND_URL}${this.$route.path}` }
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'Search'
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `${process.env.FRONTEND_URL}${this.$route.path}`
+        }
       ],
       bodyAttrs: {
         class: 'page page-search'
@@ -73,11 +95,15 @@ export default {
 
   computed: {
     query() {
-      return this.$route.query.q ? this.$route.query.q : '';
+      return this.$route.query.q || '';
     },
 
     title() {
       return this.query ? `Results For: ${this.query}` : '';
+    },
+
+    searchResultsShown() {
+      return this.items?.results.length;
     }
   },
 
@@ -110,6 +136,9 @@ export default {
     loadMore() {
       this.loading = true;
 
+      // TODO: <
+      // TODO: could use a query parameter for the selected page to be persisted
+      // TODO: >
       search(this.query, this.items.page + 1).then(response => {
         this.items.results = this.items.results.concat(response.results);
         this.items.page = response.page;

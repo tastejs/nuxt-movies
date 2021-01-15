@@ -1,10 +1,10 @@
+
 <template>
   <main class="main">
-    <TopNav
-      :title="metaTitle" />
+    <TopNav :title="metaTitle" />
 
     <Listing
-      v-if="items && items.results.length"
+      v-if="listingShown"
       :title="title"
       :items="items"
       :loading="loading"
@@ -23,19 +23,28 @@ export default {
     Listing
   },
 
-  async asyncData({ params, error }) {
+  async asyncData({
+    params,
+    error
+  }) {
     try {
       const items = await getMediaByGenre('movie', params.id);
       const genres = await getGenreList('movie');
       const genre = genres.find(genre => genre.id === parseInt(params.id));
 
       if (genre) {
-        return { items, genre };
+        return {
+          items,
+          genre
+        };
       } else {
         error({ message: 'Page not found' });
       }
     } catch {
-      error({ statusCode: 504, message: 'Data not available' });
+      error({
+        statusCode: 504,
+        message: 'Data not available'
+      });
     }
   },
 
@@ -49,8 +58,16 @@ export default {
     return {
       title: this.metaTitle,
       meta: [
-        { hid: 'og:title', property: 'og:title', content: this.metaTitle },
-        { hid: 'og:url', property: 'og:url', content: `${process.env.FRONTEND_URL}${this.$route.path}` }
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.metaTitle
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `${process.env.FRONTEND_URL}${this.$route.path}`
+        }
       ],
       bodyAttrs: {
         class: 'topnav-active'
@@ -69,6 +86,10 @@ export default {
       } else {
         return 'Movie Genre';
       }
+    },
+
+    listingShown() {
+      return this.items.results.length;
     }
   },
 

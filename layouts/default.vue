@@ -1,8 +1,10 @@
+
 <template>
   <div>
     <CookieConsent />
     <InstallPrompt />
 
+    <!-- TODO: `slidedown` is hardcoded -->
     <transition name="slidedown">
       <SearchForm v-if="searchFormOpen" />
     </transition>

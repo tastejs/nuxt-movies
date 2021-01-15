@@ -1,16 +1,16 @@
+
 <template>
   <main class="main">
-    <Hero
-      :item="featured" />
+    <Hero :item="featured" />
 
     <ListingCarousel
-      v-if="trendingMovies && trendingMovies.results.length"
+      v-if="trendingMoviesShown"
       :title="trendingMoviesTitle"
       :view-all-url="trendingMoviesUrl"
       :items="trendingMovies" />
 
     <ListingCarousel
-      v-if="trendingTv && trendingTv.results.length"
+      v-if="trendingTvShown"
       :title="trendingTvTitle"
       :view-all-url="trendingTvUrl"
       :items="trendingTv" />
@@ -18,7 +18,12 @@
 </template>
 
 <script>
-import { getTrending, getMovie, getTvShow, getListItem } from '~/utils/api';
+import {
+  getTrending,
+  getMovie,
+  getTvShow,
+  getListItem
+} from '~/utils/api';
 import Hero from '~/components/Hero';
 import ListingCarousel from '~/components/ListingCarousel';
 
@@ -35,7 +40,10 @@ export default {
       let featured;
 
       // feature a random item from movies or tv
-      const items = [...trendingMovies.results, ...trendingTv.results];
+      const items = [
+        ...trendingMovies.results,
+        ...trendingTv.results
+      ];
       const randomItem = items[Math.floor(Math.random() * items.length)];
       const media = randomItem.title ? 'movie' : 'tv';
 
@@ -45,19 +53,39 @@ export default {
         featured = await getTvShow(randomItem.id);
       }
 
-      return { trendingMovies, trendingTv, featured };
+      return {
+        trendingMovies,
+        trendingTv,
+        featured
+      };
     } catch {
-      error({ statusCode: 504, message: 'Data not available' });
+      error({
+        statusCode: 504,
+        message: 'Data not available'
+      });
     }
   },
 
   computed: {
+    trendingMoviesShown() {
+      return this.trendingMovies?.results.length;
+    },
+
     trendingMoviesTitle() {
       return getListItem('movie', 'trending').title;
     },
 
     trendingMoviesUrl() {
-      return { name: 'movie-category-name', params: { name: 'trending' } };
+      return {
+        name: 'movie-category-name',
+        params: {
+          name: 'trending'
+        }
+      };
+    },
+
+    trendingTvShown() {
+      return this.trendingTv?.results.length;
     },
 
     trendingTvTitle() {
@@ -65,7 +93,12 @@ export default {
     },
 
     trendingTvUrl() {
-      return { name: 'tv-category-name', params: { name: 'trending' } };
+      return {
+        name: 'tv-category-name',
+        params: {
+          name: 'trending'
+        }
+      };
     }
   }
 };
