@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { languages } from '~/data/languages';
+import languages from '~/utils/constants/languages';
 
 /**
  * Format the rating
