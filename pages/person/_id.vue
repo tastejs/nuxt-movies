@@ -1,7 +1,7 @@
 
 <template>
   <main class="main">
-    <TopNav :title="metaTitle" />
+    <TheTopNav :title="metaTitle" />
 
     <PersonInfo :person="person" />
 
@@ -32,7 +32,7 @@
 <script>
 import { getPerson } from '~/services/tmdbAPI';
 import { TMDB_IMAGE_URL } from '~/config/tmdb';
-import TopNav from '~/components/global/TopNav';
+import TheTopNav from '~/components/TheTopNav';
 import PersonInfo from '~/components/person/PersonInfo';
 import MediaNav from '~/components/MediaNav';
 import CreditsHistory from '~/components/person/CreditsHistory';
@@ -41,7 +41,7 @@ import Listing from '~/components/Listing';
 
 export default {
   components: {
-    TopNav,
+    TheTopNav,
     PersonInfo,
     MediaNav,
     CreditsHistory,

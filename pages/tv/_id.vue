@@ -7,7 +7,7 @@
 <template>
   <main class="main">
     <!-- TODO: double-check -->
-    <TopNav :title="metaTitle" />
+    <TheTopNav :title="metaTitle" />
 
     <Hero :item="item" />
 
@@ -60,7 +60,7 @@ import {
   yearStart,
   yearEnd
 } from '~/mixins/Details';
-import TopNav from '~/components/global/TopNav';
+import TheTopNav from '~/components/TheTopNav';
 import Hero from '~/components/Hero';
 import MediaNav from '~/components/MediaNav';
 import TvInfo from '~/components/tv/TvInfo';
@@ -72,7 +72,7 @@ import ListingCarousel from '~/components/ListingCarousel';
 
 export default {
   components: {
-    TopNav,
+    TheTopNav,
     Hero,
     MediaNav,
     TvInfo,
