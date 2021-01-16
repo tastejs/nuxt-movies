@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { getTvShowEpisodes } from '~/utils/api';
+import { getTvShowEpisodes } from '~/services/tmdbAPI';
 import EpisodesItem from '~/components/tv/EpisodesItem';
 
 export default {

@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { getMovie, getMovieRecommended } from '~/utils/api';
+import { getMovie, getMovieRecommended } from '~/services/tmdbAPI';
 import { TMDB_IMAGE_URL } from '~/config/tmdb';
 import { name, yearStart } from '~/mixins/Details';
 import TopNav from '~/components/global/TopNav';

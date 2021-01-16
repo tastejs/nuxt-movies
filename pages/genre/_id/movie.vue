@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { getMediaByGenre, getGenreList } from '~/utils/api';
+import { getMediaByGenre, getGenreList } from '~/services/tmdbAPI';
 import TopNav from '~/components/global/TopNav';
 import Listing from '~/components/Listing';
 

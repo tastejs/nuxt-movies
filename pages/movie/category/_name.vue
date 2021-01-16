@@ -17,7 +17,7 @@ import {
   getTrending,
   getMovies,
   getListItem
-} from '~/utils/api';
+} from '~/services/tmdbAPI';
 import TopNav from '~/components/global/TopNav';
 import Listing from '~/components/Listing';
 

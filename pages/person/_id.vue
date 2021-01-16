@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { getPerson } from '~/utils/api';
+import { getPerson } from '~/services/tmdbAPI';
 import { TMDB_IMAGE_URL } from '~/config/tmdb';
 import TopNav from '~/components/global/TopNav';
 import PersonInfo from '~/components/person/PersonInfo';

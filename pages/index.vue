@@ -23,7 +23,7 @@ import {
   getMovie,
   getTvShow,
   getListItem
-} from '~/utils/api';
+} from '~/services/tmdbAPI';
 import Hero from '~/components/Hero';
 import ListingCarousel from '~/components/ListingCarousel';
 
