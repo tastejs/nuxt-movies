@@ -39,7 +39,7 @@
       </li>
       <li>
         <a
-          href="https://github.com/jasonujmaalvis"
+          href="https://github.com/addyosmani/nuxt-movies"
           target="_blank"
           aria-label="Link to GitHub account"
           rel="noopener">
