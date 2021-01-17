@@ -1,6 +1,8 @@
+
+// ray test touch <
 import { $fetch } from 'ohmyfetch/node';
-import { TMDB_API_URL, TMDB_API_PARAMS } from '../data/consts';
-import { lists } from '../data/lists';
+import { TMDB_API_URL, TMDB_API_PARAMS } from '~/config/tmdbAPI';
+import LISTS from '~/utils/constants/lists';
 
 function fetchTMD(url, params) {
   return $fetch(url, {
@@ -13,11 +15,11 @@ function fetchTMD(url, params) {
  * Get list item
  */
 
-export function getListItem(type, query) {
+function getListItem(type, query) {
   if (type === 'movie') {
-    return lists.movie.find(list => list.query === query);
+    return LISTS.MOVIE.find(list => list.QUERY === query);
   } else if (type === 'tv') {
-    return lists.tv.find(list => list.query === query);
+    return LISTS.TV.find(list => list.QUERY === query);
   }
 }
 
@@ -25,7 +27,7 @@ export function getListItem(type, query) {
  * Get movies (listing)
  */
 
-export function getMovies(query, page = 1) {
+function getMovies(query, page = 1) {
   return fetchTMD(`movie/${query}`, { page });
 }
 
@@ -33,7 +35,7 @@ export function getMovies(query, page = 1) {
  * Get movie (single)
  */
 
-export function getMovie(id) {
+function getMovie(id) {
   return fetchTMD(`movie/${id}`, {
     append_to_response: 'videos,credits,images,external_ids,release_dates',
     include_image_language: 'en'
@@ -44,7 +46,7 @@ export function getMovie(id) {
  * Get movie recommended (single)
  */
 
-export function getMovieRecommended(id, page = 1) {
+function getMovieRecommended(id, page = 1) {
   return fetchTMD(`movie/${id}/recommendations`, { page });
 }
 
@@ -52,7 +54,7 @@ export function getMovieRecommended(id, page = 1) {
  * Get TV shows (listing)
  */
 
-export function getTvShows(query, page = 1) {
+function getTvShows(query, page = 1) {
   return fetchTMD(`tv/${query}`, { page });
 }
 
@@ -60,7 +62,7 @@ export function getTvShows(query, page = 1) {
  * Get TV show (single)
  */
 
-export function getTvShow(id) {
+function getTvShow(id) {
   return fetchTMD(`tv/${id}`, {
     append_to_response: 'videos,credits,images,external_ids,content_ratings',
     include_image_language: 'en'
@@ -71,7 +73,7 @@ export function getTvShow(id) {
  * Get TV show recommended (single)
  */
 
-export function getTvShowRecommended(id, page = 1) {
+function getTvShowRecommended(id, page = 1) {
   return fetchTMD(`tv/${id}/recommendations`, { page });
 }
 
@@ -79,7 +81,7 @@ export function getTvShowRecommended(id, page = 1) {
  * Get TV show episodes from season (single)
  */
 
-export function getTvShowEpisodes(id, season) {
+function getTvShowEpisodes(id, season) {
   return fetchTMD(`tv/${id}/season/${season}`);
 }
 
@@ -87,7 +89,7 @@ export function getTvShowEpisodes(id, season) {
  * Get trending
  */
 
-export function getTrending(media, page = 1) {
+function getTrending(media, page = 1) {
   return fetchTMD(`trending/${media}/week`, { page });
 }
 
@@ -95,7 +97,7 @@ export function getTrending(media, page = 1) {
  * Discover media by genre
  */
 
-export function getMediaByGenre(media, genre, page = 1) {
+function getMediaByGenre(media, genre, page = 1) {
   return fetchTMD(`discover/${media}`, {
     with_genres: genre,
     page
@@ -106,7 +108,7 @@ export function getMediaByGenre(media, genre, page = 1) {
 * Get credits
 */
 
-export function getCredits(id, type) {
+function getCredits(id, type) {
   return fetchTMD(`person/${id}/${type}`, {
     params: {
       api_key: process.env.API_KEY,
@@ -119,7 +121,7 @@ export function getCredits(id, type) {
  * Get genre list
  */
 
-export function getGenreList(media) {
+function getGenreList(media) {
   return fetchTMD(`genre/${media}/list`, { language: undefined }).then(res => res.genres);
 }
 
@@ -127,7 +129,7 @@ export function getGenreList(media) {
  * Get person (single)
  */
 
-export function getPerson(id) {
+function getPerson(id) {
   return fetchTMD(`person/${id}`, {
     append_to_response: 'images,combined_credits,external_ids',
     include_image_language: 'en'
@@ -138,7 +140,7 @@ export function getPerson(id) {
  * Search (searches movies, tv and people)
  */
 
-export function search(query, page = 1) {
+function search(query, page = 1) {
   return fetchTMD('search/multi', { query, page });
 }
 
@@ -146,7 +148,7 @@ export function search(query, page = 1) {
  * Get YouTube video info
  */
 
-export function getYouTubeVideo(id) {
+function getYouTubeVideo(id) {
   return $fetch('https://www.googleapis.com/youtube/v3/videos', {
     params: {
       key: process.env.API_YOUTUBE_KEY,
@@ -155,3 +157,22 @@ export function getYouTubeVideo(id) {
     }
   });
 }
+
+export {
+  getListItem,
+  getMovies,
+  getMovie,
+  getMovieRecommended,
+  getTvShows,
+  getTvShow,
+  getTvShowRecommended,
+  getTvShowEpisodes,
+  getTrending,
+  getMediaByGenre,
+  getCredits,
+  getGenreList,
+  getPerson,
+  search,
+  getYouTubeVideo
+};
+// ray test touch >

@@ -1,34 +1,34 @@
 
 <template>
   <div>
-    <CookieConsent />
-    <InstallPrompt />
+    <TheCookieConsent />
+    <TheInstallPrompt />
 
     <!-- TODO: `slidedown` is hardcoded -->
     <transition name="slidedown">
-      <SearchForm v-if="searchFormOpen" />
+      <TheSearchForm v-if="searchFormOpen" />
     </transition>
 
-    <Nav />
+    <TheNav />
     <nuxt />
-    <Footer />
+    <TheFooter />
   </div>
 </template>
 
 <script>
-import CookieConsent from '~/components/global/CookieConsent';
-import InstallPrompt from '~/components/global/InstallPrompt';
-import SearchForm from '~/components/global/SearchForm';
-import Nav from '~/components/global/Nav';
-import Footer from '~/components/global/Footer';
+import TheCookieConsent from '~/components/TheCookieConsent';
+import TheInstallPrompt from '~/components/TheInstallPrompt';
+import TheSearchForm from '~/components/TheSearchForm';
+import TheNav from '~/components/TheNav';
+import TheFooter from '~/components/TheFooter';
 
 export default {
   components: {
-    CookieConsent,
-    InstallPrompt,
-    SearchForm,
-    Nav,
-    Footer
+    TheCookieConsent,
+    TheInstallPrompt,
+    TheSearchForm,
+    TheNav,
+    TheFooter
   },
   computed: {
     searchFormOpen() {

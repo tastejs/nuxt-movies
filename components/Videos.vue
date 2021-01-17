@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { getYouTubeVideo } from '~/utils/api';
+import { getYouTubeVideo } from '~/services/tmdbAPI';
 import VideosItem from '~/components/VideosItem';
 import Modal from '~/components/Modal';
 

@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import { getCredits } from '~/utils/api';
+import { getCredits } from '~/services/tmdbAPI';
 import CreditsHistoryGroup from '~/components/person/CreditsHistoryGroup';
 
 export default {

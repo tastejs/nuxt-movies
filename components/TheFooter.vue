@@ -3,14 +3,14 @@
   <footer :class="$style.footer">
     <p>
       <!-- TODO: should change the copyright name -->
-      &copy; {{ new Date().getFullYear() }} Jason Ujma-Alvis. All rights reserved.&nbsp;
+      &copy; {{ new Date().getFullYear() }} The Nuxt Movies authors. All rights reserved.&nbsp;
       <a target="_blank" href="https://jason.codes/cookie-policy" rel="noopener">
         Cookie Policy
       </a>
       .
     </p>
     <p>
-      Designed and built by me, data provided by&nbsp;
+      Designed and built by the Nuxt Movies authors, data provided by&nbsp;
       <a target="_blank" href="https://www.themoviedb.org/" rel="noopener">
         TMDb
       </a>
@@ -39,7 +39,7 @@
       </li>
       <li>
         <a
-          href="https://github.com/jasonujmaalvis"
+          href="https://github.com/addyosmani/nuxt-movies"
           target="_blank"
           aria-label="Link to GitHub account"
           rel="noopener">

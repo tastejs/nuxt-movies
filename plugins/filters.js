@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { languages } from '~/data/languages';
+import LANGUAGES from '~/utils/constants/languages';
 
 /**
  * Format the rating
@@ -111,7 +111,7 @@ Vue.filter('fullDate', function (string) {
  * Format iso_639_1 to full language
  */
 Vue.filter('fullLang', function (iso) {
-  const fullLang = languages.find(lang => lang.iso_639_1 === iso);
+  const fullLang = LANGUAGES.find(lang => lang.iso_639_1 === iso);
 
   if (fullLang) {
     return fullLang.english_name;

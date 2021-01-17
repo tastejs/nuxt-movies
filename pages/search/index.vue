@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { search } from '~/utils/api';
+import { search } from '~/services/tmdbAPI';
 import SearchResults from '~/components/search/SearchResults';
 let fromPagePath = '/';
 

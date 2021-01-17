@@ -1,17 +1,17 @@
 
 <template>
   <div>
-    <Nav />
+    <TheNav />
     <nuxt />
   </div>
 </template>
 
 <script>
-import Nav from '~/components/global/Nav';
+import TheNav from '~/components/TheNav';
 
 export default {
   components: {
-    Nav
+    TheNav
   }
 };
 </script>

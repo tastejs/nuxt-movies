@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/data/consts';
+import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 import { name, stars } from '~/mixins/Details';
 
 export default {

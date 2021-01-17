@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/data/consts';
+import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 
 export default {
   props: {

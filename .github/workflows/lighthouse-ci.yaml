@@ -1,11 +1,14 @@
 name: Build project and run Lighthouse CI
-on: [push]
+on: [push, pull_request_target]
 jobs:
   lhci:
     name: Lighthouse CI
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
       - name: Use Node.js 15.x
         uses: actions/setup-node@v2
         with:

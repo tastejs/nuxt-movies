@@ -1,7 +1,7 @@
 
 <template>
   <main class="main">
-    <TopNav :title="metaTitle" />
+    <TheTopNav :title="metaTitle" />
 
     <Listing
       v-if="listingShown"
@@ -13,13 +13,13 @@
 </template>
 
 <script>
-import { getMediaByGenre, getGenreList } from '~/utils/api';
-import TopNav from '~/components/global/TopNav';
+import { getMediaByGenre, getGenreList } from '~/services/tmdbAPI';
+import TheTopNav from '~/components/TheTopNav';
 import Listing from '~/components/Listing';
 
 export default {
   components: {
-    TopNav,
+    TheTopNav,
     Listing
   },
 
