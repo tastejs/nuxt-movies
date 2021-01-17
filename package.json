@@ -3,8 +3,11 @@
   "private": true,
   "author": "The Nuxt Movies authors",
   "contributors": [
+    "Jason Ujma-Alvis <hello@jason.codes>",
+    "Addy Osmani <addyosmani@gmail.com>",
+    "Anton K. <antonkarlovskiy@outlook.com>",
     "Pooya Parsa <pooya@nuxtjs.com>",
-    "Anton K. <antonkarlovskiy@outlook.com>"
+    "Daniel Roe <daniel@roe.dev>"
   ],
   "scripts": {
     "analyze": "nuxt build --analyze",
