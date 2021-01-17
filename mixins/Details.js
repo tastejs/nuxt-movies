@@ -1,4 +1,4 @@
-import { TMDB_IMAGE_URL } from '~/config/tmdb';
+import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 
 /**
  * Name

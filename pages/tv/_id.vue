@@ -54,7 +54,7 @@
 
 <script>
 import { getTvShow, getTvShowRecommended } from '~/services/tmdbAPI';
-import { TMDB_IMAGE_URL } from '~/config/tmdb';
+import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 import {
   name,
   yearStart,

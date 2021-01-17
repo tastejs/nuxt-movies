@@ -51,7 +51,7 @@
 
 <script>
 import { getMovie, getMovieRecommended } from '~/services/tmdbAPI';
-import { TMDB_IMAGE_URL } from '~/config/tmdb';
+import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 import { name, yearStart } from '~/mixins/Details';
 import TheTopNav from '~/components/TheTopNav';
 import Hero from '~/components/Hero';

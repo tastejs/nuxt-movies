@@ -129,7 +129,7 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/config/tmdb';
+import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 import { name, directors } from '~/mixins/Details';
 import ExternalLinks from '~/components/ExternalLinks';
 

@@ -31,7 +31,7 @@
 
 <script>
 import { getPerson } from '~/services/tmdbAPI';
-import { TMDB_IMAGE_URL } from '~/config/tmdb';
+import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 import TheTopNav from '~/components/TheTopNav';
 import PersonInfo from '~/components/person/PersonInfo';
 import MediaNav from '~/components/MediaNav';

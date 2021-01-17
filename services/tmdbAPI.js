@@ -1,7 +1,7 @@
 
 // ray test touch <
 import { $fetch } from 'ohmyfetch/node';
-import { TMDB_API_URL, TMDB_API_PARAMS } from '~/config/tmdb';
+import { TMDB_API_URL, TMDB_API_PARAMS } from '~/config/tmdbAPI';
 import LISTS from '~/utils/constants/lists';
 
 function fetchTMD(url, params) {

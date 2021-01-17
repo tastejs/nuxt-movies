@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/config/tmdb';
+import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 import ImagesItem from '~/components/ImagesItem';
 import Modal from '~/components/Modal';
 
