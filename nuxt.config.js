@@ -64,9 +64,15 @@ export default {
       { name: 'twitter:image', content: 'https://movies.jason.codes/icon-medium.png' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '//fonts.googleapis.com/css?family=Roboto:300,400,500' },
-      // ray test touch <
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500'
+      },
       {
         rel: 'preconnect',
         href: 'https://image.tmdb.org'
@@ -75,7 +81,6 @@ export default {
         rel: 'preconnect',
         href: 'http://fonts.gstatic.com'
       }
-      // ray test touch >
     ]
   },
 
