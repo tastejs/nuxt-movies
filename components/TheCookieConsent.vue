@@ -8,7 +8,10 @@
          By using our website, you consent to our use of cookies and other tracking technologies.
       ` }}
       &nbsp;
-      <a target="_blank" href="https://jason.codes/cookie-policy" rel="noopener">
+      <a
+        target="_blank"
+        href="https://jason.codes/cookie-policy"
+        rel="noopener">
         Find out more
       </a>
       .
