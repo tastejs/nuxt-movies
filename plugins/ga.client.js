@@ -11,15 +11,15 @@ export default ({ app }) => {
   /*
   ** Only run if the user has accepted cookies
   */
-  let cookieconsent;
+  let cookieConsent;
 
   if (supportsLocalStorage()) {
-    cookieconsent = localStorage.getItem('cookieconsent');
+    cookieConsent = localStorage.getItem('cookieconsent');
   } else {
-    cookieconsent = get('cookieconsent');
+    cookieConsent = get('cookieconsent');
   }
 
-  if (cookieconsent !== 'accepted') return;
+  if (cookieConsent !== 'accepted') return;
 
   /*
   ** Include Google Analytics Script
