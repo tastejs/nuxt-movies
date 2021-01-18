@@ -43,6 +43,7 @@ export default {
   /*
   ** Headers of the page
   */
+  // TODO: should review and update properly
   head: {
     title: 'Browse Movies, TV Shows and People',
     meta: [
@@ -63,8 +64,23 @@ export default {
       { name: 'twitter:image', content: 'https://movies.jason.codes/icon-medium.png' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '//fonts.googleapis.com/css?family=Roboto:300,400,500' }
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500'
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://image.tmdb.org'
+      },
+      {
+        rel: 'preconnect',
+        href: 'http://fonts.gstatic.com'
+      }
     ]
   },
 
