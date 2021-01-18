@@ -1,6 +1,7 @@
 <template>
   <div
     v-if="isOpen"
+    :class="$style['the-cookie-consent']"
     class="alert alert--alt">
     <p>
       {{ `
@@ -92,3 +93,13 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" module>
+@import '~/assets/css/utilities/_variables.scss';
+.the-cookie-consent {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: $z-index-snack-bar;
+}
+</style>

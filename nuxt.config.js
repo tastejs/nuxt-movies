@@ -69,10 +69,11 @@ export default {
         type: 'image/x-icon',
         href: '/favicon.ico'
       },
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500'
-      },
+      // TODO: fallback to the system fonts
+      // {
+      //   rel: 'stylesheet',
+      //   href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500'
+      // },
       {
         rel: 'preconnect',
         href: 'https://image.tmdb.org'
