@@ -75,6 +75,7 @@
   }
 }
 
+// ray test touch <
 .carousel__items .card {
   display: inline-block;
   width: calc(.33333 * (100% - 22px));
@@ -96,15 +97,15 @@
     width: calc(.2 * (100% - 92px));
   }
 
-  @media (min-width: 1500px) {
+  @media (min-width: $breakpoint-xlarger1) {
     width: calc(.16667 * (100% - 92px));
   }
 
-  @media (min-width: 1800px) {
+  @media (min-width: $breakpoint-xlarger2) {
     width: calc(.14286 * (100% - 92px));
   }
 
-  @media (min-width: 2500px) {
+  @media (min-width: $breakpoint-xlarger3) {
     width: calc(.125 * (100% - 92px));
   }
 
@@ -132,6 +133,7 @@
     }
   }
 }
+// ray test touch >
 
 .carousel__items .credits-item {
   display: inline-block;
