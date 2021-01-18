@@ -34,14 +34,12 @@
             </svg>
           </button>
 
-          <!-- ray test touch < -->
           <img
             v-if="backdrop"
             v-lazyload="backdrop"
             class="lazyload"
             :class="$style.image"
             :alt="name">
-          <!-- ray test touch > -->
         </div>
       </div>
 

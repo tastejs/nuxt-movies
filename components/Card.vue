@@ -50,7 +50,10 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
+import {
+  TMDB_IMAGE_URL,
+  POSTER_SIZES
+} from '~/config/tmdbAPI';
 import { name, stars } from '~/mixins/Details';
 
 export default {
@@ -69,7 +72,9 @@ export default {
   computed: {
     poster() {
       if (this.item.poster_path) {
-        return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.item.poster_path}`;
+        // ray test touch <
+        return `${TMDB_IMAGE_URL}/${POSTER_SIZES.W92}${this.item.poster_path}`;
+        // ray test touch >
       } else if (this.item.profile_path) {
         return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.item.profile_path}`;
       } else {

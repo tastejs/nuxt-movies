@@ -1,5 +1,8 @@
 
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
+import {
+  TMDB_IMAGE_URL,
+  BACKDROP_SIZES
+} from '~/config/tmdbAPI';
 
 /**
  * Name
@@ -58,17 +61,17 @@ const yearEnd = {
 /**
  * Backdrop
  */
-// ray test touch <
 const backdrop = {
   computed: {
     backdrop() {
       if (this.item.backdrop_path) {
-        return `${TMDB_IMAGE_URL}/original${this.item.backdrop_path}`;
+        // ray test touch <
+        return `${TMDB_IMAGE_URL}/${BACKDROP_SIZES.W300}${this.item.backdrop_path}`;
+        // ray test touch >
       }
     }
   }
 };
-// ray test touch >
 
 /**
  * Certification
