@@ -74,13 +74,13 @@ export default {
       //   rel: 'stylesheet',
       //   href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500'
       // },
+      // {
+      //   rel: 'preconnect',
+      //   href: 'http://fonts.gstatic.com'
+      // },
       {
         rel: 'preconnect',
         href: 'https://image.tmdb.org'
-      },
-      {
-        rel: 'preconnect',
-        href: 'http://fonts.gstatic.com'
       }
     ]
   },
