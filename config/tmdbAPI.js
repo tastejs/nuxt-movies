@@ -23,6 +23,16 @@ const BACKDROP_SIZES = Object.freeze({
   ORIGINAL: 'original'
 });
 
+const LOGO_SIZES = Object.freeze({
+  W45: 'w45',
+  W92: 'w92',
+  W154: 'w154',
+  W185: 'w185',
+  W300: 'w300',
+  W500: 'w500',
+  ORIGINAL: 'original'
+});
+
 const POSTER_SIZES = Object.freeze({
   W92: 'w92',
   W154: 'w154',
@@ -39,5 +49,6 @@ export {
   TMDB_IMAGE_URL,
   TMDB_API_PARAMS,
   BACKDROP_SIZES,
+  LOGO_SIZES,
   POSTER_SIZES
 };

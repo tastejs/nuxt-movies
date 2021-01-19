@@ -59,7 +59,8 @@
 <script>
 import {
   TMDB_IMAGE_URL,
-  POSTER_SIZES
+  POSTER_SIZES,
+  LOGO_SIZES
 } from '~/config/tmdbAPI';
 import { name, stars } from '~/mixins/Details';
 // ray test touch <
@@ -95,14 +96,14 @@ export default {
     // ray test touch <
     posterSrcset() {
       const srcset =
-        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W92}${this.item.poster_path} 92w, `
-        // `${TMDB_IMAGE_URL}/${POSTER_SIZES.W154}${this.item.poster_path} 154w, ` +
-        // `${TMDB_IMAGE_URL}/${POSTER_SIZES.W185}${this.item.poster_path} 185w, ` +
-        // `${TMDB_IMAGE_URL}/${POSTER_SIZES.W342}${this.item.poster_path} 342w, ` +
-        // `${TMDB_IMAGE_URL}/${POSTER_SIZES.W500}${this.item.poster_path} 500w, ` +
-        // `${TMDB_IMAGE_URL}/${POSTER_SIZES.W780}${this.item.poster_path} 780w, ` +
-        // `${TMDB_IMAGE_URL}/${POSTER_SIZES.ORIGINAL}${this.item.poster_path} 780w`
-        ;
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W92}${this.item.poster_path} 92w, ` +
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W154}${this.item.poster_path} 154w, ` +
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W185}${this.item.poster_path} 185w, ` +
+        `${TMDB_IMAGE_URL}/${LOGO_SIZES.W300}${this.item.poster_path} 300w, ` +
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W342}${this.item.poster_path} 342w, ` +
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W500}${this.item.poster_path} 500w, ` +
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W780}${this.item.poster_path} 780w, ` +
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.ORIGINAL}${this.item.poster_path} 780w`;
 
       return srcset;
     },
