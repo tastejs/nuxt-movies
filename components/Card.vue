@@ -59,8 +59,7 @@
 <script>
 import {
   TMDB_IMAGE_URL,
-  POSTER_SIZES,
-  LOGO_SIZES
+  POSTER_SIZES
 } from '~/config/tmdbAPI';
 import { name, stars } from '~/mixins/Details';
 // ray test touch <
@@ -99,8 +98,8 @@ export default {
         `${TMDB_IMAGE_URL}/${POSTER_SIZES.W92}${this.item.poster_path} 92w, ` +
         `${TMDB_IMAGE_URL}/${POSTER_SIZES.W154}${this.item.poster_path} 154w, ` +
         // TODO: 3x is added as a workaround
-        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W185}${this.item.poster_path} 3x, ` +
-        `${TMDB_IMAGE_URL}/${LOGO_SIZES.W300}${this.item.poster_path} 300w, ` +
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W185}${this.item.poster_path} 300w, ` +
+        // `${TMDB_IMAGE_URL}/${LOGO_SIZES.W300}${this.item.poster_path} 300w, ` +
         `${TMDB_IMAGE_URL}/${POSTER_SIZES.W342}${this.item.poster_path} 342w, ` +
         `${TMDB_IMAGE_URL}/${POSTER_SIZES.W500}${this.item.poster_path} 500w, ` +
         `${TMDB_IMAGE_URL}/${POSTER_SIZES.W780}${this.item.poster_path} 780w, ` +
