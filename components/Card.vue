@@ -7,15 +7,14 @@
       <div class="card__img">
         <!-- ray test touch < -->
         <img
-          src=""
+          :src="posterSrc"
           :srcset="posterSrcset"
           :sizes="posterSizes"
           :alt="name">
-
         <!-- eslint-disable-next-line -->
         <!-- <img
-          v-if="poster"
-          v-lazyload="poster"
+          v-if="posterSrc"
+          v-lazyload="posterSrc"
           class="lazyload"
           :alt="name">
         <span v-else>
@@ -62,9 +61,7 @@ import {
   POSTER_SIZES
 } from '~/config/tmdbAPI';
 import { name, stars } from '~/mixins/Details';
-// ray test touch <
 import scssVariables from '~/assets/css/utilities/_variables.scss';
-// ray test touch >
 
 export default {
   mixins: [
@@ -80,11 +77,9 @@ export default {
   },
 
   computed: {
-    poster() {
+    posterSrc() {
       if (this.item.poster_path) {
-        // ray test touch <
         return `${TMDB_IMAGE_URL}/${POSTER_SIZES.W342}${this.item.poster_path}`;
-        // ray test touch >
       } else if (this.item.profile_path) {
         return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.item.profile_path}`;
       } else {
@@ -97,7 +92,7 @@ export default {
       const srcset =
         `${TMDB_IMAGE_URL}/${POSTER_SIZES.W92}${this.item.poster_path} 92w, ` +
         `${TMDB_IMAGE_URL}/${POSTER_SIZES.W154}${this.item.poster_path} 154w, ` +
-        // TODO: 3x is added as a workaround
+        // TODO: 300w is set as a workaround
         `${TMDB_IMAGE_URL}/${POSTER_SIZES.W185}${this.item.poster_path} 300w, ` +
         // `${TMDB_IMAGE_URL}/${LOGO_SIZES.W300}${this.item.poster_path} 300w, ` +
         `${TMDB_IMAGE_URL}/${POSTER_SIZES.W342}${this.item.poster_path} 342w, ` +
