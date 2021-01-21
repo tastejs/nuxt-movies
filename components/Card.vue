@@ -97,6 +97,8 @@ export default {
       return srcset;
     },
 
+    // ray test touch <
+    // TODO: should consider the nav width from at breakpoint large
     posterSizes() {
       const sizes =
         `calc(0.33333 * (100vw - 22px) - 8px), ` +
@@ -109,6 +111,7 @@ export default {
 
       return sizes;
     },
+    // ray test touch >
 
     // TODO: `tv` and `movie` are hardcoded
     media() {

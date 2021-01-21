@@ -34,12 +34,21 @@
             </svg>
           </button>
 
+          <!-- ray test touch < -->
           <img
-            v-if="backdrop"
-            v-lazyload="backdrop"
-            class="lazyload"
+            v-if="backdropSrc"
+            :src="backdropSrc"
+            :srcset="backdropSrcset"
+            :sizes="backdropSizes"
             :class="$style.image"
             :alt="name">
+          <!-- <img
+            v-if="backdropSrc"
+            v-lazyload="backdropSrc"
+            class="lazyload"
+            :class="$style.image"
+            :alt="name"> -->
+          <!-- ray test touch > -->
         </div>
       </div>
 
@@ -124,7 +133,11 @@ import {
   stars,
   yearStart,
   cert,
-  backdrop,
+  backdropSrc,
+  // ray test touch <
+  backdropSrcset,
+  backdropSizes,
+  // ray test touch >
   trailer
 } from '~/mixins/Details';
 import Modal from '~/components/Modal';
@@ -139,7 +152,11 @@ export default {
     stars,
     yearStart,
     cert,
-    backdrop,
+    backdropSrc,
+    // ray test touch <
+    backdropSrcset,
+    backdropSizes,
+    // ray test touch >
     trailer
   ],
 

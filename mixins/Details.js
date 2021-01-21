@@ -3,6 +3,9 @@ import {
   TMDB_IMAGE_URL,
   BACKDROP_SIZES
 } from '~/config/tmdbAPI';
+// ray test touch <
+import scssVariables from '~/assets/css/utilities/_variables.scss';
+// ray test touch >
 
 /**
  * Name
@@ -61,17 +64,49 @@ const yearEnd = {
 /**
  * Backdrop
  */
-const backdrop = {
+const backdropSrc = {
   computed: {
-    backdrop() {
+    backdropSrc() {
       if (this.item.backdrop_path) {
         // ray test touch <
-        return `${TMDB_IMAGE_URL}/${BACKDROP_SIZES.W300}${this.item.backdrop_path}`;
+        return `${TMDB_IMAGE_URL}/${BACKDROP_SIZES.W1280}${this.item.backdrop_path}`;
         // ray test touch >
       }
     }
   }
 };
+
+// ray test touch <
+const backdropSrcset = {
+  computed: {
+    backdropSrcset() {
+      if (this.item.backdrop_path) {
+        const srcset =
+          `${TMDB_IMAGE_URL}/${BACKDROP_SIZES.W300}${this.item.backdrop_path} 300w, ` +
+          `${TMDB_IMAGE_URL}/${BACKDROP_SIZES.W780}${this.item.backdrop_path} 780w, ` +
+          `${TMDB_IMAGE_URL}/${BACKDROP_SIZES.W1280}${this.item.backdrop_path} 1280w`;
+
+        return srcset;
+      }
+    }
+  }
+};
+
+const backdropSizes = {
+  computed: {
+    backdropSizes() {
+      if (this.item.backdrop_path) {
+        const sizes =
+          `100vw, ` +
+          `(min-width:  ${scssVariables.breakpointMedium}) calc(100vw * 0.4 * 1.77), ` +
+          `(min-width:  ${scssVariables.breakpointLarge}) calc((100vw - 100px) * 0.4 * 1.77)`;
+
+        return sizes;
+      }
+    }
+  }
+};
+// ray test touch >
 
 /**
  * Certification
@@ -178,7 +213,11 @@ export {
   stars,
   yearStart,
   yearEnd,
-  backdrop,
+  backdropSrc,
+  // ray test touch <
+  backdropSrcset,
+  backdropSizes,
+  // ray test touch >
   cert,
   trailer,
   directors,
