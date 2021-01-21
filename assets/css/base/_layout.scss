@@ -3,7 +3,9 @@
 
 @media (min-width: $breakpoint-large) {
   body {
-    padding-left: 100px;
+    // ray test touch <
+    padding-left: $layout-nav-width;
+    // ray test touch >
   }
 }
 

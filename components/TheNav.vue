@@ -128,7 +128,9 @@ export default {
   @media (min-width: $breakpoint-large) {
     top: 0;
     right: auto;
-    width: 10rem;
+    // ray test touch <
+    width: $layout-nav-width;
+    // ray test touch >
     height: 100%;
     border-right: 1px solid $secondary-color;
   }
