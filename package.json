@@ -31,7 +31,7 @@
     }
   },
   "devDependencies": {
-    "@nuxt/image": "^0.2.0-alpha.6",
+    "@nuxt/image": "^0.2.0-alpha.7",
     "@nuxt/sigma": "^0.0.65",
     "@nuxtjs/eslint-config": "latest",
     "@nuxtjs/pwa": "^3.3.2",
@@ -46,7 +46,6 @@
     "nuxt": "^2.14.11",
     "ohmyfetch": "^0.0.4",
     "sass-loader": "latest",
-    "sigma": "^2.0.0-alpha40",
     "smoothscroll-polyfill": "^0.4.3",
     "tiny-cookie": "^2.3.1"
   }

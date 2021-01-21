@@ -5,10 +5,10 @@
       :href="image.thumb"
       @click.prevent="handleGallery(index)">
       <div :class="$style.image">
-        <img
-          v-lazyload="image.thumb"
-          class="lazyload"
-          alt="">
+        <nuxt-img
+          v-if="image.thumb"
+          loading="lazy"
+          :src="image.thumb" />
       </div>
     </a>
   </div>

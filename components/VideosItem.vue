@@ -7,11 +7,11 @@
       @click.prevent="handleVideo(index)">
 
       <div :class="$style.image">
-        <img
+        <nuxt-img
           v-if="video.thumb"
-          v-lazyload="video.thumb"
-          class="lazyload"
-          :alt="video.name">
+          loading="lazy"
+          :src="video.thumb"
+          :alt="video.name" />
 
         <div
           v-if="video.duration"

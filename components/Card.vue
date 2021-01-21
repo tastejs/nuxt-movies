@@ -5,11 +5,11 @@
       class="card__link"
       :to="{ name: `${media}-id`, params: { id: item.id } }">
       <div class="card__img">
-        <img
+        <nuxt-img
           v-if="poster"
-          v-lazyload="poster"
-          class="lazyload"
-          :alt="name">
+          loading="lazy"
+          :alt="name"
+          :src="poster" />
 
         <span v-else>
           <svg

@@ -3,11 +3,11 @@
   <div class="spacing" :class="$style.info">
     <div :class="$style.left">
       <div :class="$style.poster">
-        <img
+        <nuxt-img
           v-if="poster"
-          v-lazyload="poster"
-          class="lazyload"
-          :alt="name">
+          loading="lazy"
+          :src="poster"
+          :alt="name" />
 
         <span v-else>
           <svg

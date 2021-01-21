@@ -2,11 +2,11 @@
 <template>
   <div :class="$style.item">
     <div :class="$style.image">
-      <img
+      <nuxt-img
         v-if="poster"
-        v-lazyload="poster"
-        class="lazyload"
-        :alt="episode.name">
+        loading="lazy"
+        :src="poster"
+        :alt="episode.name" />
 
       <span v-else>
         <svg

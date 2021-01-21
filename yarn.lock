@@ -1052,10 +1052,10 @@
   resolved "https://registry.yarnpkg.com/@nuxt/h2/-/h2-0.0.14.tgz#30628ccb9965777326e5e6d116ccb7560b56ec9b"
   integrity sha512-rBiYoJvh7Ns5gwR5hKUGIORg7OfPdgMfxbnzxt204gZRW4sruogJxDm2Vlc5weTagPpugY+rXhwRGQKWKs4JUQ==
 
-"@nuxt/image@^0.2.0-alpha.6":
-  version "0.2.0-alpha.6"
-  resolved "https://registry.yarnpkg.com/@nuxt/image/-/image-0.2.0-alpha.6.tgz#456a74494b8fd227e7da18a9a3ce7db090ac960c"
-  integrity sha512-e9blm3vbivnMxRDqV5lsUqg0tMusrA+/O28kn+zjLHNh+772LQxvr33U9qhhCxhz+VWUxcuIL2eRLzziiycQkQ==
+"@nuxt/image@^0.2.0-alpha.7":
+  version "0.2.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@nuxt/image/-/image-0.2.0-alpha.7.tgz#f3da1239d072ca26310470a9a131fc0d1cfc8002"
+  integrity sha512-5OgPcPB/mFqsYovCNSMtZOMplY7+hzp2HnMU+STPCJpMmF81dr7jZyQpViNIj8GSO3HIW5D/Pxzhh7dI5dTjGA==
   dependencies:
     allowlist "^0.1.1"
     consola "^2.15.0"
@@ -1858,11 +1858,6 @@
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
-
-"@yomguithereal/helpers@^1.0.0", "@yomguithereal/helpers@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@yomguithereal/helpers/-/helpers-1.1.1.tgz#185dfb0f88ca2beec53d0adf6eed15c33b1c549d"
-  integrity sha512-UYvAq/XCA7xoh1juWDYsq3W0WywOB+pz8cgVnE1b45ZfdMhBvHDrgmSFG3jXeZSr2tMTYLGHFHON+ekG05Jebg==
 
 abbrev@1:
   version "1.1.1"
@@ -5134,46 +5129,6 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.4.tgz#2256bde14d3632958c465ebc96dc467ca07a29fb"
   integrity sha512-WjKPNJF79dtJAVniUlGGWHYGz2jWxT6VhN/4m1NdkbZ2nOsEF+cI1Edgql5zCRhs/VsQYRvrXctxktVXZUkixw==
 
-graphology-indices@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/graphology-indices/-/graphology-indices-0.8.0.tgz#42ff8704da565c692f7224c897653507aa1a78ac"
-  integrity sha512-uyoRm/zN30nddan6BuMvybeb2DS+TZN1gAF7qmAPFKLtW8EDtgwHByQt+24xlTWuibnDiPVP/UPpCMrSAWFbDQ==
-  dependencies:
-    graphology-types "^0.16.0"
-    graphology-utils "^1.7.0"
-    mnemonist "^0.35.0"
-
-graphology-metrics@1.13.0:
-  version "1.13.0"
-  resolved "https://registry.yarnpkg.com/graphology-metrics/-/graphology-metrics-1.13.0.tgz#33a6b82260bc4c587d2a702970dd1fed9ce5b320"
-  integrity sha512-Vf890KvO89niJ7Nk6Nkr/geNFfDIXcdC7LFkrGUla7VIFHAko6LqbMWbAu98FizGZtIcXAV7jJ4+VG4VxHkxoQ==
-  dependencies:
-    graphology-shortest-path "^1.3.1"
-    graphology-types "^0.16.0"
-    graphology-utils "^1.6.1"
-    lodash "^4.17.11"
-    mnemonist "^0.34.0"
-
-graphology-shortest-path@^1.3.1:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/graphology-shortest-path/-/graphology-shortest-path-1.4.0.tgz#d0435b1ecd77a2f97e91028af301c84ee6f326d5"
-  integrity sha512-FAPSS7tVHmhF5ah7pjDyprxjVfmAzC1Dm9YyFiCCDX3oOBIPBC166sVcgLpC+A9sfj1lIHOw+STEVZWK+ILzww==
-  dependencies:
-    "@yomguithereal/helpers" "^1.1.1"
-    graphology-indices "^0.8.0"
-    graphology-utils "^1.8.0"
-    mnemonist "^0.38.0"
-
-graphology-types@^0.16.0:
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/graphology-types/-/graphology-types-0.16.0.tgz#37896c4c82117a247c97a16219629215f1a596b4"
-  integrity sha512-iBGyPuMHlmHdXaB0cu/vllkPJ3myf063ZICY90zDxYQrJYZ3Dm4h2+dLM3Kof+CVJzM4HGg96ZFZ8HS6C7LgCQ==
-
-graphology-utils@^1.4.0, graphology-utils@^1.6.1, graphology-utils@^1.7.0, graphology-utils@^1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/graphology-utils/-/graphology-utils-1.8.0.tgz#41315c468656e2a3e028a76468bbc2fbe42b0145"
-  integrity sha512-Pa7SW30OMm8fVtyH49b3GJ/uxlMHGfXly50wIhlcc7ZoX9ahZa7sPBz+obo4WZClrRV6wh3tIu0GJoI42eao1A==
-
 gzip-size@^5.0.0:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-5.1.1.tgz#cb9bee692f87c0612b232840a873904e4c135274"
@@ -6548,7 +6503,7 @@ lodash.zip@^4.2.0:
   resolved "https://registry.yarnpkg.com/lodash.zip/-/lodash.zip-4.2.0.tgz#ec6662e4896408ed4ab6c542a3990b72cc080020"
   integrity sha1-7GZi5IlkCO1KtsVCo5kLcswIACA=
 
-lodash@^4.0.0, lodash@^4.15.0, lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.5, lodash@~4.17.10:
+lodash@^4.0.0, lodash@^4.15.0, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.5, lodash@~4.17.10:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
@@ -6946,27 +6901,6 @@ mkdirp@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
-
-mnemonist@^0.34.0:
-  version "0.34.0"
-  resolved "https://registry.yarnpkg.com/mnemonist/-/mnemonist-0.34.0.tgz#94244ba4f8922ee25863d4624b3c6cccfd81b126"
-  integrity sha512-eKQxmumFOJhd7ea/u8zVvj7gA2tD6QFkuDfUIvoT/VIq+yR1VzXpp0tM8QFgeSRig5brIN/3NUE72/wvvyc9ug==
-  dependencies:
-    obliterator "^1.6.1"
-
-mnemonist@^0.35.0:
-  version "0.35.0"
-  resolved "https://registry.yarnpkg.com/mnemonist/-/mnemonist-0.35.0.tgz#318fb69b79b98309a97ebf7f1d9f5873c3d86605"
-  integrity sha512-dewrFCpMv4jfEIxZLZufkxieuib2Q7bkZviiDyQnsDzNkkk7e1YV93tdY8sgwe+XuFQ5e+CJ+kR8qQ3jbzF9KQ==
-  dependencies:
-    obliterator "^1.6.1"
-
-mnemonist@^0.38.0:
-  version "0.38.1"
-  resolved "https://registry.yarnpkg.com/mnemonist/-/mnemonist-0.38.1.tgz#4835f982c18713fc97ddf30756529f57cfa3b635"
-  integrity sha512-I674bCCj9p87Re+gv15ynDrP14XjcmLR7tBO22l3UoxQLniyIXdD9vid2sSxYkyOr0fZwJTA+dXRvrwANgdnyg==
-  dependencies:
-    obliterator "^1.6.1"
 
 moment-timezone@^0.5.x:
   version "0.5.32"
@@ -7479,11 +7413,6 @@ object.values@^1.1.0, object.values@^1.1.1:
     define-properties "^1.1.3"
     es-abstract "^1.18.0-next.1"
     has "^1.0.3"
-
-obliterator@^1.6.1:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/obliterator/-/obliterator-1.6.1.tgz#dea03e8ab821f6c4d96a299e17aef6a3af994ef3"
-  integrity sha512-9WXswnqINnnhOG/5SLimUlzuU1hFJUc8zkwyD59Sd+dPOMf05PmnYG/d6Q7HZ+KmgkZJa1PxRso6QdM3sTNHig==
 
 ohmyfetch@^0.0.4:
   version "0.0.4"
@@ -9580,16 +9509,6 @@ shell-quote@^1.6.1:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/shell-quote/-/shell-quote-1.7.2.tgz#67a7d02c76c9da24f99d20808fcaded0e0e04be2"
   integrity sha512-mRz/m/JVscCrkMyPqHc/bczi3OQHkLTqXHEFu0zDhK/qfv3UcOA4SVmRCLmos4bhjr9ekVQubj/R7waKapmiQg==
-
-sigma@^2.0.0-alpha40:
-  version "2.0.0-alpha40"
-  resolved "https://registry.yarnpkg.com/sigma/-/sigma-2.0.0-alpha40.tgz#9c576f9de959abd7bf3ff2ebd758a750f2672b79"
-  integrity sha512-E64G8UE/jNzzdUBJln9pjKiY7ZS2eRiRqcjwPgSIGXqDK+I7r9oHaNcYkTgttH2Re5e2b4FvJvoAJ3fTEASD0w==
-  dependencies:
-    "@yomguithereal/helpers" "^1.0.0"
-    events "^3.0.0"
-    graphology-metrics "1.13.0"
-    graphology-utils "^1.4.0"
 
 signal-exit@^3.0.0, signal-exit@^3.0.2, signal-exit@^3.0.3:
   version "3.0.3"

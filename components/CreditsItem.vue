@@ -5,11 +5,11 @@
       class="credits-item__link"
       :to="{ name: 'person-id', params: { id: person.id } }">
       <div class="credits-item__img">
-        <img
+        <nuxt-img
           v-if="poster"
-          v-lazyload="poster"
-          class="lazyload"
-          :alt="person.name">
+          loading="lazy"
+          :alt="person.name"
+          :src="poster" />
 
         <span v-else>
           <svg
