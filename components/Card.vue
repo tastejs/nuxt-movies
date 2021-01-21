@@ -97,21 +97,19 @@ export default {
       return srcset;
     },
 
-    // ray test touch <
-    // TODO: should consider the nav width from at breakpoint large
+    // MEMO: 100px is the width of the nav
     posterSizes() {
       const sizes =
         `calc(0.33333 * (100vw - 22px) - 8px), ` +
         `(min-width: ${scssVariables.breakpointXsmall}) calc(.25 * (100vw - 72px) - 8px), ` +
         `(min-width: ${scssVariables.breakpointMedium}) calc(.2 * (100vw - 72px) - 8px), ` +
-        `(min-width: ${scssVariables.breakpointLarge}) calc(.2 * (100vw - 92px) - 8px), ` +
-        `(min-width: ${scssVariables.breakpointXlarger1}) calc(.16667 * (100vw - 92px) - 8px), ` +
-        `(min-width: ${scssVariables.breakpointXlarger2}) calc(.14286 * (100vw - 92px) - 8px), ` +
-        `(min-width: ${scssVariables.breakpointXlarger3}) calc(.125 * (100vw - 92px) - 8px)`;
+        `(min-width: ${scssVariables.breakpointLarge}) calc(.2 * (100vw - 92px - 100px) - 8px), ` +
+        `(min-width: ${scssVariables.breakpointXlarger1}) calc(.16667 * (100vw - 92px - 100px) - 8px), ` +
+        `(min-width: ${scssVariables.breakpointXlarger2}) calc(.14286 * (100vw - 92px - 100px) - 8px), ` +
+        `(min-width: ${scssVariables.breakpointXlarger3}) calc(.125 * (100vw - 92px - 100px) - 8px)`;
 
       return sizes;
     },
-    // ray test touch >
 
     // TODO: `tv` and `movie` are hardcoded
     media() {
