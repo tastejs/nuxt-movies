@@ -42,7 +42,6 @@ const POSTER_SIZES = Object.freeze({
   ORIGINAL: 'original'
 });
 
-// ray test touch <
 const PROFILE_SIZES = Object.freeze({
   W45: 'w45',
   W185: 'w185',
@@ -56,7 +55,6 @@ const STILL_SIZES = Object.freeze({
   W300: 'w300',
   ORIGINAL: 'original'
 });
-// ray test touch >
 
 export {
   TMDB_API_URL,

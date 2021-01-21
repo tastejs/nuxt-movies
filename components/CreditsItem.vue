@@ -5,7 +5,6 @@
       class="credits-item__link"
       :to="{ name: 'person-id', params: { id: person.id } }">
       <div class="credits-item__img">
-        <!-- ray test touch < -->
         <img
           v-if="posterSrc"
           loading="lazy"
@@ -13,12 +12,6 @@
           :srcset="posterSrcset"
           :sizes="posterSizes"
           :alt="person.name">
-        <!-- <img
-          v-if="posterSrc"
-          v-lazyload="posterSrc"
-          class="lazyload"
-          :alt="person.name"> -->
-        <!-- ray test touch > -->
         <span v-else>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -63,15 +56,12 @@ export default {
   computed: {
     posterSrc() {
       if (this.person.profile_path) {
-        // ray test touch <
         return `${TMDB_IMAGE_URL}/${POSTER_SIZES.W342}${this.person.profile_path}`;
-        // ray test touch >
       } else {
         return null;
       }
     },
 
-    // ray test touch <
     // TODO: should not duplicate
     posterSrcset() {
       const srcset =
@@ -105,7 +95,6 @@ export default {
 
       return sizes;
     }
-    // ray test touch >
   }
 };
 </script>
