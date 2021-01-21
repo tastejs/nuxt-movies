@@ -3,9 +3,7 @@ import {
   TMDB_IMAGE_URL,
   BACKDROP_SIZES
 } from '~/config/tmdbAPI';
-// ray test touch <
 import scssVariables from '~/assets/css/utilities/_variables.scss';
-// ray test touch >
 
 /**
  * Name
@@ -68,15 +66,12 @@ const backdropSrc = {
   computed: {
     backdropSrc() {
       if (this.item.backdrop_path) {
-        // ray test touch <
         return `${TMDB_IMAGE_URL}/${BACKDROP_SIZES.W1280}${this.item.backdrop_path}`;
-        // ray test touch >
       }
     }
   }
 };
 
-// ray test touch <
 const backdropSrcset = {
   computed: {
     backdropSrcset() {
@@ -96,6 +91,8 @@ const backdropSizes = {
   computed: {
     backdropSizes() {
       if (this.item.backdrop_path) {
+        // MEMO: 1.77 is the ratio of width vs. height of the backdrop
+        // MEMO: 0.4 is from padding-bottom: 40%; (components\Hero.vue)
         const sizes =
           `100vw, ` +
           `(min-width:  ${scssVariables.breakpointMedium}) calc(100vw * 0.4 * 1.77), ` +
@@ -106,7 +103,6 @@ const backdropSizes = {
     }
   }
 };
-// ray test touch >
 
 /**
  * Certification
@@ -214,10 +210,8 @@ export {
   yearStart,
   yearEnd,
   backdropSrc,
-  // ray test touch <
   backdropSrcset,
   backdropSizes,
-  // ray test touch >
   cert,
   trailer,
   directors,

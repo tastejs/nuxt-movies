@@ -97,7 +97,7 @@ export default {
       return srcset;
     },
 
-    // MEMO: 100px is the width of the nav
+    // MEMO: 100px is the width of the nav (assets\css\base\_layout.scss)
     posterSizes() {
       const sizes =
         `calc(0.33333 * (100vw - 22px) - 8px), ` +

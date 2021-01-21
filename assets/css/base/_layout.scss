@@ -1,11 +1,9 @@
+
 @import '~/assets/css/utilities/_variables.scss';
 
 @media (min-width: $breakpoint-large) {
   body {
-    // ray test touch <
-    // padding-left: 10rem;
     padding-left: 100px;
-    // ray test touch >
   }
 }
 
