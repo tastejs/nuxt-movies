@@ -113,9 +113,7 @@ export default {
   z-index: 10;
 
   @media (min-width: $breakpoint-large) {
-    // ray test touch <
     left: $layout-nav-width;
-    // ray test touch >
   }
 
   input[type='text'] {

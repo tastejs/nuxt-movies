@@ -91,14 +91,12 @@ const backdropSizes = {
   computed: {
     backdropSizes() {
       if (this.item.backdrop_path) {
-        // ray test touch <
         // MEMO: 1.77 is the ratio of width vs. height of the backdrop
         // MEMO: 0.4 is from padding-bottom: 40%; (components\Hero.vue)
         const sizes =
           `100vw, ` +
           `(min-width: ${scssVariables.breakpointMedium}) calc(100vw * 0.4 * 1.77), ` +
           `(min-width: ${scssVariables.breakpointLarge}) calc((100vw - ${scssVariables.layoutNavWidth}) * 0.4 * 1.77)`;
-        // ray test touch >
 
         return sizes;
       }
