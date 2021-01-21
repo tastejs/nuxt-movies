@@ -5,10 +5,12 @@
       :href="image.thumb"
       @click.prevent="handleGallery(index)">
       <div :class="$style.image">
+        <!-- ray test touch < -->
         <img
           v-lazyload="image.thumb"
           class="lazyload"
           alt="">
+        <!-- ray test touch > -->
       </div>
     </a>
   </div>

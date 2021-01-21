@@ -42,11 +42,29 @@ const POSTER_SIZES = Object.freeze({
   ORIGINAL: 'original'
 });
 
+// ray test touch <
+const PROFILE_SIZES = Object.freeze({
+  W45: 'w45',
+  W185: 'w185',
+  H632: 'h632',
+  ORIGINAL: 'original'
+});
+
+const STILL_SIZES = Object.freeze({
+  W92: 'w92',
+  W185: 'w185',
+  W300: 'w300',
+  ORIGINAL: 'original'
+});
+// ray test touch >
+
 export {
   TMDB_API_URL,
   TMDB_IMAGE_URL,
   TMDB_API_PARAMS,
   BACKDROP_SIZES,
   LOGO_SIZES,
-  POSTER_SIZES
+  POSTER_SIZES,
+  PROFILE_SIZES,
+  STILL_SIZES
 };

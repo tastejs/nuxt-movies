@@ -3,11 +3,13 @@
   <div class="spacing" :class="$style.info">
     <div :class="$style.left">
       <div :class="$style.poster">
+        <!-- ray test touch < -->
         <img
           v-if="poster"
           v-lazyload="poster"
           class="lazyload"
           :alt="name">
+        <!-- ray test touch > -->
 
         <span v-else>
           <svg

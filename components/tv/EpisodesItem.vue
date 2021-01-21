@@ -2,11 +2,13 @@
 <template>
   <div :class="$style.item">
     <div :class="$style.image">
+      <!-- ray test touch < -->
       <img
         v-if="poster"
         v-lazyload="poster"
         class="lazyload"
         :alt="episode.name">
+      <!-- ray test touch > -->
 
       <span v-else>
         <svg

@@ -55,7 +55,10 @@ import {
   TMDB_IMAGE_URL,
   POSTER_SIZES
 } from '~/config/tmdbAPI';
-import { name, stars } from '~/mixins/Details';
+import {
+  name,
+  stars
+} from '~/mixins/Details';
 import scssVariables from '~/assets/css/utilities/_variables.scss';
 
 export default {

@@ -7,11 +7,13 @@
       @click.prevent="handleVideo(index)">
 
       <div :class="$style.image">
+        <!-- ray test touch < -->
         <img
           v-if="video.thumb"
           v-lazyload="video.thumb"
           class="lazyload"
           :alt="video.name">
+        <!-- ray test touch > -->
 
         <div
           v-if="video.duration"

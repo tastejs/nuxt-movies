@@ -1,6 +1,8 @@
 import Vue from 'vue';
 
+// ray test touch <
 // TODO: should drop and use native lazy-loading
+// ray test touch >
 
 /**
  * Function called when image has loaded
