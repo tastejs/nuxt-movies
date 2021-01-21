@@ -7,6 +7,7 @@
       <div class="card__img">
         <!-- ray test touch < -->
         <img
+          loading="lazy"
           :src="posterSrc"
           :srcset="posterSrcset"
           :sizes="posterSizes"
