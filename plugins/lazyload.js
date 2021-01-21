@@ -1,5 +1,7 @@
 import Vue from 'vue';
 
+// TODO: should drop and use native lazy-loading
+
 /**
  * Function called when image has loaded
  */
