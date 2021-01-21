@@ -87,7 +87,6 @@ export default {
       }
     },
 
-    // ray test touch <
     posterSrcset() {
       const srcset =
         `${TMDB_IMAGE_URL}/${POSTER_SIZES.W92}${this.item.poster_path} 92w, ` +
@@ -115,7 +114,6 @@ export default {
 
       return sizes;
     },
-    // ray test touch >
 
     // TODO: `tv` and `movie` are hardcoded
     media() {
