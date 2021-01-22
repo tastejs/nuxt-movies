@@ -4,9 +4,9 @@
     <div :class="$style.left">
       <div :class="$style.poster">
         <!-- TODO: could serve responsive images -->
+        <!-- MEMO: do not lazy load as it's in above-the-fold area -->
         <img
           v-if="posterSrc"
-          loading="lazy"
           :src="posterSrc"
           :alt="name">
 
