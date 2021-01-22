@@ -88,10 +88,12 @@ export default {
         thumb = `${TMDB_IMAGE_URL}/w533_and_h300_bestv2`;
       }
 
+      // ray test touch <
       this.images.forEach(image => {
         image.thumb = `${thumb}${image.file_path}`;
         image.src = `${TMDB_IMAGE_URL}/original${image.file_path}`;
       });
+      // ray test touch >
     },
 
     openModal(index) {

@@ -56,6 +56,11 @@ const STILL_SIZES = Object.freeze({
   ORIGINAL: 'original'
 });
 
+const OTHER_SIZES = Object.freeze({
+  W370_AND_H556_BESTV2: 'w370_and_h556_bestv2',
+  W533_AND_H300_BESTV2: 'w533_and_h300_bestv2'
+});
+
 export {
   TMDB_API_URL,
   TMDB_IMAGE_URL,
@@ -64,5 +69,6 @@ export {
   LOGO_SIZES,
   POSTER_SIZES,
   PROFILE_SIZES,
-  STILL_SIZES
+  STILL_SIZES,
+  OTHER_SIZES
 };
