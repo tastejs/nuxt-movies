@@ -2,14 +2,14 @@
 <template>
   <div :class="[$style.item, $style[type]]">
     <a
-      :href="image.thumb"
+      :href="image.thumbSrc"
       @click.prevent="handleGallery(index)">
       <div :class="$style.image">
         <img
           loading="lazy"
-          :src="image.thumb"
-          :srcset="imageThumbSrcset(type)"
-          :sizes="imageThumbSizes(type)"
+          :src="image.thumbSrc"
+          :srcset="image.thumbSrcset"
+          :sizes="image.thumbSizes"
           alt="">
       </div>
     </a>
@@ -17,13 +17,6 @@
 </template>
 
 <script>
-import {
-  POSTER_SIZES,
-  OTHER_SIZES
-} from '~/config/tmdbAPI';
-import scssVariables from '~/assets/css/utilities/_variables.scss';
-import IMAGE_TYPES from '~/utils/constants/image-types';
-
 export default {
   props: {
     image: {
@@ -45,96 +38,6 @@ export default {
   methods: {
     handleGallery(index) {
       this.$emit('openModal', index);
-    },
-
-    imageThumbSrcset(imageType) {
-      // TODO: should be like the following
-      // const srcset =
-      //   `${TMDB_IMAGE_URL}/${POSTER_SIZES.W92}${this.image.thumb} 92w, ` +
-      //   `${TMDB_IMAGE_URL}/${POSTER_SIZES.W154}${this.image.thumb} 154w, ` +
-      //   // TODO: 300w is set as a workaround
-      //   `${TMDB_IMAGE_URL}/${POSTER_SIZES.W185}${this.image.thumb} 300w, ` +
-      //   // `${TMDB_IMAGE_URL}/${LOGO_SIZES.W300}${this.image.thumb} 300w, ` +
-      //   `${TMDB_IMAGE_URL}/${POSTER_SIZES.W342}${this.image.thumb} 342w, ` +
-      //   `${TMDB_IMAGE_URL}/${POSTER_SIZES.W500}${this.image.thumb} 500w, ` +
-      //   `${TMDB_IMAGE_URL}/${POSTER_SIZES.W780}${this.image.thumb} 780w, ` +
-      //   `${TMDB_IMAGE_URL}/${POSTER_SIZES.ORIGINAL}${this.image.thumb} 780w`;
-
-      let defaultSize;
-
-      if (imageType === IMAGE_TYPES.BACKDROP) {
-        defaultSize = OTHER_SIZES.W533_AND_H300_BESTV2;
-      }
-
-      if (imageType === IMAGE_TYPES.POSTER) {
-        defaultSize = OTHER_SIZES.W370_AND_H556_BESTV2;
-      }
-
-      const srcset =
-          `${this.image.thumb.replace(defaultSize, POSTER_SIZES.W92)} 92w, ` +
-          `${this.image.thumb.replace(defaultSize, POSTER_SIZES.W154)} 154w, ` +
-          // TODO: 300w is set as a workaround
-          `${this.image.thumb.replace(defaultSize, POSTER_SIZES.W185)} 300w, ` +
-          // `${this.image.thumb.replace(defaultSize, POSTER_SIZES.W300)} 300w, ` +
-          `${this.image.thumb.replace(defaultSize, POSTER_SIZES.W342)} 342w, ` +
-          `${this.image.thumb.replace(defaultSize, POSTER_SIZES.W500)} 500w, ` +
-          `${this.image.thumb.replace(defaultSize, POSTER_SIZES.W780)} 780w, ` +
-          `${this.image.thumb.replace(defaultSize, POSTER_SIZES.ORIGINAL)} 780w`;
-
-      if (!srcset) {
-        throw new Error('Invalid sizes!');
-      }
-
-      return srcset;
-    },
-
-    imageThumbSizes(imageType) {
-      let sizes;
-
-      if (imageType === IMAGE_TYPES.BACKDROP) {
-        sizes =
-          // TODO: 1.5rem (side margin) and 0.4rem (side padding) are hardcoded
-          `calc(0.5 * (100vw - 2 * 1.5rem) - 2 * 0.4rem), ` +
-          `(min-width: ${scssVariables.breakpointXsmall}) ` +
-          `calc(0.333333333 * (100vw - 2 * 1.5rem) - 2 * 0.4rem), ` +
-          `(min-width: ${scssVariables.breakpointSmall}) ` +
-          `calc(0.333333333 * (100vw - 2 * 4rem) - 2 * 0.4rem), ` +
-          `(min-width: ${scssVariables.breakpointMedium}) ` +
-          `calc(0.25 * (100vw - 2 * 4rem) - 2 * 0.4rem), ` +
-          `(min-width: ${scssVariables.breakpointLarge}) ` +
-          `calc(0.25 * (100vw - 2 * 5rem - ${scssVariables.layoutNavWidth}) - 2 * 0.4rem), ` +
-          `(min-width: ${scssVariables.breakpointXlarger1}) ` +
-          `calc(0.2 * (100vw - 2 * 5rem - ${scssVariables.layoutNavWidth}) - 2 * 0.4rem), ` +
-          `(min-width: ${scssVariables.breakpointXlarger2}) ` +
-          `calc(0.166666667 * (100vw - 2 * 5rem - ${scssVariables.layoutNavWidth}) - 2 * 0.4rem), ` +
-          `(min-width: ${scssVariables.breakpointXlarger3}) ` +
-          `calc(0.142857143 * (100vw - 2 * 5rem - ${scssVariables.layoutNavWidth}) - 2 * 0.4rem)`;
-      }
-
-      if (imageType === IMAGE_TYPES.POSTER) {
-        sizes =
-          `calc(0.333333333 * (100vw - 2 * 1.5rem) - 2 * 0.4rem), ` +
-          `(min-width: ${scssVariables.breakpointXsmall}) ` +
-          `calc(0.25 * (100vw - 2 * 1.5rem) - 2 * 0.4rem), ` +
-          `(min-width: ${scssVariables.breakpointSmall}) ` +
-          `calc(0.25 * (100vw - 2 * 4rem) - 2 * 0.4rem), ` +
-          `(min-width: ${scssVariables.breakpointMedium}) ` +
-          `calc(0.2 * (100vw - 2 * 4rem) - 2 * 0.4rem), ` +
-          `(min-width: ${scssVariables.breakpointLarge}) ` +
-          `calc(0.2 * (100vw - 2 * 5rem - ${scssVariables.layoutNavWidth}) - 2 * 0.4rem), ` +
-          `(min-width: ${scssVariables.breakpointXlarger1}) ` +
-          `calc(0.166666667 * (100vw - 2 * 5rem - ${scssVariables.layoutNavWidth}) - 2 * 0.4rem), ` +
-          `(min-width: ${scssVariables.breakpointXlarger2}) ` +
-          `calc(0.142857143 * (100vw - 2 * 5rem - ${scssVariables.layoutNavWidth}) - 2 * 0.4rem), ` +
-          `(min-width: ${scssVariables.breakpointXlarger3}) ` +
-          `calc(0.125 * (100vw - 2 * 5rem - ${scssVariables.layoutNavWidth}) - 2 * 0.4rem)`;
-      }
-
-      if (!sizes) {
-        throw new Error('Invalid sizes!');
-      }
-
-      return sizes;
     }
   }
 };
