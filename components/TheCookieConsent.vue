@@ -96,6 +96,7 @@ export default {
 
 <style lang="scss" module>
 @import '~/assets/css/utilities/_variables.scss';
+
 .the-cookie-consent {
   position: fixed;
   left: 0;

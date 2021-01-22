@@ -1,6 +1,7 @@
 <template>
   <div
     v-if="isOpen"
+    :class="$style['the-install-prompt']"
     class="alert alert--default">
     <p>Do you want to <a href="#" @click.prevent="install">add this app to your home screen?</a></p>
 
@@ -90,3 +91,15 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" module>
+@import '~/assets/css/utilities/_variables.scss';
+
+.the-install-prompt {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: $z-index-snack-bar;
+}
+</style>
