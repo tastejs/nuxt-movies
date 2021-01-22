@@ -192,10 +192,6 @@ export default {
     align-items: center;
     justify-content: center;
   }
-
-  &.lazyloaded .lazyload {
-    opacity: 0.8;
-  }
 }
 
 .play {
