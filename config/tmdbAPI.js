@@ -58,7 +58,8 @@ const STILL_SIZES = Object.freeze({
 
 const OTHER_SIZES = Object.freeze({
   W370_AND_H556_BESTV2: 'w370_and_h556_bestv2',
-  W533_AND_H300_BESTV2: 'w533_and_h300_bestv2'
+  W533_AND_H300_BESTV2: 'w533_and_h300_bestv2',
+  W400: 'w400'
 });
 
 export {
