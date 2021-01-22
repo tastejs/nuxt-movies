@@ -23,7 +23,7 @@
       <Images
         v-if="person.images.profiles.length"
         title="Photos"
-        type="poster"
+        :type="IMAGE_TYPES.POSTER"
         :images="person.images.profiles" />
     </template>
   </main>
@@ -38,6 +38,7 @@ import MediaNav from '~/components/MediaNav';
 import CreditsHistory from '~/components/person/CreditsHistory';
 import Images from '~/components/Images';
 import Listing from '~/components/Listing';
+import IMAGE_TYPES from '~/utils/constants/image-types';
 
 export default {
   components: {
@@ -144,6 +145,7 @@ export default {
   created() {
     this.createMenu();
     this.initKnownFor();
+    this.IMAGE_TYPES = IMAGE_TYPES;
   },
 
   methods: {

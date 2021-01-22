@@ -37,6 +37,7 @@
 import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 import ImagesItem from '~/components/ImagesItem';
 import Modal from '~/components/Modal';
+import IMAGE_TYPES from '~/utils/constants/image-types';
 
 export default {
   components: {
@@ -82,10 +83,14 @@ export default {
     handleData() {
       let thumb;
 
-      if (this.type === 'poster') {
+      if (this.type === IMAGE_TYPES.POSTER) {
         thumb = `${TMDB_IMAGE_URL}/w370_and_h556_bestv2`;
-      } else {
+      }
+      if (this.type === IMAGE_TYPES.BACKDROP) {
         thumb = `${TMDB_IMAGE_URL}/w533_and_h300_bestv2`;
+      }
+      if (this.type !== IMAGE_TYPES.POSTER && this.type !== IMAGE_TYPES.BACKDROP) {
+        throw new Error('Invalid image type!');
       }
 
       // ray test touch <

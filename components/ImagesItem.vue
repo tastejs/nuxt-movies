@@ -22,11 +22,7 @@ import {
   OTHER_SIZES
 } from '~/config/tmdbAPI';
 import scssVariables from '~/assets/css/utilities/_variables.scss';
-
-const IMAGE_TYPES = Object.freeze({
-  POSTER: 'poster',
-  BACKDROP: 'backdrop'
-});
+import IMAGE_TYPES from '~/utils/constants/image-types';
 
 export default {
   props: {
