@@ -3,13 +3,12 @@
   <div class="spacing" :class="$style.info">
     <div :class="$style.left">
       <div :class="$style.poster">
-        <!-- ray test touch < -->
+        <!-- TODO: could add responsive images -->
         <img
-          v-if="poster"
-          v-lazyload="poster"
-          class="lazyload"
+          v-if="posterSrc"
+          loading="lazy"
+          :src="posterSrc"
           :alt="name">
-        <!-- ray test touch > -->
 
         <span v-else>
           <svg
@@ -153,7 +152,7 @@ export default {
   },
 
   computed: {
-    poster() {
+    posterSrc() {
       if (this.item.poster_path) {
         return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.item.poster_path}`;
       } else {
