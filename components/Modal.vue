@@ -44,13 +44,11 @@
               frameborder="0"
               allow="autoplay; encrypted-media"
               allowfullscreen />
-            <!-- ray test touch < -->
+            <!-- TODO: could serve responsive images -->
             <img
               v-if="type === 'image' && activeItem"
-              v-lazyload="activeItem.src"
-              class="lazyload"
+              :src="activeItem.src"
               alt="">
-            <!-- ray test touch > -->
           </div>
 
           <div
