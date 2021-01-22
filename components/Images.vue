@@ -34,9 +34,15 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
+import {
+  TMDB_IMAGE_URL,
+  POSTER_SIZES,
+  OTHER_SIZES
+} from '~/config/tmdbAPI';
 import ImagesItem from '~/components/ImagesItem';
 import Modal from '~/components/Modal';
+import IMAGE_TYPES from '~/utils/constants/image-types';
+import scssVariables from '~/assets/css/utilities/_variables.scss';
 
 export default {
   components: {
@@ -80,16 +86,61 @@ export default {
 
   methods: {
     handleData() {
-      let thumb;
-
-      if (this.type === 'poster') {
-        thumb = `${TMDB_IMAGE_URL}/w370_and_h556_bestv2`;
-      } else {
-        thumb = `${TMDB_IMAGE_URL}/w533_and_h300_bestv2`;
-      }
-
       this.images.forEach(image => {
-        image.thumb = `${thumb}${image.file_path}`;
+        image.thumbSrcset =
+          `${TMDB_IMAGE_URL}/${POSTER_SIZES.W92}${image.file_path} 92w, ` +
+          `${TMDB_IMAGE_URL}/${POSTER_SIZES.W154}${image.file_path} 154w, ` +
+          // TODO: 300w is set as a workaround
+          `${TMDB_IMAGE_URL}/${POSTER_SIZES.W185}${image.file_path} 300w, ` +
+          // `${TMDB_IMAGE_URL}/${LOGO_SIZES.W300}${image.file_path} 300w, ` +
+          `${TMDB_IMAGE_URL}/${POSTER_SIZES.W342}${image.file_path} 342w, ` +
+          `${TMDB_IMAGE_URL}/${POSTER_SIZES.W500}${image.file_path} 500w, ` +
+          `${TMDB_IMAGE_URL}/${POSTER_SIZES.W780}${image.file_path} 780w, ` +
+          `${TMDB_IMAGE_URL}/${POSTER_SIZES.ORIGINAL}${image.file_path} 780w`;
+
+        if (this.type === IMAGE_TYPES.BACKDROP) {
+          image.thumbSrc = `${TMDB_IMAGE_URL}/${OTHER_SIZES.W533_AND_H300_BESTV2}${image.file_path}`;
+
+          image.thumbSizes =
+            // TODO: 1.5rem (side margin) and 0.4rem (side padding) are hardcoded
+            `calc(0.5 * (100vw - 2 * 1.5rem) - 2 * 0.4rem), ` +
+            `(min-width: ${scssVariables.breakpointXsmall}) ` +
+            `calc(0.333333333 * (100vw - 2 * 1.5rem) - 2 * 0.4rem), ` +
+            `(min-width: ${scssVariables.breakpointSmall}) ` +
+            `calc(0.333333333 * (100vw - 2 * 4rem) - 2 * 0.4rem), ` +
+            `(min-width: ${scssVariables.breakpointMedium}) ` +
+            `calc(0.25 * (100vw - 2 * 4rem) - 2 * 0.4rem), ` +
+            `(min-width: ${scssVariables.breakpointLarge}) ` +
+            `calc(0.25 * (100vw - 2 * 5rem - ${scssVariables.layoutNavWidth}) - 2 * 0.4rem), ` +
+            `(min-width: ${scssVariables.breakpointXlarger1}) ` +
+            `calc(0.2 * (100vw - 2 * 5rem - ${scssVariables.layoutNavWidth}) - 2 * 0.4rem), ` +
+            `(min-width: ${scssVariables.breakpointXlarger2}) ` +
+            `calc(0.166666667 * (100vw - 2 * 5rem - ${scssVariables.layoutNavWidth}) - 2 * 0.4rem), ` +
+            `(min-width: ${scssVariables.breakpointXlarger3}) ` +
+            `calc(0.142857143 * (100vw - 2 * 5rem - ${scssVariables.layoutNavWidth}) - 2 * 0.4rem)`;
+        }
+
+        if (this.type === IMAGE_TYPES.POSTER) {
+          image.thumbSrc = `${TMDB_IMAGE_URL}/${OTHER_SIZES.W370_AND_H556_BESTV2}${image.file_path}`;
+
+          image.thumbSizes =
+            `calc(0.333333333 * (100vw - 2 * 1.5rem) - 2 * 0.4rem), ` +
+            `(min-width: ${scssVariables.breakpointXsmall}) ` +
+            `calc(0.25 * (100vw - 2 * 1.5rem) - 2 * 0.4rem), ` +
+            `(min-width: ${scssVariables.breakpointSmall}) ` +
+            `calc(0.25 * (100vw - 2 * 4rem) - 2 * 0.4rem), ` +
+            `(min-width: ${scssVariables.breakpointMedium}) ` +
+            `calc(0.2 * (100vw - 2 * 4rem) - 2 * 0.4rem), ` +
+            `(min-width: ${scssVariables.breakpointLarge}) ` +
+            `calc(0.2 * (100vw - 2 * 5rem - ${scssVariables.layoutNavWidth}) - 2 * 0.4rem), ` +
+            `(min-width: ${scssVariables.breakpointXlarger1}) ` +
+            `calc(0.166666667 * (100vw - 2 * 5rem - ${scssVariables.layoutNavWidth}) - 2 * 0.4rem), ` +
+            `(min-width: ${scssVariables.breakpointXlarger2}) ` +
+            `calc(0.142857143 * (100vw - 2 * 5rem - ${scssVariables.layoutNavWidth}) - 2 * 0.4rem), ` +
+            `(min-width: ${scssVariables.breakpointXlarger3}) ` +
+            `calc(0.125 * (100vw - 2 * 5rem - ${scssVariables.layoutNavWidth}) - 2 * 0.4rem)`;
+        }
+
         image.src = `${TMDB_IMAGE_URL}/original${image.file_path}`;
       });
     },

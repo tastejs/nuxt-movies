@@ -35,9 +35,10 @@
           </button>
 
           <img
-            v-if="backdrop"
-            v-lazyload="backdrop"
-            class="lazyload"
+            v-if="backdropSrc"
+            :src="backdropSrc"
+            :srcset="backdropSrcset"
+            :sizes="backdropSizes"
             :class="$style.image"
             :alt="name">
         </div>
@@ -124,7 +125,9 @@ import {
   stars,
   yearStart,
   cert,
-  backdrop,
+  backdropSrc,
+  backdropSrcset,
+  backdropSizes,
   trailer
 } from '~/mixins/Details';
 import Modal from '~/components/Modal';
@@ -139,7 +142,9 @@ export default {
     stars,
     yearStart,
     cert,
-    backdrop,
+    backdropSrc,
+    backdropSrcset,
+    backdropSizes,
     trailer
   ],
 

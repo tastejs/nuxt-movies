@@ -27,7 +27,6 @@ export default {
   ** Global Plugins
   */
   plugins: [
-    '~/plugins/lazyload',
     '~/plugins/filters',
     '~/plugins/ga.client',
     '~/plugins/search'
@@ -69,15 +68,6 @@ export default {
         type: 'image/x-icon',
         href: '/favicon.ico'
       },
-      // TODO: fallback to the system fonts
-      // {
-      //   rel: 'stylesheet',
-      //   href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500'
-      // },
-      // {
-      //   rel: 'preconnect',
-      //   href: 'http://fonts.gstatic.com'
-      // },
       {
         rel: 'preconnect',
         href: 'https://image.tmdb.org'

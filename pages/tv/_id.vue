@@ -35,13 +35,13 @@
       <Images
         v-if="item.images.backdrops.length"
         title="Backdrops"
-        type="backdrop"
+        :type="IMAGE_TYPES.BACKDROP"
         :images="item.images.backdrops" />
 
       <Images
         v-if="item.images.posters.length"
         title="Posters"
-        type="poster"
+        :type="IMAGE_TYPES.POSTER"
         :images="item.images.posters" />
     </template>
 
@@ -69,6 +69,7 @@ import Images from '~/components/Images';
 import Credits from '~/components/Credits';
 import Episodes from '~/components/tv/Episodes';
 import ListingCarousel from '~/components/ListingCarousel';
+import IMAGE_TYPES from '~/utils/constants/image-types';
 
 export default {
   components: {
@@ -204,6 +205,7 @@ export default {
   created() {
     this.createMenu();
     this.initRecommended();
+    this.IMAGE_TYPES = IMAGE_TYPES;
   },
 
   methods: {

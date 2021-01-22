@@ -1,9 +1,14 @@
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
+
+import {
+  TMDB_IMAGE_URL,
+  BACKDROP_SIZES
+} from '~/config/tmdbAPI';
+import scssVariables from '~/assets/css/utilities/_variables.scss';
 
 /**
  * Name
  */
-export const name = {
+const name = {
   computed: {
     name() {
       return this.item.title ? this.item.title : this.item.name;
@@ -14,7 +19,7 @@ export const name = {
 /**
  * Star rating
  */
-export const stars = {
+const stars = {
   computed: {
     stars() {
       if (this.item.vote_average) {
@@ -27,7 +32,7 @@ export const stars = {
 /**
  * Year started
  */
-export const yearStart = {
+const yearStart = {
   computed: {
     yearStart() {
       const date = this.item.release_date ? this.item.release_date : this.item.first_air_date;
@@ -42,7 +47,7 @@ export const yearStart = {
 /**
  * Year ended
  */
-export const yearEnd = {
+const yearEnd = {
   computed: {
     yearEnd() {
       const date = this.item.last_air_date;
@@ -57,11 +62,43 @@ export const yearEnd = {
 /**
  * Backdrop
  */
-export const backdrop = {
+const backdropSrc = {
   computed: {
-    backdrop() {
+    backdropSrc() {
       if (this.item.backdrop_path) {
-        return `${TMDB_IMAGE_URL}/original${this.item.backdrop_path}`;
+        return `${TMDB_IMAGE_URL}/${BACKDROP_SIZES.W1280}${this.item.backdrop_path}`;
+      }
+    }
+  }
+};
+
+const backdropSrcset = {
+  computed: {
+    backdropSrcset() {
+      if (this.item.backdrop_path) {
+        const srcset =
+          `${TMDB_IMAGE_URL}/${BACKDROP_SIZES.W300}${this.item.backdrop_path} 300w, ` +
+          `${TMDB_IMAGE_URL}/${BACKDROP_SIZES.W780}${this.item.backdrop_path} 780w, ` +
+          `${TMDB_IMAGE_URL}/${BACKDROP_SIZES.W1280}${this.item.backdrop_path} 1280w`;
+
+        return srcset;
+      }
+    }
+  }
+};
+
+const backdropSizes = {
+  computed: {
+    backdropSizes() {
+      if (this.item.backdrop_path) {
+        // MEMO: 1.77 is the ratio of width vs. height of the backdrop
+        // MEMO: 0.4 is from padding-bottom: 40%; (components\Hero.vue)
+        const sizes =
+          `100vw, ` +
+          `(min-width: ${scssVariables.breakpointMedium}) calc(100vw * 0.4 * 1.77), ` +
+          `(min-width: ${scssVariables.breakpointLarge}) calc((100vw - ${scssVariables.layoutNavWidth}) * 0.4 * 1.77)`;
+
+        return sizes;
       }
     }
   }
@@ -70,7 +107,7 @@ export const backdrop = {
 /**
  * Certification
  */
-export const cert = {
+const cert = {
   computed: {
     cert() {
       // movie
@@ -109,7 +146,7 @@ export const cert = {
 /**
  * Trailer
  */
-export const trailer = {
+const trailer = {
   computed: {
     trailer() {
       let videos = this.item.videos.results;
@@ -138,7 +175,7 @@ export const trailer = {
 /**
  * Directors
  */
-export const directors = {
+const directors = {
   computed: {
     directors() {
       const people = this.item.credits.crew;
@@ -155,7 +192,7 @@ export const directors = {
 /**
  * Creators
  */
-export const creators = {
+const creators = {
   computed: {
     creators() {
       const people = this.item.created_by;
@@ -165,4 +202,18 @@ export const creators = {
       }
     }
   }
+};
+
+export {
+  name,
+  stars,
+  yearStart,
+  yearEnd,
+  backdropSrc,
+  backdropSrcset,
+  backdropSizes,
+  cert,
+  trailer,
+  directors,
+  creators
 };

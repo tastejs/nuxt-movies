@@ -7,10 +7,11 @@
       @click.prevent="handleVideo(index)">
 
       <div :class="$style.image">
+        <!-- TODO: could serve responsive images -->
         <img
           v-if="video.thumb"
-          v-lazyload="video.thumb"
-          class="lazyload"
+          loading="lazy"
+          :src="video.thumb"
           :alt="video.name">
 
         <div
@@ -190,10 +191,6 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  &.lazyloaded .lazyload {
-    opacity: 0.8;
   }
 }
 

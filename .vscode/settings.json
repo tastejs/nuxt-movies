@@ -5,6 +5,7 @@
     "TMDB",
     "YOUTUBE",
     "autorun",
+    "bestv",
     "consts",
     "lazyerror",
     "lazyload",
@@ -16,6 +17,9 @@
     "nuxtjs",
     "ohmyfetch",
     "slidedown",
-    "smoothscroll"
+    "smoothscroll",
+    "xlarge",
+    "xlarger",
+    "xsmall"
   ]
 }

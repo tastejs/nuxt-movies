@@ -6,11 +6,12 @@
       :to="{ name: `${media}-id`, params: { id: item.id } }">
       <div class="card__img">
         <img
-          v-if="poster"
-          v-lazyload="poster"
-          class="lazyload"
+          v-if="posterSrc"
+          loading="lazy"
+          :src="posterSrc"
+          :srcset="posterSrcset"
+          :sizes="posterSizes"
           :alt="name">
-
         <span v-else>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -50,8 +51,15 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
-import { name, stars } from '~/mixins/Details';
+import {
+  TMDB_IMAGE_URL,
+  POSTER_SIZES
+} from '~/config/tmdbAPI';
+import {
+  name,
+  stars
+} from '~/mixins/Details';
+import scssVariables from '~/assets/css/utilities/_variables.scss';
 
 export default {
   mixins: [
@@ -67,14 +75,48 @@ export default {
   },
 
   computed: {
-    poster() {
+    posterSrc() {
       if (this.item.poster_path) {
-        return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.item.poster_path}`;
+        return `${TMDB_IMAGE_URL}/${POSTER_SIZES.W342}${this.item.poster_path}`;
       } else if (this.item.profile_path) {
         return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.item.profile_path}`;
       } else {
         return false;
       }
+    },
+
+    posterSrcset() {
+      const srcset =
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W92}${this.item.poster_path} 92w, ` +
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W154}${this.item.poster_path} 154w, ` +
+        // TODO: 300w is set as a workaround
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W185}${this.item.poster_path} 300w, ` +
+        // `${TMDB_IMAGE_URL}/${LOGO_SIZES.W300}${this.item.poster_path} 300w, ` +
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W342}${this.item.poster_path} 342w, ` +
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W500}${this.item.poster_path} 500w, ` +
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W780}${this.item.poster_path} 780w, ` +
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.ORIGINAL}${this.item.poster_path} 780w`;
+
+      return srcset;
+    },
+
+    posterSizes() {
+      const sizes =
+        `calc(0.33333 * (100vw - 22px) - 8px), ` +
+        `(min-width: ${scssVariables.breakpointXsmall}) ` +
+        `calc(.25 * (100vw - 72px) - 8px), ` +
+        `(min-width: ${scssVariables.breakpointMedium}) ` +
+        `calc(.2 * (100vw - 72px) - 8px), ` +
+        `(min-width: ${scssVariables.breakpointLarge}) ` +
+        `calc(.2 * (100vw - 92px - ${scssVariables.layoutNavWidth}) - 8px), ` +
+        `(min-width: ${scssVariables.breakpointXlarger1}) ` +
+        `calc(.16667 * (100vw - 92px - ${scssVariables.layoutNavWidth}) - 8px), ` +
+        `(min-width: ${scssVariables.breakpointXlarger2}) ` +
+        `calc(.14286 * (100vw - 92px - ${scssVariables.layoutNavWidth}) - 8px), ` +
+        `(min-width: ${scssVariables.breakpointXlarger3}) ` +
+        `calc(.125 * (100vw - 92px - ${scssVariables.layoutNavWidth}) - 8px)`;
+
+      return sizes;
     },
 
     // TODO: `tv` and `movie` are hardcoded

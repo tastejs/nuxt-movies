@@ -6,11 +6,12 @@
       :to="{ name: 'person-id', params: { id: person.id } }">
       <div class="credits-item__img">
         <img
-          v-if="poster"
-          v-lazyload="poster"
-          class="lazyload"
+          v-if="posterSrc"
+          loading="lazy"
+          :src="posterSrc"
+          :srcset="posterSrcset"
+          :sizes="posterSizes"
           :alt="person.name">
-
         <span v-else>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +39,11 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
+import {
+  TMDB_IMAGE_URL,
+  POSTER_SIZES
+} from '~/config/tmdbAPI';
+import scssVariables from '~/assets/css/utilities/_variables.scss';
 
 export default {
   props: {
@@ -49,12 +54,46 @@ export default {
   },
 
   computed: {
-    poster() {
+    posterSrc() {
       if (this.person.profile_path) {
-        return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.person.profile_path}`;
+        return `${TMDB_IMAGE_URL}/${POSTER_SIZES.W342}${this.person.profile_path}`;
       } else {
         return null;
       }
+    },
+
+    // TODO: should not duplicate
+    posterSrcset() {
+      const srcset =
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W92}${this.person.profile_path} 92w, ` +
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W154}${this.person.profile_path} 154w, ` +
+        // TODO: 300w is set as a workaround
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W185}${this.person.profile_path} 300w, ` +
+        // `${TMDB_IMAGE_URL}/${LOGO_SIZES.W300}${this.person.profile_path} 300w, ` +
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W342}${this.person.profile_path} 342w, ` +
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W500}${this.person.profile_path} 500w, ` +
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.W780}${this.person.profile_path} 780w, ` +
+        `${TMDB_IMAGE_URL}/${POSTER_SIZES.ORIGINAL}${this.person.profile_path} 780w`;
+
+      return srcset;
+    },
+
+    posterSizes() {
+      // TODO: `930px`, `1130px`, and `1450px` are hardcoded
+      const sizes =
+        `calc(0.33333 * (100vw - 22px) - 8px), ` +
+        `(min-width: ${scssVariables.breakpointSmall}) ` +
+        `calc(.25 * (100vw - 72px) - 8px), ` +
+        `(min-width: 930px) ` +
+        `calc(.2 * (100vw - 72px) - 8px), ` +
+        `(min-width: 1130px) ` +
+        `calc(.16667 * (100vw - 72px) - 8px), ` +
+        `(min-width: ${scssVariables.breakpointLarge}) ` +
+        `calc(.16667 * (100vw - 92px - ${scssVariables.layoutNavWidth}) - 8px), ` +
+        `(min-width: 1450px) ` +
+        `calc(.14286 * (100vw - 92px - ${scssVariables.layoutNavWidth}) - 8px)`;
+
+      return sizes;
     }
   }
 };

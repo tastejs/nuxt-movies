@@ -22,6 +22,9 @@ $breakpoint-small: 768px;
 $breakpoint-medium: 1024px;
 $breakpoint-large: 1200px;
 $breakpoint-xlarge: 1400px;
+$breakpoint-xlarger1: 1500px;
+$breakpoint-xlarger2: 1800px;
+$breakpoint-xlarger3: 2500px;
 
 $z-index-mobile-stepper: 1000;
 $z-index-speed-dial: 1050;
@@ -30,3 +33,17 @@ $z-index-drawer: 1200;
 $z-index-modal: 1300;
 $z-index-snack-bar: 1400;
 $z-index-tooltip: 1500;
+
+$layout-nav-width: 10rem;
+
+:export {
+  breakpointXsmall: $breakpoint-xsmall;
+  breakpointSmall: $breakpoint-small;
+  breakpointMedium: $breakpoint-medium;
+  breakpointLarge: $breakpoint-large;
+  breakpointXlarge: $breakpoint-xlarge;
+  breakpointXlarger1: $breakpoint-xlarger1;
+  breakpointXlarger2: $breakpoint-xlarger2;
+  breakpointXlarger3: $breakpoint-xlarger3;
+  layoutNavWidth: $layout-nav-width;
+}

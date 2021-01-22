@@ -3,10 +3,11 @@
   <div class="spacing" :class="$style.info">
     <div :class="$style.left">
       <div :class="$style.poster">
+        <!-- TODO: could serve responsive images -->
+        <!-- MEMO: do not lazy load as it's in above-the-fold area -->
         <img
-          v-if="poster"
-          v-lazyload="poster"
-          class="lazyload"
+          v-if="posterSrc"
+          :src="posterSrc"
           :alt="name">
 
         <span v-else>
@@ -160,7 +161,7 @@ export default {
   },
 
   computed: {
-    poster() {
+    posterSrc() {
       if (this.item.poster_path) {
         return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.item.poster_path}`;
       } else {

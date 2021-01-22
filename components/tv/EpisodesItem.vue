@@ -2,10 +2,11 @@
 <template>
   <div :class="$style.item">
     <div :class="$style.image">
+      <!-- TODO: could serve responsive images -->
       <img
-        v-if="poster"
-        v-lazyload="poster"
-        class="lazyload"
+        v-if="posterSrc"
+        loading="lazy"
+        :src="posterSrc"
         :alt="episode.name">
 
       <span v-else>
@@ -40,7 +41,10 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
+import {
+  TMDB_IMAGE_URL,
+  OTHER_SIZES
+} from '~/config/tmdbAPI';
 
 export default {
   props: {
@@ -51,9 +55,9 @@ export default {
   },
 
   computed: {
-    poster() {
+    posterSrc() {
       if (this.episode.still_path) {
-        return `${TMDB_IMAGE_URL}/w400${this.episode.still_path}`;
+        return `${TMDB_IMAGE_URL}/${OTHER_SIZES.W400}${this.episode.still_path}`;
       } else {
         return null;
       }
