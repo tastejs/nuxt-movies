@@ -3,7 +3,7 @@
   <div class="spacing" :class="$style.info">
     <div :class="$style.left">
       <div :class="$style.poster">
-        <!-- TODO: could add responsive images -->
+        <!-- TODO: could serve responsive images -->
         <img
           v-if="posterSrc"
           loading="lazy"

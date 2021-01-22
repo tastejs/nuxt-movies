@@ -3,14 +3,11 @@
   <div class="spacing" :class="$style.info">
     <div :class="$style.left">
       <div :class="$style.poster">
-        <!-- ray test touch < -->
+        <!-- TODO: could serve responsive images -->
         <img
-          v-if="avatar"
-          v-lazyload="avatar"
-          class="lazyload"
+          v-if="avatarSrc"
+          :src="avatarSrc"
           :alt="person.name">
-        <!-- ray test touch > -->
-
         <span v-else>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -35,8 +32,8 @@
 
         <div v-if="person.biography">
           <img
-            v-if="avatar"
-            :src="avatar"
+            v-if="avatarSrc"
+            :src="avatarSrc"
             :alt="person.name">
 
           <!-- eslint-disable-next-line vue/no-v-html -->
@@ -113,7 +110,7 @@ export default {
   },
 
   computed: {
-    avatar() {
+    avatarSrc() {
       if (this.person.profile_path) {
         return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.person.profile_path}`;
       } else {

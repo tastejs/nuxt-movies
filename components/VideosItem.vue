@@ -7,7 +7,7 @@
       @click.prevent="handleVideo(index)">
 
       <div :class="$style.image">
-        <!-- TODO: could add responsive images -->
+        <!-- TODO: could serve responsive images -->
         <img
           v-if="video.thumb"
           loading="lazy"
