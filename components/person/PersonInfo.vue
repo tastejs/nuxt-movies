@@ -35,10 +35,9 @@
           <nuxt-img
             v-if="avatar"
             :src="avatar"
-            :alt="person.name">
-            <!-- eslint-disable-next-line vue/no-v-html -->
-            <div v-html="formatContent(person.biography)" />
-          </nuxt-img>
+            :alt="person.name" />
+          <!-- eslint-disable-next-line vue/no-v-html -->
+          <div v-html="formatContent(person.biography)" />
         </div>
       </div>
 

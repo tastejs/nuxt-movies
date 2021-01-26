@@ -1052,10 +1052,10 @@
   resolved "https://registry.yarnpkg.com/@nuxt/h2/-/h2-0.0.14.tgz#30628ccb9965777326e5e6d116ccb7560b56ec9b"
   integrity sha512-rBiYoJvh7Ns5gwR5hKUGIORg7OfPdgMfxbnzxt204gZRW4sruogJxDm2Vlc5weTagPpugY+rXhwRGQKWKs4JUQ==
 
-"@nuxt/image@^0.2.0-alpha.7":
-  version "0.2.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/@nuxt/image/-/image-0.2.0-alpha.7.tgz#f3da1239d072ca26310470a9a131fc0d1cfc8002"
-  integrity sha512-5OgPcPB/mFqsYovCNSMtZOMplY7+hzp2HnMU+STPCJpMmF81dr7jZyQpViNIj8GSO3HIW5D/Pxzhh7dI5dTjGA==
+"@nuxt/image@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@nuxt/image/-/image-0.2.0.tgz#03b7b3476efdd5da74cd6f229b4d98d954947333"
+  integrity sha512-SIYj+Xp5qUeAKS+g7iG3f+f5bPa2yzTUfEAi6YkLSImo5h09/UsPwKCdBu0xNu19X/NDgcYR1QK8W+0HqdxMtg==
   dependencies:
     allowlist "^0.1.1"
     consola "^2.15.0"
@@ -1067,7 +1067,7 @@
     is-https "^3.0.2"
     node-fetch "^2.6.1"
     requrl "^3.0.2"
-    ufo "^0.5.2"
+    ufo "^0.5.4"
     upath "^2.0.1"
 
 "@nuxt/loading-screen@^2.0.3":
@@ -10393,7 +10393,7 @@ ua-parser-js@^0.7.22:
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.23.tgz#704d67f951e13195fbcd3d78818577f5bc1d547b"
   integrity sha512-m4hvMLxgGHXG3O3fQVAyyAQpZzDOvwnhOTjYz5Xmr7r/+LpkNy3vJXdVRWgd1TkAb7NGROZuSy96CrlNVjA7KA==
 
-ufo@^0.5.2:
+ufo@^0.5.4:
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/ufo/-/ufo-0.5.4.tgz#a9b469fdc56fe27169f6f474ed590cc7b0fd4ebe"
   integrity sha512-JxWFr31rhXXufMQKpV2CxFNrc1p9//aqHguWR32M0jPQnw2TNK9sERd7Bic+ZSprlmDPRPR4yuSueLNT8hsdQA==
