@@ -80,13 +80,10 @@ export default {
   methods: {
     handleData() {
       for (const image of this.images) {
-        image.thumb = this.$img(image.file_path, {
-          modifiers: {
-            width: this.type === 'poster' ? 370 : 533,
-            height: this.type === 'poster' ? 556 : 300
-          }
-        }).url;
-        image.src = this.$img(image.file_path).url;
+        image.thumbSrc = image.file_path;
+        image.thumbWidth = this.type === 'poster' ? 370 : 533;
+        image.thumbHeight = this.type === 'poster' ? 556 : 300;
+        image.src = image.file_path;
       }
     },
 

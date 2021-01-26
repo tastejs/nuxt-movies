@@ -2,13 +2,15 @@
 <template>
   <div :class="[$style.item, $style[type]]">
     <a
-      :href="image.thumb"
+      :href="image.thumbSrc"
       @click.prevent="handleGallery(index)">
       <div :class="$style.image">
         <nuxt-img
-          v-if="image.thumb"
+          v-if="image.thumbSrc"
           loading="lazy"
-          :src="image.thumb" />
+          :src="image.thumbSrc"
+          :width="image.thumbWidth"
+          :height="image.thumbHeight" />
       </div>
     </a>
   </div>
