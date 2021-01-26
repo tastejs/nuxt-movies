@@ -22,7 +22,11 @@ export function getImage(src, { modifiers = {} } = {}) {
     src = src.substr(TMDB_IMAGE_URL.length);
   }
 
+  if (!operations && !src.includes('original/')) {
+    operations = 'original';
+  }
+
   return {
-    url: joinURL(TMDB_IMAGE_URL, operations || 'original', src)
+    url: joinURL(TMDB_IMAGE_URL, operations, src)
   };
 }
