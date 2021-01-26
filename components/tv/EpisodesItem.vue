@@ -5,6 +5,7 @@
       <nuxt-img
         v-if="poster"
         loading="lazy"
+        width="400"
         :src="poster"
         :alt="episode.name" />
 
@@ -40,8 +41,6 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
-
 export default {
   props: {
     episode: {
@@ -52,11 +51,7 @@ export default {
 
   computed: {
     poster() {
-      if (this.episode.still_path) {
-        return `${TMDB_IMAGE_URL}/w400${this.episode.still_path}`;
-      } else {
-        return null;
-      }
+      return this.episode.still_path;
     }
   }
 };

@@ -8,6 +8,8 @@
         <nuxt-img
           v-if="poster"
           loading="lazy"
+          width="370"
+          height="556"
           :alt="name"
           :src="poster" />
 
@@ -50,7 +52,6 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 import { name, stars } from '~/mixins/Details';
 
 export default {
@@ -68,13 +69,7 @@ export default {
 
   computed: {
     poster() {
-      if (this.item.poster_path) {
-        return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.item.poster_path}`;
-      } else if (this.item.profile_path) {
-        return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.item.profile_path}`;
-      } else {
-        return false;
-      }
+      return this.item.poster_path || this.item.profile_path;
     },
 
     // TODO: `tv` and `movie` are hardcoded

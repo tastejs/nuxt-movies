@@ -6,12 +6,14 @@
         <nuxt-img
           v-if="poster"
           loading="lazy"
+          width="370"
+          height="556"
           :src="poster"
           :alt="name" />
 
         <span v-else>
           <svg
-            xmlns="http://www.w3.org/2000/svg"
+            xm;lns="http://www.w3.org/2000/svg"
             width="40"
             height="40"
             viewBox="0 0 24 24"
@@ -138,7 +140,6 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 import { name, creators } from '~/mixins/Details';
 import ExternalLinks from '~/components/ExternalLinks';
 
@@ -161,11 +162,7 @@ export default {
 
   computed: {
     poster() {
-      if (this.item.poster_path) {
-        return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.item.poster_path}`;
-      } else {
-        return false;
-      }
+      return this.item.poster_path;
     }
   },
 

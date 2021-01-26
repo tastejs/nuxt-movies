@@ -8,6 +8,8 @@
         <nuxt-img
           v-if="poster"
           loading="lazy"
+          width="370"
+          height="556"
           :alt="person.name"
           :src="poster" />
 
@@ -38,7 +40,6 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 
 export default {
   props: {
@@ -50,11 +51,7 @@ export default {
 
   computed: {
     poster() {
-      if (this.person.profile_path) {
-        return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.person.profile_path}`;
-      } else {
-        return null;
-      }
+      return this.person.profile_path;
     }
   }
 };

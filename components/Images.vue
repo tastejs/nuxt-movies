@@ -34,7 +34,6 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 import ImagesItem from '~/components/ImagesItem';
 import Modal from '~/components/Modal';
 
@@ -80,18 +79,15 @@ export default {
 
   methods: {
     handleData() {
-      let thumb;
-
-      if (this.type === 'poster') {
-        thumb = `${TMDB_IMAGE_URL}/w370_and_h556_bestv2`;
-      } else {
-        thumb = `${TMDB_IMAGE_URL}/w533_and_h300_bestv2`;
+      for (const image of this.images) {
+        image.thumb = this.$img(image.file_path, {
+          modifiers: {
+            width: this.type === 'poster' ? 370 : 533,
+            height: this.type === 'poster' ? 533 : 300
+          }
+        }).url;
+        image.src = this.$img(image.file_path).url;
       }
-
-      this.images.forEach(image => {
-        image.thumb = `${thumb}${image.file_path}`;
-        image.src = `${TMDB_IMAGE_URL}/original${image.file_path}`;
-      });
     },
 
     openModal(index) {

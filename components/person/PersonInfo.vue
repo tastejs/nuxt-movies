@@ -6,6 +6,8 @@
         <nuxt-img
           v-if="avatar"
           loading="lazy"
+          width="370"
+          height="556"
           :src="avatar"
           :alt="person.name" />
 
@@ -94,7 +96,6 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 import ExternalLinks from '~/components/ExternalLinks';
 
 export default {
@@ -111,11 +112,7 @@ export default {
 
   computed: {
     avatar() {
-      if (this.person.profile_path) {
-        return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.person.profile_path}`;
-      } else {
-        return null;
-      }
+      return this.person.profile_path;
     },
 
     age() {

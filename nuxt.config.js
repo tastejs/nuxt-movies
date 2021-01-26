@@ -24,6 +24,15 @@ export default {
     '@nuxt/image'
   ],
 
+  image: {
+    provider: 'tmdb',
+    providers: {
+      tmdb: {
+        provider: require.resolve('./utils/tmdb-image')
+      }
+    }
+  },
+
   /*
   ** Global Plugins
   */
