@@ -5,11 +5,13 @@
       class="credits-item__link"
       :to="{ name: 'person-id', params: { id: person.id } }">
       <div class="credits-item__img">
-        <img
+        <nuxt-img
           v-if="poster"
-          v-lazyload="poster"
-          class="lazyload"
-          :alt="person.name">
+          loading="lazy"
+          width="370"
+          height="556"
+          :alt="person.name"
+          :src="poster" />
 
         <span v-else>
           <svg
@@ -38,7 +40,6 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 
 export default {
   props: {
@@ -50,11 +51,7 @@ export default {
 
   computed: {
     poster() {
-      if (this.person.profile_path) {
-        return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.person.profile_path}`;
-      } else {
-        return null;
-      }
+      return this.person.profile_path;
     }
   }
 };

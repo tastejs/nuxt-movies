@@ -2,11 +2,12 @@
 <template>
   <div :class="$style.item">
     <div :class="$style.image">
-      <img
+      <nuxt-img
         v-if="poster"
-        v-lazyload="poster"
-        class="lazyload"
-        :alt="episode.name">
+        loading="lazy"
+        width="400"
+        :src="poster"
+        :alt="episode.name" />
 
       <span v-else>
         <svg
@@ -40,8 +41,6 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
-
 export default {
   props: {
     episode: {
@@ -52,11 +51,7 @@ export default {
 
   computed: {
     poster() {
-      if (this.episode.still_path) {
-        return `${TMDB_IMAGE_URL}/w400${this.episode.still_path}`;
-      } else {
-        return null;
-      }
+      return this.episode.still_path;
     }
   }
 };

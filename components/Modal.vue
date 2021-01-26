@@ -45,11 +45,10 @@
               allow="autoplay; encrypted-media"
               allowfullscreen />
 
-            <img
-              v-if="type === 'image' && activeItem"
-              v-lazyload="activeItem.src"
-              class="lazyload"
-              alt="">
+            <nuxt-img
+              v-if="type === 'image' && activeItem && activeItem.src"
+              loading="lazy"
+              :src="activeItem.src" />
           </div>
 
           <div

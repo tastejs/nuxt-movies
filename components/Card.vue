@@ -5,12 +5,14 @@
       class="card__link"
       :to="{ name: `${media}-id`, params: { id: item.id } }">
       <div class="card__img">
-        <img
-          v-if="poster"
-          v-lazyload="poster"
-          class="lazyload"
-          :alt="name">
-
+        <transition v-if="poster" name="fade">
+          <nuxt-img
+            loading="lazy"
+            width="370"
+            height="556"
+            :alt="name"
+            :src="poster" />
+        </transition>
         <span v-else>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +52,6 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 import { name, stars } from '~/mixins/Details';
 
 export default {
@@ -68,13 +69,7 @@ export default {
 
   computed: {
     poster() {
-      if (this.item.poster_path) {
-        return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.item.poster_path}`;
-      } else if (this.item.profile_path) {
-        return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.item.profile_path}`;
-      } else {
-        return false;
-      }
+      return this.item.poster_path || this.item.profile_path;
     },
 
     // TODO: `tv` and `movie` are hardcoded
@@ -90,3 +85,12 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+</style>

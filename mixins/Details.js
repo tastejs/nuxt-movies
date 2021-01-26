@@ -1,5 +1,3 @@
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
-
 /**
  * Name
  */
@@ -61,7 +59,7 @@ export const backdrop = {
   computed: {
     backdrop() {
       if (this.item.backdrop_path) {
-        return `${TMDB_IMAGE_URL}/original${this.item.backdrop_path}`;
+        return this.$img(this.item.backdrop_path).url;
       }
     }
   }

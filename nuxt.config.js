@@ -20,14 +20,23 @@ export default {
   */
   buildModules: [
     // '@nuxt/sigma',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxt/image'
   ],
+
+  image: {
+    provider: 'tmdb',
+    providers: {
+      tmdb: {
+        provider: require.resolve('./utils/tmdb-image')
+      }
+    }
+  },
 
   /*
   ** Global Plugins
   */
   plugins: [
-    '~/plugins/lazyload',
     '~/plugins/filters',
     '~/plugins/ga.client',
     '~/plugins/search'

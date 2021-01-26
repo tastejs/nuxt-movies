@@ -31,7 +31,6 @@
 
 <script>
 import { getPerson } from '~/services/tmdbAPI';
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 import TheTopNav from '~/components/TheTopNav';
 import PersonInfo from '~/components/person/PersonInfo';
 import MediaNav from '~/components/MediaNav';
@@ -124,11 +123,10 @@ export default {
     },
 
     metaImage() {
-      if (this.person.profile_path) {
-        return `${TMDB_IMAGE_URL}/w500${this.person.profile_path}`;
-      } else {
+      if (!this.person.profile_path) {
         return '';
       }
+      return this.$img(this.person.profile_path, { modifiers: { width: 500 } }).url;
     },
 
     imagesShown() {

@@ -3,11 +3,13 @@
   <div class="spacing" :class="$style.info">
     <div :class="$style.left">
       <div :class="$style.poster">
-        <img
+        <nuxt-img
           v-if="avatar"
-          v-lazyload="avatar"
-          class="lazyload"
-          :alt="person.name">
+          loading="lazy"
+          width="370"
+          height="556"
+          :src="avatar"
+          :alt="person.name" />
 
         <span v-else>
           <svg
@@ -32,11 +34,10 @@
         </h2>
 
         <div v-if="person.biography">
-          <img
+          <nuxt-img
             v-if="avatar"
             :src="avatar"
-            :alt="person.name">
-
+            :alt="person.name" />
           <!-- eslint-disable-next-line vue/no-v-html -->
           <div v-html="formatContent(person.biography)" />
         </div>
@@ -95,7 +96,6 @@
 </template>
 
 <script>
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 import ExternalLinks from '~/components/ExternalLinks';
 
 export default {
@@ -112,11 +112,7 @@ export default {
 
   computed: {
     avatar() {
-      if (this.person.profile_path) {
-        return `${TMDB_IMAGE_URL}/w370_and_h556_bestv2${this.person.profile_path}`;
-      } else {
-        return null;
-      }
+      return this.person.profile_path;
     },
 
     age() {

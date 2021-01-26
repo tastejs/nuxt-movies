@@ -34,12 +34,12 @@
             </svg>
           </button>
 
-          <img
+          <nuxt-img
             v-if="backdrop"
-            v-lazyload="backdrop"
-            class="lazyload"
+            loading="lazy"
             :class="$style.image"
-            :alt="name">
+            :alt="name"
+            :src="backdrop" />
         </div>
       </div>
 

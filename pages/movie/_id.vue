@@ -51,7 +51,6 @@
 
 <script>
 import { getMovie, getMovieRecommended } from '~/services/tmdbAPI';
-import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 import { name, yearStart } from '~/mixins/Details';
 import TheTopNav from '~/components/TheTopNav';
 import Hero from '~/components/Hero';
@@ -158,11 +157,10 @@ export default {
     },
 
     metaImage() {
-      if (this.item.poster_path) {
-        return `${TMDB_IMAGE_URL}/w500${this.item.poster_path}`;
-      } else {
+      if (!this.item.poster_path) {
         return '';
       }
+      return this.$img(this.item.poster_path, { modifiers: { width: 500 } }).url;
     },
 
     creditsShown() {
