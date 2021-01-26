@@ -5,14 +5,14 @@
       class="card__link"
       :to="{ name: `${media}-id`, params: { id: item.id } }">
       <div class="card__img">
-        <nuxt-img
-          v-if="poster"
-          loading="lazy"
-          width="370"
-          height="556"
-          :alt="name"
-          :src="poster" />
-
+        <transition v-if="poster" name="fade">
+          <nuxt-img
+            loading="lazy"
+            width="370"
+            height="556"
+            :alt="name"
+            :src="poster" />
+        </transition>
         <span v-else>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -85,3 +85,12 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+</style>
