@@ -36,7 +36,6 @@
 
           <nuxt-img
             v-if="backdrop"
-            loading="lazy"
             :class="$style.image"
             :alt="name"
             :src="backdrop" />

@@ -5,10 +5,9 @@
       <div :class="$style.poster">
         <nuxt-img
           v-if="avatar"
-          loading="lazy"
+          :src="avatar"
           width="370"
           height="556"
-          :src="avatar"
           :alt="person.name" />
 
         <span v-else>
@@ -37,6 +36,8 @@
           <nuxt-img
             v-if="avatar"
             :src="avatar"
+            width="370"
+            height="556"
             :alt="person.name" />
           <!-- eslint-disable-next-line vue/no-v-html -->
           <div v-html="formatContent(person.biography)" />

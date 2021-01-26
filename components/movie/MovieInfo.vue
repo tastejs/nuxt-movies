@@ -5,7 +5,6 @@
       <div :class="$style.poster">
         <nuxt-img
           v-if="poster"
-          loading="lazy"
           width="370"
           height="556"
           :src="poster"

@@ -47,7 +47,6 @@
 
             <nuxt-img
               v-if="type === 'image' && activeItem && activeItem.src"
-              loading="lazy"
               :src="activeItem.src" />
           </div>
 
