@@ -1,10 +1,11 @@
+
 import { joinURL } from 'ufo';
 
-const TMDB_IMAGE_URL = 'https://image.tmdb.org/t/p';
+import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 
-// https://image.nuxtjs.org/advanced/custom-provider
+// RE: https://image.nuxtjs.org/advanced/custom-provider
 
-export function getImage(src, { modifiers = {} } = {}) {
+function getImage(src, { modifiers = {} } = {}) {
   const { width, height } = modifiers;
 
   let operations = '';
@@ -30,3 +31,7 @@ export function getImage(src, { modifiers = {} } = {}) {
     url: joinURL(TMDB_IMAGE_URL, operations, src)
   };
 }
+
+export {
+  getImage
+};
