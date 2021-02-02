@@ -2,12 +2,14 @@
 <template>
   <div :class="$style.item">
     <div :class="$style.image">
+      <!-- ray test touch < -->
       <nuxt-img
         v-if="poster"
         loading="lazy"
         width="400"
         :src="poster"
         :alt="episode.name" />
+      <!-- ray test touch > -->
 
       <span v-else>
         <svg
@@ -89,21 +91,25 @@ export default {
 }
 
 .image {
-  position: relative;
-  height: 0;
-  padding-top: 56.25%;
-  margin-bottom: 1.5rem;
-  overflow: hidden;
+  // ray test touch <
+  // position: relative;
+  // height: 0;
+  // padding-top: 56.25%;
+  // margin-bottom: 1.5rem;
+  // overflow: hidden;
+  // ray test touch >
   background-color: $secondary-color;
 
-  img,
-  span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+  // ray test touch <
+  // img,
+  // span {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  // }
+  // ray test touch >
 
   span {
     display: flex;

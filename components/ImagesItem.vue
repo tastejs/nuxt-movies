@@ -5,12 +5,14 @@
       :href="image.thumbSrc"
       @click.prevent="handleGallery(index)">
       <div :class="$style.image">
+        <!-- ray test touch < -->
         <nuxt-img
           v-if="image.thumbSrc"
           loading="lazy"
           :src="image.thumbSrc"
           :width="image.thumbWidth"
           :height="image.thumbHeight" />
+        <!-- ray test touch > -->
       </div>
     </a>
   </div>
@@ -51,18 +53,22 @@ export default {
 }
 
 .image {
-  position: relative;
-  height: 0;
-  overflow: hidden;
+  // ray test touch <
+  // position: relative;
+  // height: 0;
+  // overflow: hidden;
+  // ray test touch >
   background-color: $secondary-color;
 
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+  // ray test touch <
+  // img {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  // }
+  // ray test touch >
 }
 
 .backdrop {
@@ -88,9 +94,11 @@ export default {
     width: 14.2857143%;
   }
 
-  .image {
-    padding-top: 56.28%;
-  }
+  // ray test touch <
+  // .image {
+  //   padding-top: 56.28%;
+  // }
+  // ray test touch >
 }
 
 .poster {
@@ -116,8 +124,10 @@ export default {
     width: 12.5%;
   }
 
-  .image {
-    padding-top: 150.27%;
-  }
+  // ray test touch <
+  // .image {
+  //   padding-top: 150.27%;
+  // }
+  // ray test touch >
 }
 </style>

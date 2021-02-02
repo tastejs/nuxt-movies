@@ -5,6 +5,7 @@
       class="credits-item__link"
       :to="{ name: 'person-id', params: { id: person.id } }">
       <div class="credits-item__img">
+        <!-- ray test touch < -->
         <nuxt-img
           v-if="poster"
           loading="lazy"
@@ -12,6 +13,7 @@
           height="556"
           :alt="person.name"
           :src="poster" />
+        <!-- ray test touch > -->
 
         <span v-else>
           <svg
@@ -66,20 +68,24 @@ export default {
 }
 
 .credits-item__img {
-  position: relative;
-  height: 0;
-  padding-top: 150.27%;
-  overflow: hidden;
+  // ray test touch <
+  // position: relative;
+  // height: 0;
+  // padding-top: 150.27%;
+  // overflow: hidden;
+  // ray test touch >
   background-color: $secondary-color;
   transition: transform 0.3s ease-in-out;
 
   img,
   span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    // ray test touch <
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // width: 100%;
+    // height: 100%;
+    // ray test touch >
     transform: scale(0.97);
   }
 

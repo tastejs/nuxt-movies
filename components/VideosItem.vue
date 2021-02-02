@@ -7,11 +7,13 @@
       @click.prevent="handleVideo(index)">
 
       <div :class="$style.image">
+        <!-- ray test touch < -->
         <nuxt-img
           v-if="video.thumb"
           loading="lazy"
           :src="video.thumb"
           :alt="video.name" />
+        <!-- ray test touch > -->
 
         <div
           v-if="video.duration"
@@ -171,20 +173,24 @@ export default {
 }
 
 .image {
-  position: relative;
-  height: 0;
-  padding-bottom: 56.25%;
-  overflow: hidden;
+  // ray test touch <
+  // position: relative;
+  // height: 0;
+  // padding-bottom: 56.25%;
+  // overflow: hidden;
+  // ray test touch >
   background-color: $secondary-color;
 
-  img,
-  span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+  // ray test touch <
+  // img,
+  // span {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  // }
+  // ray test touch >
 
   span {
     display: flex;

@@ -5,6 +5,7 @@
       class="card__link"
       :to="{ name: `${media}-id`, params: { id: item.id } }">
       <div class="card__img">
+        <!-- ray test touch < -->
         <transition v-if="poster" name="fade">
           <nuxt-img
             loading="lazy"
@@ -13,6 +14,7 @@
             :alt="name"
             :src="poster" />
         </transition>
+        <!-- ray test touch > -->
         <span v-else>
           <svg
             xmlns="http://www.w3.org/2000/svg"
