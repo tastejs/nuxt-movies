@@ -173,24 +173,7 @@ export default {
 }
 
 .image {
-  // ray test touch <
-  // position: relative;
-  // height: 0;
-  // padding-bottom: 56.25%;
-  // overflow: hidden;
-  // ray test touch >
   background-color: $secondary-color;
-
-  // ray test touch <
-  // img,
-  // span {
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   width: 100%;
-  //   height: 100%;
-  // }
-  // ray test touch >
 
   span {
     display: flex;

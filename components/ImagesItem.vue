@@ -53,22 +53,7 @@ export default {
 }
 
 .image {
-  // ray test touch <
-  // position: relative;
-  // height: 0;
-  // overflow: hidden;
-  // ray test touch >
   background-color: $secondary-color;
-
-  // ray test touch <
-  // img {
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   width: 100%;
-  //   height: 100%;
-  // }
-  // ray test touch >
 }
 
 .backdrop {
@@ -93,12 +78,6 @@ export default {
   @media (min-width: 2500px) {
     width: 14.2857143%;
   }
-
-  // ray test touch <
-  // .image {
-  //   padding-top: 56.28%;
-  // }
-  // ray test touch >
 }
 
 .poster {
@@ -123,11 +102,5 @@ export default {
   @media (min-width: 2500px) {
     width: 12.5%;
   }
-
-  // ray test touch <
-  // .image {
-  //   padding-top: 150.27%;
-  // }
-  // ray test touch >
 }
 </style>

@@ -68,24 +68,11 @@ export default {
 }
 
 .credits-item__img {
-  // ray test touch <
-  // position: relative;
-  // height: 0;
-  // padding-top: 150.27%;
-  // overflow: hidden;
-  // ray test touch >
   background-color: $secondary-color;
   transition: transform 0.3s ease-in-out;
 
   img,
   span {
-    // ray test touch <
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-    // width: 100%;
-    // height: 100%;
-    // ray test touch >
     transform: scale(0.97);
   }
 
