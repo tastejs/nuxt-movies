@@ -7,13 +7,11 @@
       @click.prevent="handleVideo(index)">
 
       <div :class="$style.image">
-        <!-- ray test touch < -->
         <nuxt-img
           v-if="video.thumb"
           loading="lazy"
           :src="video.thumb"
           :alt="video.name" />
-        <!-- ray test touch > -->
 
         <div
           v-if="video.duration"

@@ -5,7 +5,6 @@
       class="credits-item__link"
       :to="{ name: 'person-id', params: { id: person.id } }">
       <div class="credits-item__img">
-        <!-- ray test touch < -->
         <nuxt-img
           v-if="poster"
           loading="lazy"
@@ -13,7 +12,6 @@
           height="556"
           :alt="person.name"
           :src="poster" />
-        <!-- ray test touch > -->
 
         <span v-else>
           <svg

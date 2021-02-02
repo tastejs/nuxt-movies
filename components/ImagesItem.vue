@@ -5,14 +5,12 @@
       :href="image.thumbSrc"
       @click.prevent="handleGallery(index)">
       <div :class="$style.image">
-        <!-- ray test touch < -->
         <nuxt-img
           v-if="image.thumbSrc"
           loading="lazy"
           :src="image.thumbSrc"
           :width="image.thumbWidth"
           :height="image.thumbHeight" />
-        <!-- ray test touch > -->
       </div>
     </a>
   </div>

@@ -2,14 +2,12 @@
 <template>
   <div :class="$style.item">
     <div :class="$style.image">
-      <!-- ray test touch < -->
       <nuxt-img
         v-if="poster"
         loading="lazy"
         width="400"
         :src="poster"
         :alt="episode.name" />
-      <!-- ray test touch > -->
 
       <span v-else>
         <svg
