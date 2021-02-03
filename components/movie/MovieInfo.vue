@@ -205,6 +205,8 @@ export default {
 .poster {
   background-color: $secondary-color;
 
+  // TODO: should add styling for span element
+
   span {
     display: flex;
     align-items: center;

@@ -71,6 +71,7 @@ export default {
 
   img,
   span {
+    // TODO: should add styling for span element
     transform: scale(0.97);
   }
 
