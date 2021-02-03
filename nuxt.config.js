@@ -1,10 +1,10 @@
-import { joinURL } from 'ufo';
-import { TMDB_IMAGE_URL } from './config/tmdbAPI';
-
 export default {
   modern: process.env.NODE_ENV === 'production',
 
-  serverMiddleware: [require.resolve('./api/swr.js')],
+  serverMiddleware: {
+    '/': '~/api/swr.js',
+    '/_ipx': '~/api/ipx.js'
+  },
 
   /*
   ** App bundle process.env
@@ -28,12 +28,8 @@ export default {
   ],
 
   image: {
-    static: {
-      baseURL: joinURL('/_ipx', TMDB_IMAGE_URL, 'original')
-    },
-    domains: [
-      TMDB_IMAGE_URL
-    ]
+    provider: 'ipx',
+    ipx: {}
   },
 
   /*
@@ -80,7 +76,7 @@ export default {
         rel: 'icon',
         type: 'image/x-icon',
         href: '/favicon.ico'
-      },
+      }
       // TODO: fallback to the system fonts
       // {
       //   rel: 'stylesheet',
@@ -90,10 +86,10 @@ export default {
       //   rel: 'preconnect',
       //   href: 'http://fonts.gstatic.com'
       // },
-      {
-        rel: 'preconnect',
-        href: 'https://image.tmdb.org'
-      }
+      // {
+      //   rel: 'preconnect',
+      //   href: 'https://image.tmdb.org'
+      // }
     ]
   },
 

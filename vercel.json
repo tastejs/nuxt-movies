@@ -5,7 +5,8 @@
       "use": "@nuxtjs/vercel-builder",
       "config": {
         "serverFiles": [
-          "api/swr.js"
+          "api/swr.js",
+          "api/ipx.js"
         ]
       }
     }
