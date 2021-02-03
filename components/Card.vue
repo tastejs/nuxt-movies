@@ -5,16 +5,14 @@
       class="card__link"
       :to="{ name: `${media}-id`, params: { id: item.id } }">
       <div class="card__img">
-        <!-- ray test touch < -->
-        <transition v-if="poster" name="fade">
+        <img-transition v-if="poster">
           <nuxt-img
             loading="lazy"
             width="370"
             height="556"
             :alt="name"
             :src="poster" />
-        </transition>
-        <!-- ray test touch > -->
+        </img-transition>
         <span v-else>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -55,8 +53,13 @@
 
 <script>
 import { name, stars } from '~/mixins/Details';
+import ImgTransition from '~/components/ImgTransition';
 
 export default {
+  components: {
+    ImgTransition
+  },
+
   mixins: [
     name,
     stars
@@ -87,12 +90,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
-</style>

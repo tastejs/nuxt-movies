@@ -7,11 +7,12 @@
       @click.prevent="handleVideo(index)">
 
       <div :class="$style.image">
-        <nuxt-img
-          v-if="video.thumb"
-          loading="lazy"
-          :src="video.thumb"
-          :alt="video.name" />
+        <img-transition v-if="video.thumb">
+          <nuxt-img
+            loading="lazy"
+            :src="video.thumb"
+            :alt="video.name" />
+        </img-transition>
 
         <div
           v-if="video.duration"
@@ -57,7 +58,13 @@
 </template>
 
 <script>
+import ImgTransition from '~/components/ImgTransition';
+
 export default {
+  components: {
+    ImgTransition
+  },
+
   props: {
     video: {
       type: Object,

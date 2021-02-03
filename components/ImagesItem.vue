@@ -5,19 +5,26 @@
       :href="image.thumbSrc"
       @click.prevent="handleGallery(index)">
       <div :class="$style.image">
-        <nuxt-img
-          v-if="image.thumbSrc"
-          loading="lazy"
-          :src="image.thumbSrc"
-          :width="image.thumbWidth"
-          :height="image.thumbHeight" />
+        <img-transition v-if="image.thumbSrc">
+          <nuxt-img
+            loading="lazy"
+            :src="image.thumbSrc"
+            :width="image.thumbWidth"
+            :height="image.thumbHeight" />
+        </img-transition>
       </div>
     </a>
   </div>
 </template>
 
 <script>
+import ImgTransition from '~/components/ImgTransition';
+
 export default {
+  components: {
+    ImgTransition
+  },
+
   props: {
     image: {
       type: Object,

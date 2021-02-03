@@ -2,12 +2,13 @@
 <template>
   <div :class="$style.item">
     <div :class="$style.image">
-      <nuxt-img
-        v-if="poster"
-        loading="lazy"
-        width="400"
-        :src="poster"
-        :alt="episode.name" />
+      <img-transition v-if="poster">
+        <nuxt-img
+          loading="lazy"
+          width="400"
+          :src="poster"
+          :alt="episode.name" />
+      </img-transition>
 
       <span v-else>
         <svg
@@ -41,7 +42,13 @@
 </template>
 
 <script>
+import ImgTransition from '~/components/ImgTransition';
+
 export default {
+  components: {
+    ImgTransition
+  },
+
   props: {
     episode: {
       type: Object,

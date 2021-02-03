@@ -3,12 +3,13 @@
   <div class="spacing" :class="$style.info">
     <div :class="$style.left">
       <div :class="$style.poster">
-        <nuxt-img
-          v-if="poster"
-          width="370"
-          height="556"
-          :src="poster"
-          :alt="name" />
+        <img-transition v-if="poster">
+          <nuxt-img
+            width="370"
+            height="556"
+            :src="poster"
+            :alt="name" />
+        </img-transition>
 
         <span v-else>
           <svg
@@ -132,10 +133,12 @@
 <script>
 import { name, directors } from '~/mixins/Details';
 import ExternalLinks from '~/components/ExternalLinks';
+import ImgTransition from '~/components/ImgTransition';
 
 export default {
   components: {
-    ExternalLinks
+    ExternalLinks,
+    ImgTransition
   },
 
   mixins: [
