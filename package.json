@@ -35,6 +35,7 @@
     "@nuxt/sigma": "^0.0.65",
     "@nuxtjs/eslint-config": "latest",
     "@nuxtjs/pwa": "^3.3.2",
+    "@nuxtjs/svg": "^0.1.12",
     "cross-env": "^7.0.3",
     "eslint": "latest",
     "eslint-config-google": "^0.14.0",
