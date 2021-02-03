@@ -5,20 +5,27 @@
       :href="image.thumbSrc"
       @click.prevent="handleGallery(index)">
       <div :class="$style.image">
-        <nuxt-img
-          v-if="image.thumbSrc"
-          loading="lazy"
-          :src="image.thumbSrc"
-          :width="image.thumbWidth"
-          :height="image.thumbHeight"
-          responsive />
+        <img-transition v-if="image.thumbSrc">
+          <nuxt-img
+            loading="lazy"
+            :src="image.thumbSrc"
+            :width="image.thumbWidth"
+            :height="image.thumbHeight"
+            responsive />
+        </img-transition>
       </div>
     </a>
   </div>
 </template>
 
 <script>
+import ImgTransition from '~/components/ImgTransition';
+
 export default {
+  components: {
+    ImgTransition
+  },
+
   props: {
     image: {
       type: Object,
@@ -52,18 +59,7 @@ export default {
 }
 
 .image {
-  position: relative;
-  height: 0;
-  overflow: hidden;
   background-color: $secondary-color;
-
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
 }
 
 .backdrop {
@@ -88,10 +84,6 @@ export default {
   @media (min-width: 2500px) {
     width: 14.2857143%;
   }
-
-  .image {
-    padding-top: 56.28%;
-  }
 }
 
 .poster {
@@ -115,10 +107,6 @@ export default {
 
   @media (min-width: 2500px) {
     width: 12.5%;
-  }
-
-  .image {
-    padding-top: 150.27%;
   }
 }
 </style>

@@ -3,14 +3,14 @@
   <div class="spacing" :class="$style.info">
     <div :class="$style.left">
       <div :class="$style.poster">
-        <nuxt-img
-          v-if="avatar"
-          loading="lazy"
-          width="370"
-          height="556"
-          responsive
-          :src="avatar"
-          :alt="person.name" />
+        <img-transition v-if="avatar">
+          <nuxt-img
+            :src="avatar"
+            width="370"
+            height="556"
+            responsive
+            :alt="person.name" />
+        </img-transition>
 
         <span v-else>
           <svg
@@ -35,10 +35,13 @@
         </h2>
 
         <div v-if="person.biography">
-          <nuxt-img
-            v-if="avatar"
-            :src="avatar"
-            :alt="person.name" />
+          <img-transition v-if="avatar">
+            <nuxt-img
+              :src="avatar"
+              width="370"
+              height="556"
+              :alt="person.name" />
+          </img-transition>
           <!-- eslint-disable-next-line vue/no-v-html -->
           <div v-html="formatContent(person.biography)" />
         </div>
@@ -98,10 +101,12 @@
 
 <script>
 import ExternalLinks from '~/components/ExternalLinks';
+import ImgTransition from '~/components/ImgTransition';
 
 export default {
   components: {
-    ExternalLinks
+    ExternalLinks,
+    ImgTransition
   },
 
   props: {
@@ -198,20 +203,9 @@ export default {
 }
 
 .poster {
-  position: relative;
-  height: 0;
-  padding-top: 150.27%;
-  overflow: hidden;
   background-color: $secondary-color;
 
-  img,
-  span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+  // TODO: should add styling for span element
 
   span {
     display: flex;

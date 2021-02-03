@@ -2,13 +2,14 @@
 <template>
   <div :class="$style.item">
     <div :class="$style.image">
-      <nuxt-img
-        v-if="poster"
-        loading="lazy"
-        width="400"
-        responsive
-        :src="poster"
-        :alt="episode.name" />
+      <img-transition v-if="poster">
+        <nuxt-img
+          loading="lazy"
+          width="400"
+          responsive
+          :src="poster"
+          :alt="episode.name" />
+      </img-transition>
 
       <span v-else>
         <svg
@@ -42,7 +43,13 @@
 </template>
 
 <script>
+import ImgTransition from '~/components/ImgTransition';
+
 export default {
+  components: {
+    ImgTransition
+  },
+
   props: {
     episode: {
       type: Object,
@@ -90,21 +97,9 @@ export default {
 }
 
 .image {
-  position: relative;
-  height: 0;
-  padding-top: 56.25%;
-  margin-bottom: 1.5rem;
-  overflow: hidden;
   background-color: $secondary-color;
 
-  img,
-  span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+  // TODO: should add styling for span element
 
   span {
     display: flex;

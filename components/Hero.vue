@@ -34,12 +34,12 @@
             </svg>
           </button>
 
-          <nuxt-img
-            v-if="backdrop"
-            loading="lazy"
-            :class="$style.image"
-            :alt="name"
-            :src="backdrop" />
+          <img-transition v-if="backdrop">
+            <nuxt-img
+              :class="$style.image"
+              :alt="name"
+              :src="backdrop" />
+          </img-transition>
         </div>
       </div>
 
@@ -128,10 +128,12 @@ import {
   trailer
 } from '~/mixins/Details';
 import Modal from '~/components/Modal';
+import ImgTransition from '~/components/ImgTransition';
 
 export default {
   components: {
-    Modal
+    Modal,
+    ImgTransition
   },
 
   mixins: [

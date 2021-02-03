@@ -5,14 +5,15 @@
       class="credits-item__link"
       :to="{ name: 'person-id', params: { id: person.id } }">
       <div class="credits-item__img">
-        <nuxt-img
-          v-if="poster"
-          loading="lazy"
-          width="370"
-          height="556"
-          responsive
-          :alt="person.name"
-          :src="poster" />
+        <img-transition v-if="poster">
+          <nuxt-img
+            loading="lazy"
+            width="370"
+            height="556"
+            responsive
+            :alt="person.name"
+            :src="poster" />
+        </img-transition>
 
         <span v-else>
           <svg
@@ -41,8 +42,13 @@
 </template>
 
 <script>
+import ImgTransition from '~/components/ImgTransition';
 
 export default {
+  components: {
+    ImgTransition
+  },
+
   props: {
     person: {
       type: Object,
@@ -67,20 +73,12 @@ export default {
 }
 
 .credits-item__img {
-  position: relative;
-  height: 0;
-  padding-top: 150.27%;
-  overflow: hidden;
   background-color: $secondary-color;
   transition: transform 0.3s ease-in-out;
 
   img,
   span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    // TODO: should add styling for span element
     transform: scale(0.97);
   }
 
