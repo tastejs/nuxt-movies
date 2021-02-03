@@ -28,7 +28,7 @@ export default {
     provider: 'tmdb',
     providers: {
       tmdb: {
-        provider: require.resolve('./utils/tmdb-image')
+        provider: require.resolve('./providers/tmdb-image')
       }
     }
   },

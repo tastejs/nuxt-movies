@@ -6,7 +6,7 @@
       "config": {
         "serverFiles": [
           "api/swr.js",
-          "utils/tmdb-image.js"
+          "providers/tmdb-image.js"
         ]
       }
     }
