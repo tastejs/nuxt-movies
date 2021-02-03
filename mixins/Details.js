@@ -58,9 +58,7 @@ export const yearEnd = {
 export const backdrop = {
   computed: {
     backdrop() {
-      if (this.item.backdrop_path) {
-        return this.$img(this.item.backdrop_path).url;
-      }
+      return this.item.backdrop_path;
     }
   }
 };

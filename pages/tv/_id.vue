@@ -172,7 +172,7 @@ export default {
       if (!this.item.poster_path) {
         return '';
       }
-      return this.$img(this.item.poster_path, { modifiers: { width: 500 } }).url;
+      return this.$img(this.item.poster_path, { width: 500 });
     },
 
     creditsShown() {

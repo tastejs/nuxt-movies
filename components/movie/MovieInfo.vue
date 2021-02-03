@@ -8,6 +8,7 @@
           loading="lazy"
           width="370"
           height="556"
+          responsive
           :src="poster"
           :alt="name" />
 

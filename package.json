@@ -31,7 +31,7 @@
     }
   },
   "devDependencies": {
-    "@nuxt/image": "^0.2.1",
+    "@nuxt/image": "^0.3.0",
     "@nuxt/sigma": "^0.0.65",
     "@nuxtjs/eslint-config": "latest",
     "@nuxtjs/pwa": "^3.3.2",

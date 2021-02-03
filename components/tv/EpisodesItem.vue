@@ -6,6 +6,7 @@
         v-if="poster"
         loading="lazy"
         width="400"
+        responsive
         :src="poster"
         :alt="episode.name" />
 

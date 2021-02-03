@@ -1,3 +1,6 @@
+import { joinURL } from 'ufo';
+import { TMDB_IMAGE_URL } from './config/tmdbAPI';
+
 export default {
   modern: process.env.NODE_ENV === 'production',
 
@@ -25,12 +28,12 @@ export default {
   ],
 
   image: {
-    provider: 'tmdb',
-    providers: {
-      tmdb: {
-        provider: require.resolve('./utils/tmdb-image')
-      }
-    }
+    static: {
+      baseURL: joinURL('/_ipx', TMDB_IMAGE_URL, 'original')
+    },
+    domains: [
+      TMDB_IMAGE_URL
+    ]
   },
 
   /*
