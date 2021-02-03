@@ -4,7 +4,7 @@ import { joinURL } from 'ufo';
 import { TMDB_IMAGE_URL } from '~/config/tmdbAPI';
 
 // RE: https://image.nuxtjs.org/advanced/custom-provider
-function getImage(src, { modifiers = {} } = {}) {
+export function getImage(src, { modifiers = {} } = {}) {
   const { width, height } = modifiers;
 
   let operations = '';
@@ -30,7 +30,3 @@ function getImage(src, { modifiers = {} } = {}) {
     url: joinURL(TMDB_IMAGE_URL, operations, src)
   };
 }
-
-export {
-  getImage
-};

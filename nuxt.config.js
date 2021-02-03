@@ -28,9 +28,7 @@ export default {
     provider: 'tmdb',
     providers: {
       tmdb: {
-        // ray test touch <
-        provider: require.resolve('~/utils/tmdb-image')
-        // ray test touch >
+        provider: require.resolve('./utils/tmdb-image')
       }
     }
   },
