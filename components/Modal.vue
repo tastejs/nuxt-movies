@@ -21,20 +21,7 @@
             aria-label="Close"
             type="button"
             @click.stop="close">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="15"
-              height="15"
-              viewBox="0 0 15 15">
-              <g
-                fill="none"
-                stroke="#fff"
-                stroke-linecap="round"
-                stroke-miterlimit="10"
-                stroke-width="1.5">
-                <path d="M.75.75l13.5 13.5M14.25.75L.75 14.25" />
-              </g>
-            </svg>
+            <CrossIcon />
           </button>
 
           <div :class="`modal__${type}`">
@@ -108,6 +95,7 @@
 <script>
 import { debounce } from '~/mixins/Functions';
 import ImgTransition from '~/components/ImgTransition';
+import CrossIcon from '~/assets/images/cross.svg?inline';
 
 let focusedElBeforeOpen;
 let focusableEls;
@@ -116,7 +104,8 @@ let lastFocusableEl;
 
 export default {
   components: {
-    ImgTransition
+    ImgTransition,
+    CrossIcon
   },
 
   props: {
