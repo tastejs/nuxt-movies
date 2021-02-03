@@ -7,11 +7,12 @@
       @click.prevent="handleVideo(index)">
 
       <div :class="$style.image">
-        <nuxt-img
-          v-if="video.thumb"
-          loading="lazy"
-          :src="video.thumb"
-          :alt="video.name" />
+        <img-transition v-if="video.thumb">
+          <nuxt-img
+            loading="lazy"
+            :src="video.thumb"
+            :alt="video.name" />
+        </img-transition>
 
         <div
           v-if="video.duration"
@@ -57,7 +58,13 @@
 </template>
 
 <script>
+import ImgTransition from '~/components/ImgTransition';
+
 export default {
+  components: {
+    ImgTransition
+  },
+
   props: {
     video: {
       type: Object,
@@ -171,20 +178,9 @@ export default {
 }
 
 .image {
-  position: relative;
-  height: 0;
-  padding-bottom: 56.25%;
-  overflow: hidden;
   background-color: $secondary-color;
 
-  img,
-  span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+  // TODO: should add styling for span element
 
   span {
     display: flex;

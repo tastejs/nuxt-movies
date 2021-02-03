@@ -44,11 +44,9 @@
               frameborder="0"
               allow="autoplay; encrypted-media"
               allowfullscreen />
-
-            <nuxt-img
-              v-if="type === 'image' && activeItem && activeItem.src"
-              loading="lazy"
-              :src="activeItem.src" />
+            <img-transition v-if="type === 'image' && activeItem && activeItem.src">
+              <nuxt-img :src="activeItem.src" />
+            </img-transition>
           </div>
 
           <div
@@ -109,6 +107,7 @@
 
 <script>
 import { debounce } from '~/mixins/Functions';
+import ImgTransition from '~/components/ImgTransition';
 
 let focusedElBeforeOpen;
 let focusableEls;
@@ -116,6 +115,10 @@ let firstFocusableEl;
 let lastFocusableEl;
 
 export default {
+  components: {
+    ImgTransition
+  },
+
   props: {
     data: {
       type: Array,
