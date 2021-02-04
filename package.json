@@ -50,6 +50,6 @@
     "tiny-cookie": "^2.3.1"
   },
   "dependencies": {
-    "ipx": "^0.5.2"
+    "ipx": "^0.5.3"
   }
 }
