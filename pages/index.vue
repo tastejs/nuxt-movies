@@ -2,13 +2,11 @@
 <template>
   <main class="main">
     <Hero :item="featured" />
-
     <ListingCarousel
       v-if="trendingMoviesShown"
       :title="trendingMoviesTitle"
       :view-all-url="trendingMoviesUrl"
       :items="trendingMovies" />
-
     <ListingCarousel
       v-if="trendingTvShown"
       :title="trendingTvTitle"
