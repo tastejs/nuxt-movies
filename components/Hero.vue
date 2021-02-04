@@ -72,16 +72,7 @@
               :class="$style.trailer"
               type="button"
               @click="openModal">
-              <span class="icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="#fff">
-                  <path d="M3 22v-20l18 10-18 10z" />
-                </svg>
-              </span>
+              <PlayIcon class="icon" />
               <span class="txt">Watch Trailer</span>
             </button>
           </div>
@@ -109,12 +100,14 @@ import {
 import Modal from '~/components/Modal';
 import ImgTransition from '~/components/ImgTransition';
 import CirclePlayIcon from '~/assets/images/circle-play.svg?inline';
+import PlayIcon from '~/assets/images/play.svg?inline';
 
 export default {
   components: {
     Modal,
     ImgTransition,
-    CirclePlayIcon
+    CirclePlayIcon,
+    PlayIcon
   },
 
   mixins: [
