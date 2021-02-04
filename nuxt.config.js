@@ -99,12 +99,6 @@ export default {
         type: 'image/x-icon',
         href: '/favicon.ico'
       },
-      // ray test touch <
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500'
-      },
-      // ray test touch >
       {
         rel: 'preconnect',
         href: 'https://image.tmdb.org'
