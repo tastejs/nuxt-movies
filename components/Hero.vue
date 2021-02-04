@@ -10,28 +10,7 @@
             type="button"
             aria-label="Play Trailer"
             @click="openModal">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="55"
-              height="55"
-              viewBox="0 0 55 55">
-              <circle
-                cx="27.5"
-                cy="27.5"
-                r="26.75"
-                fill="none"
-                stroke="#fff"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5" />
-              <path
-                fill="none"
-                stroke="#fff"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                d="M20.97 40.81L40.64 27.5 20.97 14.19v26.62z" />
-            </svg>
+            <CirclePlayIcon />
           </button>
 
           <img-transition v-if="backdrop">
@@ -129,11 +108,13 @@ import {
 } from '~/mixins/Details';
 import Modal from '~/components/Modal';
 import ImgTransition from '~/components/ImgTransition';
+import CirclePlayIcon from '~/assets/images/circle-play.svg?inline';
 
 export default {
   components: {
     Modal,
-    ImgTransition
+    ImgTransition,
+    CirclePlayIcon
   },
 
   mixins: [
