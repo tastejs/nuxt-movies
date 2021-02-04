@@ -8,7 +8,6 @@
             :src="avatar"
             width="370"
             height="556"
-            responsive
             :alt="person.name" />
         </img-transition>
 

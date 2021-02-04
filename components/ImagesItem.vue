@@ -10,8 +10,7 @@
             loading="lazy"
             :src="image.thumbSrc"
             :width="image.thumbWidth"
-            :height="image.thumbHeight"
-            responsive />
+            :height="image.thumbHeight" />
         </img-transition>
       </div>
     </a>

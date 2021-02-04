@@ -10,7 +10,6 @@
             loading="lazy"
             width="370"
             height="556"
-            responsive
             :alt="person.name"
             :src="poster" />
         </img-transition>

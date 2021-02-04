@@ -6,7 +6,6 @@
         <nuxt-img
           loading="lazy"
           width="400"
-          responsive
           :src="poster"
           :alt="episode.name" />
       </img-transition>
