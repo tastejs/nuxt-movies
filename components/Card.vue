@@ -13,9 +13,7 @@
             :alt="name"
             :src="poster" />
         </img-transition>
-        <span v-else>
-          <PlaceholderIcon />
-        </span>
+        <PlaceholderIcon v-else />
       </div>
 
       <h2 class="card__name">

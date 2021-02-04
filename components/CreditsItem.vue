@@ -13,9 +13,7 @@
             :alt="person.name"
             :src="poster" />
         </img-transition>
-        <span v-else>
-          <PlaceholderIcon />
-        </span>
+        <PlaceholderIcon v-else />
       </div>
 
       <h2 class="credits-item__name">

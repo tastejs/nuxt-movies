@@ -10,9 +10,7 @@
             height="556"
             :alt="person.name" />
         </img-transition>
-        <span v-else>
-          <PlaceholderIcon />
-        </span>
+        <PlaceholderIcon v-else />
       </div>
     </div>
 

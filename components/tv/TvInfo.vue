@@ -10,10 +10,7 @@
             :src="poster"
             :alt="name" />
         </img-transition>
-
-        <span v-else>
-          <PlaceholderIcon />
-        </span>
+        <PlaceholderIcon v-else />
       </div>
     </div>
 

@@ -9,9 +9,7 @@
           :src="poster"
           :alt="episode.name" />
       </img-transition>
-      <span v-else>
-        <PlaceholderIcon />
-      </span>
+      <PlaceholderIcon v-else />
     </div>
 
     <h2 :class="$style.name">
