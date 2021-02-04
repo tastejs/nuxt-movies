@@ -27,18 +27,20 @@ export default {
     '@nuxt/image',
     '@nuxtjs/svg',
     '@nuxtjs/web-vitals',
-    ['@nuxtjs/google-fonts', {
-      families: {
-        Roboto: {
-          wght: [300, 400, 500]
-        }
-      },
-      display: 'swap'
-    }]
+    '@nuxtjs/google-fonts'
   ],
 
   webVitals: {
     debug: true
+  },
+
+  googleFonts: {
+    families: {
+      Roboto: {
+        wght: [300, 400, 500]
+      }
+    },
+    display: 'swap'
   },
 
   image: {
