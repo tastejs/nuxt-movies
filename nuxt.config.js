@@ -22,8 +22,13 @@ export default {
     // '@nuxt/sigma',
     '@nuxtjs/pwa',
     '@nuxt/image',
-    '@nuxtjs/svg'
+    '@nuxtjs/svg',
+    '@nuxtjs/web-vitals'
   ],
+
+  webVitals: {
+    debug: true
+  },
 
   image: {
     provider: 'tmdb',

@@ -1351,6 +1351,14 @@
     url-loader "^4.1.0"
     vue-svg-loader "^0.16.0"
 
+"@nuxtjs/web-vitals@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/web-vitals/-/web-vitals-0.1.2.tgz#93f6c3cb11e02de059285249201925ba98ab70ab"
+  integrity sha512-IIMUPUKK9xL7g2hHm/SIdRVw4uHkI1Q4fpFEuOsm2UItcr6s4S+gCMbclnjJoskCQ4aGrqXodA5kKGsLBNRpqA==
+  dependencies:
+    defu "^3.2.2"
+    web-vitals "^1.0.1"
+
 "@nuxtjs/youch@^4.2.3":
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/@nuxtjs/youch/-/youch-4.2.3.tgz#36f8b22df5a0efaa81373109851e1d857aca6bed"
@@ -10876,6 +10884,11 @@ wcwidth@^1.0.1:
   integrity sha1-8LDc+RW8X/FSivrbLA4XtTLaL+g=
   dependencies:
     defaults "^1.0.3"
+
+web-vitals@^1.0.1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-1.1.0.tgz#7f410d9a1f7a1cd5d952806b45776204b47dc274"
+  integrity sha512-1cx54eRxY/+M0KNKdNpNnuXAXG+vJEvwScV4DiV9rOYDguHoeDIzm09ghBohOPtkqPO5OtPC14FWkNva3SDisg==
 
 webpack-bundle-analyzer@^3.9.0:
   version "3.9.0"
