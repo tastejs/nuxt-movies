@@ -5668,10 +5668,28 @@ ipaddr.js@1.9.1:
   resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.9.1.tgz#bff38543eeb8984825079ff3a2a8e6cbd46781b3"
   integrity sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==
 
-ipx@^0.5.2, ipx@^0.5.3:
+ipx@^0.5.2:
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/ipx/-/ipx-0.5.3.tgz#8cfa31f5a315c1c9d5d2acce0fae15cdf181908b"
   integrity sha512-fs8fEBqN1gitn/+Vgut1vNFdrJInRx0lTwhGS4AB8Dn5ouorPJwrPRspzJ/sHxIkn17g0UjNk2JTUAeuSjh4/Q==
+  dependencies:
+    consola "^2.15.0"
+    defu "^3.2.2"
+    destr "^1.1.0"
+    etag "^1.8.1"
+    fs-extra "^9.0.1"
+    image-meta "^0.0.1"
+    is-valid-path "^0.1.1"
+    listhen "^0.1.2"
+    node-fetch "^2.6.1"
+    sharp "^0.27.0"
+    ufo "^0.6.1"
+    xss "^1.0.8"
+
+ipx@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/ipx/-/ipx-0.5.4.tgz#e80928ba267a19543efb075b42424765537f85d2"
+  integrity sha512-3Tfh8qdA8E9iYfgovjVaLZr/9OjSPQ9ot35fHXoZR0J+Wl5YX9rjlyXrLz+mP1EjaYAOYZfEGDhrzeHDAQwUyw==
   dependencies:
     consola "^2.15.0"
     defu "^3.2.2"
