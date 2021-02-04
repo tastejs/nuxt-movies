@@ -5686,10 +5686,10 @@ ipx@^0.5.2:
     ufo "^0.6.1"
     xss "^1.0.8"
 
-ipx@^0.5.4:
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/ipx/-/ipx-0.5.4.tgz#e80928ba267a19543efb075b42424765537f85d2"
-  integrity sha512-3Tfh8qdA8E9iYfgovjVaLZr/9OjSPQ9ot35fHXoZR0J+Wl5YX9rjlyXrLz+mP1EjaYAOYZfEGDhrzeHDAQwUyw==
+ipx@^0.5.5:
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/ipx/-/ipx-0.5.5.tgz#8564f857b7de09f283c6e68632036821ea662f14"
+  integrity sha512-G+lZZx1V4ACgPlWZOA6B9kzU7TXikbm5HqWc2uOk+/RC+BdXvqRxdkcULpFHJJcP0A/z5aBhrK45zq+Hhq8YLg==
   dependencies:
     consola "^2.15.0"
     defu "^3.2.2"
