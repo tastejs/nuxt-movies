@@ -44,20 +44,7 @@
               aria-label="Previous"
               type="button"
               @click.stop="previous">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24">
-                <path
-                  fill="none"
-                  stroke="#fff"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-miterlimit="10"
-                  d="M17.9 23.2L6.1 12 17.9.8" />
-              </svg>
+              <ChevronLeftIcon />
             </button>
 
             <div class="modal__count">
@@ -70,20 +57,7 @@
               type="button"
               title="Next"
               @click.stop="next">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24">
-                <path
-                  fill="none"
-                  stroke="#fff"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-miterlimit="10"
-                  d="M6.1 23.2L17.9 12 6.1.8" />
-              </svg>
+              <ChevronRightIcon />
             </button>
           </div>
         </div>
@@ -96,6 +70,8 @@
 import { debounce } from '~/mixins/Functions';
 import ImgTransition from '~/components/ImgTransition';
 import CrossIcon from '~/assets/images/cross.svg?inline';
+import ChevronLeftIcon from '~/assets/images/chevron-left.svg?inline';
+import ChevronRightIcon from '~/assets/images/chevron-right.svg?inline';
 
 let focusedElBeforeOpen;
 let focusableEls;
@@ -105,7 +81,9 @@ let lastFocusableEl;
 export default {
   components: {
     ImgTransition,
-    CrossIcon
+    CrossIcon,
+    ChevronLeftIcon,
+    ChevronRightIcon
   },
 
   props: {
