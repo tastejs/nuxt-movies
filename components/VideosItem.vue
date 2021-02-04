@@ -20,30 +20,7 @@
           {{ formatDuration(video.duration) }}
         </div>
 
-        <div :class="$style.play">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="48"
-            height="48"
-            viewBox="0 0 55 55">
-            <circle
-              cx="27.5"
-              cy="27.5"
-              r="26.75"
-              fill="none"
-              stroke="#fff"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5" />
-            <path
-              fill="none"
-              stroke="#fff"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              d="M20.97 40.81L40.64 27.5 20.97 14.19v26.62z" />
-          </svg>
-        </div>
+        <CirclePlayIcon :class="$style.play" />
       </div>
 
       <h2 :class="$style.name">
@@ -59,10 +36,12 @@
 
 <script>
 import ImgTransition from '~/components/ImgTransition';
+import CirclePlayIcon from '~/assets/images/circle-play.svg?inline';
 
 export default {
   components: {
-    ImgTransition
+    ImgTransition,
+    CirclePlayIcon
   },
 
   props: {
@@ -178,6 +157,7 @@ export default {
 }
 
 .image {
+  position: relative;
   background-color: $secondary-color;
 
   // TODO: should add styling for span element

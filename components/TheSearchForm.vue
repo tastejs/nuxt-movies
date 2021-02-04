@@ -25,20 +25,7 @@
           type="button"
           aria-label="Close"
           @click="goBack">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="15"
-            height="15"
-            viewBox="0 0 15 15">
-            <g
-              fill="none"
-              stroke="#fff"
-              stroke-linecap="round"
-              stroke-miterlimit="10"
-              stroke-width="1.5">
-              <path d="M.75.75l13.5 13.5M14.25.75L.75 14.25" />
-            </g>
-          </svg>
+          <CrossIcon />
         </button>
       </div>
     </form>
@@ -46,9 +33,15 @@
 </template>
 
 <script>
+import CrossIcon from '~/assets/images/cross.svg?inline';
+
 const SEARCH_PATHNAME = 'search';
 
 export default {
+  components: {
+    CrossIcon
+  },
+
   data() {
     return {
       query: this.$route.query.q ?? ''
