@@ -21,7 +21,8 @@ export default {
   buildModules: [
     // '@nuxt/sigma',
     '@nuxtjs/pwa',
-    '@nuxt/image'
+    '@nuxt/image',
+    '@nuxtjs/svg'
   ],
 
   image: {
