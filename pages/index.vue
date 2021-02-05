@@ -41,8 +41,15 @@ export default {
 
   async fetch() {
     try {
-      this.trendingMovies = await getTrending('movie');
-      this.trendingTv = await getTrending('tv');
+      const [
+        trendingMovies,
+        trendingTv
+      ] = await Promise.all([
+        getTrending('movie'),
+        getTrending('tv')
+      ]);
+      this.trendingMovies = trendingMovies;
+      this.trendingTv = trendingTv;
 
       // feature a random item from movies or tv
       const items = [
