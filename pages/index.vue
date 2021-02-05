@@ -31,33 +31,34 @@ export default {
     ListingCarousel
   },
 
-  async asyncData({ error }) {
+  data() {
+    return {
+      trendingMovies: {},
+      trendingTv: {},
+      featured: {}
+    };
+  },
+
+  async fetch() {
     try {
-      const trendingMovies = await getTrending('movie');
-      const trendingTv = await getTrending('tv');
-      let featured;
+      this.trendingMovies = await getTrending('movie');
+      this.trendingTv = await getTrending('tv');
 
       // feature a random item from movies or tv
       const items = [
-        ...trendingMovies.results,
-        ...trendingTv.results
+        ...this.trendingMovies.results,
+        ...this.trendingTv.results
       ];
       const randomItem = items[Math.floor(Math.random() * items.length)];
       const media = randomItem.title ? 'movie' : 'tv';
 
       if (media === 'movie') {
-        featured = await getMovie(randomItem.id);
+        this.featured = await getMovie(randomItem.id);
       } else {
-        featured = await getTvShow(randomItem.id);
+        this.featured = await getTvShow(randomItem.id);
       }
-
-      return {
-        trendingMovies,
-        trendingTv,
-        featured
-      };
     } catch {
-      error({
+      this.$nuxt.context.error({
         statusCode: 504,
         message: 'Data not available'
       });
@@ -66,7 +67,7 @@ export default {
 
   computed: {
     trendingMoviesShown() {
-      return this.trendingMovies?.results.length;
+      return this.trendingMovies?.results?.length;
     },
 
     trendingMoviesTitle() {
@@ -83,7 +84,7 @@ export default {
     },
 
     trendingTvShown() {
-      return this.trendingTv?.results.length;
+      return this.trendingTv?.results?.length;
     },
 
     trendingTvTitle() {
