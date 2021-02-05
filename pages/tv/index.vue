@@ -91,7 +91,7 @@ export default {
     },
 
     popularTitle() {
-      return getListItem('tv', 'popular').title;
+      return getListItem('tv', 'popular').TITLE;
     },
 
     popularUrl() {
@@ -108,7 +108,7 @@ export default {
     },
 
     topRatedTitle() {
-      return getListItem('tv', 'top_rated').title;
+      return getListItem('tv', 'top_rated').TITLE;
     },
 
     topRatedUrl() {
@@ -125,7 +125,7 @@ export default {
     },
 
     onAirTitle() {
-      return getListItem('tv', 'on_the_air').title;
+      return getListItem('tv', 'on_the_air').TITLE;
     },
 
     onAirUrl() {
@@ -142,7 +142,7 @@ export default {
     },
 
     airingTodayTitle() {
-      return getListItem('tv', 'airing_today').title;
+      return getListItem('tv', 'airing_today').TITLE;
     },
 
     airingTodayUrl() {

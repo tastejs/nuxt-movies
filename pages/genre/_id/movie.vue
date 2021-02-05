@@ -23,35 +23,32 @@ export default {
     Listing
   },
 
-  async asyncData({
-    params,
-    error
-  }) {
+  data() {
+    return {
+      loading: false,
+      items: {},
+      genre: {}
+    };
+  },
+
+  async fetch() {
     try {
-      const items = await getMediaByGenre('movie', params.id);
+      const items = await getMediaByGenre('movie', this.$nuxt.context.params.id);
       const genres = await getGenreList('movie');
-      const genre = genres.find(genre => genre.id === parseInt(params.id));
+      const genre = genres.find(genre => genre.id === parseInt(this.$nuxt.context.params.id));
 
       if (genre) {
-        return {
-          items,
-          genre
-        };
+        this.items = items;
+        this.genre = genre;
       } else {
-        error({ message: 'Page not found' });
+        this.$nuxt.context.error({ message: 'Page not found' });
       }
     } catch {
-      error({
+      this.$nuxt.context.error({
         statusCode: 504,
         message: 'Data not available'
       });
     }
-  },
-
-  data() {
-    return {
-      loading: false
-    };
   },
 
   head() {
@@ -89,7 +86,7 @@ export default {
     },
 
     listingShown() {
-      return this.items.results.length;
+      return this.items?.results?.length;
     }
   },
 
@@ -98,7 +95,7 @@ export default {
       this.loading = true;
 
       getMediaByGenre('movie', this.$route.params.id, this.items.page + 1).then(response => {
-        this.items.results = this.items.results.concat(response.results);
+        this.items.results = this.items?.results.concat(response.results);
         this.items.page = response.page;
         this.loading = false;
       }).catch(() => {

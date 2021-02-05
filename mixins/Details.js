@@ -108,10 +108,10 @@ const cert = {
 const trailer = {
   computed: {
     trailer() {
-      let videos = this.item.videos.results;
+      let videos = this.item.videos?.results;
 
       // if no videos, do nothing
-      if (!videos.length) {
+      if (!videos?.length) {
         return null;
       }
 

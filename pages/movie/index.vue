@@ -91,7 +91,7 @@ export default {
     },
 
     popularTitle() {
-      return getListItem('movie', 'popular').title;
+      return getListItem('movie', 'popular').TITLE;
     },
 
     popularUrl() {
@@ -108,7 +108,7 @@ export default {
     },
 
     topRatedTitle() {
-      return getListItem('movie', 'top_rated').title;
+      return getListItem('movie', 'top_rated').TITLE;
     },
 
     topRatedUrl() {
@@ -125,7 +125,7 @@ export default {
     },
 
     upcomingTitle() {
-      return getListItem('movie', 'upcoming').title;
+      return getListItem('movie', 'upcoming').TITLE;
     },
 
     upcomingUrl() {
@@ -142,7 +142,7 @@ export default {
     },
 
     nowPlayingTitle() {
-      return getListItem('movie', 'now_playing').title;
+      return getListItem('movie', 'now_playing').TITLE;
     },
 
     nowPlayingUrl() {

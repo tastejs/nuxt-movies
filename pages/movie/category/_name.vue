@@ -72,7 +72,7 @@ export default {
     },
 
     title() {
-      return getListItem('movie', this.$route.params.name).title;
+      return getListItem('movie', this.$route.params.name).TITLE;
     },
 
     listingShown() {

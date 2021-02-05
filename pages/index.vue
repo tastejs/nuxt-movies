@@ -71,7 +71,7 @@ export default {
     },
 
     trendingMoviesTitle() {
-      return getListItem('movie', 'trending').title;
+      return getListItem('movie', 'trending').TITLE;
     },
 
     trendingMoviesUrl() {
@@ -88,7 +88,7 @@ export default {
     },
 
     trendingTvTitle() {
-      return getListItem('tv', 'trending').title;
+      return getListItem('tv', 'trending').TITLE;
     },
 
     trendingTvUrl() {
