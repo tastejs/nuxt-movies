@@ -41,19 +41,15 @@ export default {
 
   async fetch() {
     try {
-      // ray test touch <
-      // const [
-      //   trendingMovies,
-      //   trendingTv
-      // ] = await Promise.all([
-      //   getTrending('movie'),
-      //   getTrending('tv')
-      // ]);
-      // this.trendingMovies = trendingMovies;
-      // this.trendingTv = trendingTv;
-      this.trendingMovies = await getTrending('movie');
-      this.trendingTv = await getTrending('tv');
-      // ray test touch >
+      const [
+        trendingMovies,
+        trendingTv
+      ] = await Promise.all([
+        getTrending('movie'),
+        getTrending('tv')
+      ]);
+      this.trendingMovies = trendingMovies;
+      this.trendingTv = trendingTv;
 
       // feature a random item from movies or tv
       const items = [
