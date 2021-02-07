@@ -89,7 +89,7 @@ export default {
 
   async fetch() {
     try {
-      const item = await getMovie(this.$nuxt.context.params.id);
+      const item = await getMovie(this.$route.params.id);
 
       if (item.adult) {
         this.$nuxt.context.error({ message: 'This movie is not available' });

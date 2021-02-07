@@ -97,7 +97,7 @@ export default {
 
   async fetch() {
     try {
-      const item = await getTvShow(this.$nuxt.context.params.id);
+      const item = await getTvShow(this.$route.params.id);
 
       if (item.adult) {
         this.$nuxt.context.error({ message: 'This tv show is not available' });

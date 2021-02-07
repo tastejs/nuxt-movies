@@ -58,7 +58,7 @@ export default {
 
   async fetch() {
     try {
-      const person = await getPerson(this.$nuxt.context.params.id);
+      const person = await getPerson(this.$route.params.id);
 
       if (person.adult) {
         this.$nuxt.context.error({ message: 'This person is not available' });

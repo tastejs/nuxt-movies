@@ -37,11 +37,11 @@ export default {
         items,
         genres
       ] = await Promise.all([
-        getMediaByGenre('tv', this.$nuxt.context.params.id),
+        getMediaByGenre('tv', this.$route.params.id),
         getGenreList('tv')
       ]);
 
-      const genre = genres.find(genre => genre.id === parseInt(this.$nuxt.context.params.id));
+      const genre = genres.find(genre => genre.id === parseInt(this.$route.params.id));
 
       if (genre) {
         this.items = items;

@@ -37,9 +37,9 @@ export default {
   async fetch() {
     try {
       this.items =
-        this.$nuxt.context.params.name === 'trending' ?
+        this.$route.params.name === 'trending' ?
           await getTrending('movie') :
-          await getMovies(this.$nuxt.context.params.name);
+          await getMovies(this.$route.params.name);
     } catch {
       this.$nuxt.context.error({ message: 'Page not found' });
     }
