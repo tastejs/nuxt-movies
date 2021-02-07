@@ -46,30 +46,26 @@ export default {
     }
   },
 
-  async asyncData({
-    query,
-    error,
-    redirect
-  }) {
-    try {
-      if (query.q) {
-        const items = await search(query.q, 1);
-        return { items };
-      } else {
-        redirect('/');
-      }
-    } catch {
-      error({ message: 'Page not found' });
-    }
-  },
-
   data() {
     return {
       // TODO: <
       // TODO: should use enums for loading state
       // TODO: >
-      loading: false
+      loading: false,
+      items: {}
     };
+  },
+
+  async fetch() {
+    try {
+      if (this.$nuxt.context.query.q) {
+        this.items = await search(this.$nuxt.context.query.q, 1);
+      } else {
+        this.$nuxt.context.redirect('/');
+      }
+    } catch {
+      this.$nuxt.context.error({ message: 'Page not found' });
+    }
   },
 
   head() {
@@ -103,7 +99,7 @@ export default {
     },
 
     searchResultsShown() {
-      return this.items?.results.length;
+      return this.items?.results?.length;
     }
   },
 

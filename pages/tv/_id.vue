@@ -33,13 +33,11 @@
 
     <template v-if="activeMenu === 'photos' && imagesShown">
       <Images
-        v-if="item.images.backdrops.length"
         title="Backdrops"
         type="backdrop"
         :images="item.images.backdrops" />
 
       <Images
-        v-if="item.images.posters.length"
         title="Posters"
         type="poster"
         :images="item.images.posters" />
@@ -88,29 +86,27 @@ export default {
     yearEnd
   ],
 
-  async asyncData({
-    params,
-    error
-  }) {
-    try {
-      const item = await getTvShow(params.id);
-
-      if (item.adult) {
-        error({ message: 'This tv show is not available' });
-      } else {
-        return { item };
-      }
-    } catch {
-      error({ message: 'Page not found' });
-    }
-  },
-
   data() {
     return {
       menu: [],
       activeMenu: 'overview',
-      recommendedItems: null
+      recommendedItems: null,
+      item: {}
     };
+  },
+
+  async fetch() {
+    try {
+      const item = await getTvShow(this.$nuxt.context.params.id);
+
+      if (item.adult) {
+        this.$nuxt.context.error({ message: 'This tv show is not available' });
+      } else {
+        this.item = item;
+      }
+    } catch {
+      this.$nuxt.context.error({ message: 'Page not found' });
+    }
   },
 
   head() {

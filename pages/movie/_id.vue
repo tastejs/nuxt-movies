@@ -78,29 +78,27 @@ export default {
     yearStart
   ],
 
-  async asyncData({
-    params,
-    error
-  }) {
-    try {
-      const item = await getMovie(params.id);
-
-      if (item.adult) {
-        error({ message: 'This movie is not available' });
-      } else {
-        return { item };
-      }
-    } catch {
-      error({ message: 'Page not found' });
-    }
-  },
-
   data() {
     return {
       menu: [],
       activeMenu: 'overview',
-      recommendedItems: null
+      recommendedItems: null,
+      item: {}
     };
+  },
+
+  async fetch() {
+    try {
+      const item = await getMovie(this.$nuxt.context.params.id);
+
+      if (item.adult) {
+        this.$nuxt.context.error({ message: 'This movie is not available' });
+      } else {
+        this.item = item;
+      }
+    } catch {
+      this.$nuxt.context.error({ message: 'Page not found' });
+    }
   },
 
   head() {

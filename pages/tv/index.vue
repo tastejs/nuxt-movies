@@ -44,23 +44,37 @@ export default {
     ListingCarousel
   },
 
-  async asyncData({ error }) {
-    try {
-      const popular = await getTvShows('popular');
-      const topRated = await getTvShows('top_rated');
-      const onAir = await getTvShows('on_the_air');
-      const airingToday = await getTvShows('airing_today');
-      const featured = await getTvShow(popular.results[0].id);
+  data() {
+    return {
+      popular: {},
+      topRated: {},
+      onAir: {},
+      airingToday: {},
+      featured: {}
+    };
+  },
 
-      return {
+  async fetch() {
+    try {
+      const [
         popular,
         topRated,
         onAir,
-        airingToday,
-        featured
-      };
+        airingToday
+      ] = await Promise.all([
+        getTvShows('popular'),
+        getTvShows('top_rated'),
+        getTvShows('on_the_air'),
+        getTvShows('airing_today')
+      ]);
+
+      this.popular = popular;
+      this.topRated = topRated;
+      this.onAir = onAir;
+      this.airingToday = airingToday;
+      this.featured = await getTvShow(popular.results[0].id);
     } catch {
-      error({
+      this.$nuxt.context.error({
         statusCode: 504,
         message: 'Data not available'
       });
@@ -87,7 +101,7 @@ export default {
 
   computed: {
     popularShown() {
-      return this.popular?.results.length;
+      return this.popular?.results?.length;
     },
 
     popularTitle() {
@@ -104,7 +118,7 @@ export default {
     },
 
     topRatedShown() {
-      return this.topRated?.results.length;
+      return this.topRated?.results?.length;
     },
 
     topRatedTitle() {
@@ -121,7 +135,7 @@ export default {
     },
 
     onAirShown() {
-      return this.onAir?.results.length;
+      return this.onAir?.results?.length;
     },
 
     onAirTitle() {
@@ -138,7 +152,7 @@ export default {
     },
 
     airingTodayShown() {
-      return this.airingToday?.results.length;
+      return this.airingToday?.results?.length;
     },
 
     airingTodayTitle() {

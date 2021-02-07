@@ -27,22 +27,22 @@ export default {
     Listing
   },
 
-  async asyncData({
-    params,
-    error
-  }) {
-    try {
-      const items = params.name === 'trending' ? await getTrending('tv') : await getTvShows(params.name);
-      return { items };
-    } catch {
-      error({ message: 'Page not found' });
-    }
-  },
-
   data() {
     return {
-      loading: false
+      loading: false,
+      items: {}
     };
+  },
+
+  async fetch() {
+    try {
+      this.items =
+        this.$nuxt.context.params.name === 'trending' ?
+          await getTrending('tv') :
+          await getTvShows(this.$nuxt.context.params.name);
+    } catch {
+      this.$nuxt.context.error({ message: 'Page not found' });
+    }
   },
 
   head() {
@@ -76,7 +76,7 @@ export default {
     },
 
     listingShown() {
-      return this.items?.results.length;
+      return this.items?.results?.length;
     }
   },
 

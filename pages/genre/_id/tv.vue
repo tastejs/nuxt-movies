@@ -23,35 +23,38 @@ export default {
     Listing
   },
 
-  async asyncData({
-    params,
-    error
-  }) {
+  data() {
+    return {
+      loading: false,
+      items: {},
+      genre: {}
+    };
+  },
+
+  async fetch() {
     try {
-      const items = await getMediaByGenre('tv', params.id);
-      const genres = await getGenreList('tv');
-      const genre = genres.find(genre => genre.id === parseInt(params.id));
+      const [
+        items,
+        genres
+      ] = await Promise.all([
+        getMediaByGenre('tv', this.$nuxt.context.params.id),
+        getGenreList('tv')
+      ]);
+
+      const genre = genres.find(genre => genre.id === parseInt(this.$nuxt.context.params.id));
 
       if (genre) {
-        return {
-          items,
-          genre
-        };
+        this.items = items;
+        this.genre = genre;
       } else {
-        error({ message: 'Page not found' });
+        this.$nuxt.context.error({ message: 'Page not found' });
       }
     } catch {
-      error({
+      this.$nuxt.context.error({
         statusCode: 504,
         message: 'Data not available'
       });
     }
-  },
-
-  data() {
-    return {
-      loading: false
-    };
   },
 
   head() {
@@ -89,7 +92,7 @@ export default {
     },
 
     listingShown() {
-      return this.items?.results.length;
+      return this.items?.results?.length;
     }
   },
 

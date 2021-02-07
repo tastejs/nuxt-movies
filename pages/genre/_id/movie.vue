@@ -33,8 +33,13 @@ export default {
 
   async fetch() {
     try {
-      const items = await getMediaByGenre('movie', this.$nuxt.context.params.id);
-      const genres = await getGenreList('movie');
+      const [
+        items,
+        genres
+      ] = await Promise.all([
+        getMediaByGenre('movie', this.$nuxt.context.params.id),
+        getGenreList('movie')
+      ]);
       const genre = genres.find(genre => genre.id === parseInt(this.$nuxt.context.params.id));
 
       if (genre) {

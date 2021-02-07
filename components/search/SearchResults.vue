@@ -14,7 +14,7 @@
     <div class="listing__items">
       <Card
         v-for="item in items.results"
-        :key="`card-${item.id}`"
+        :key="`card-${item.id}-${item.backdrop_path}`"
         :item="item" />
     </div>
 

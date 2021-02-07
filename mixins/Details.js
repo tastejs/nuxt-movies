@@ -137,7 +137,7 @@ const trailer = {
 const directors = {
   computed: {
     directors() {
-      const people = this.item.credits.crew;
+      const people = this.item.credits?.crew;
 
       if (people) {
         return people.filter(

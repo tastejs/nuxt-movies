@@ -29,9 +29,10 @@
               <template v-if="isSingle">
                 {{ name }}
               </template>
-
               <template v-else>
-                <nuxt-link :to="{ name: `${type}-id`, params: { id: item.id } }">
+                <nuxt-link
+                  v-if="item.id"
+                  :to="{ name: `${type}-id`, params: { id: item.id } }">
                   {{ name }}
                 </nuxt-link>
               </template>

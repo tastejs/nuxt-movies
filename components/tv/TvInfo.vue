@@ -46,7 +46,7 @@
               {{ item.last_air_date | fullDate }}
             </div>
           </li>
-          <li v-if="item.episode_run_time && item.episode_run_time.length">
+          <li v-if="runtimeShown">
             <div :class="$style.label">
               Runtime
             </div>
@@ -63,7 +63,7 @@
             <!-- eslint-disable-next-line vue/no-v-html -->
             <div :class="$style.value" v-html="creators" />
           </li>
-          <li v-if="item.genres && item.genres.length">
+          <li v-if="genreShown">
             <div :class="$style.label">
               Genre
             </div>
@@ -107,7 +107,7 @@
               {{ item.original_language | fullLang }}
             </div>
           </li>
-          <li v-if="item.networks && item.networks.length">
+          <li v-if="networkShown">
             <div :class="$style.label">
               Network
             </div>
@@ -152,6 +152,15 @@ export default {
   computed: {
     poster() {
       return this.item.poster_path;
+    },
+    runtimeShown() {
+      return this.item.episode_run_time?.length;
+    },
+    genreShown() {
+      return this.item.genres?.length;
+    },
+    networkShown() {
+      return this.item.networks?.length;
     }
   },
 

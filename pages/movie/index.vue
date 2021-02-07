@@ -44,23 +44,37 @@ export default {
     ListingCarousel
   },
 
-  async asyncData({ error }) {
-    try {
-      const popular = await getMovies('popular');
-      const topRated = await getMovies('top_rated');
-      const upcoming = await getMovies('upcoming');
-      const nowPlaying = await getMovies('now_playing');
-      const featured = await getMovie(upcoming.results[0].id);
+  data() {
+    return {
+      popular: {},
+      topRated: {},
+      upcoming: {},
+      nowPlaying: {},
+      featured: {}
+    };
+  },
 
-      return {
+  async fetch() {
+    try {
+      const [
         popular,
         topRated,
         upcoming,
-        nowPlaying,
-        featured
-      };
+        nowPlaying
+      ] = await Promise.all([
+        getMovies('popular'),
+        getMovies('top_rated'),
+        getMovies('upcoming'),
+        getMovies('now_playing')
+      ]);
+      this.featured = await getMovie(upcoming.results[0].id);
+
+      this.popular = popular;
+      this.topRated = topRated;
+      this.upcoming = upcoming;
+      this.nowPlaying = nowPlaying;
     } catch {
-      error({
+      this.$nuxt.context.error({
         statusCode: 504,
         message: 'Data not available'
       });
@@ -87,7 +101,7 @@ export default {
 
   computed: {
     popularShown() {
-      return this.popular?.results.length;
+      return this.popular?.results?.length;
     },
 
     popularTitle() {
@@ -104,7 +118,7 @@ export default {
     },
 
     topRatedShown() {
-      return this.topRated?.results.length;
+      return this.topRated?.results?.length;
     },
 
     topRatedTitle() {
@@ -121,7 +135,7 @@ export default {
     },
 
     upcomingShown() {
-      return this.upcoming?.results.length;
+      return this.upcoming?.results?.length;
     },
 
     upcomingTitle() {
@@ -138,7 +152,7 @@ export default {
     },
 
     nowPlayingShown() {
-      return this.nowPlaying?.results.length;
+      return this.nowPlaying?.results?.length;
     },
 
     nowPlayingTitle() {
