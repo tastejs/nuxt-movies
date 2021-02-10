@@ -37,6 +37,7 @@ import {
 } from '~/services/tmdbAPI';
 import Hero from '~/components/Hero';
 import ListingCarousel from '~/components/ListingCarousel';
+import { CACHE_LIMIT } from '~/config/cache';
 
 export default {
   components: {
@@ -166,6 +167,12 @@ export default {
           name: 'airing_today'
         }
       };
+    }
+  },
+
+  activated() {
+    if (this.$fetchState.timestamp <= Date.now() - CACHE_LIMIT) {
+      this.$fetch();
     }
   }
 };

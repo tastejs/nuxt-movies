@@ -13,6 +13,8 @@
 <script>
 import { search } from '~/services/tmdbAPI';
 import SearchResults from '~/components/search/SearchResults';
+import { CACHE_LIMIT } from '~/config/cache';
+
 let fromPagePath = '/';
 
 export default {
@@ -106,6 +108,12 @@ export default {
   mounted() {
     this.$search.openSearchForm();
     this.$search.setFromPage(fromPagePath);
+  },
+
+  activated() {
+    if (this.$fetchState.timestamp <= Date.now() - CACHE_LIMIT) {
+      this.$fetch();
+    }
   },
 
   methods: {

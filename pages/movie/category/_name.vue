@@ -20,6 +20,7 @@ import {
 } from '~/services/tmdbAPI';
 import TheTopNav from '~/components/TheTopNav';
 import Listing from '~/components/Listing';
+import { CACHE_LIMIT } from '~/config/cache';
 
 export default {
   components: {
@@ -77,6 +78,12 @@ export default {
 
     listingShown() {
       return this.items?.results?.length;
+    }
+  },
+
+  activated() {
+    if (this.$fetchState.timestamp <= Date.now() - CACHE_LIMIT) {
+      this.$fetch();
     }
   },
 

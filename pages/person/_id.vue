@@ -36,6 +36,7 @@ import MediaNav from '~/components/MediaNav';
 import CreditsHistory from '~/components/person/CreditsHistory';
 import Images from '~/components/Images';
 import Listing from '~/components/Listing';
+import { CACHE_LIMIT } from '~/config/cache';
 
 export default {
   components: {
@@ -139,6 +140,12 @@ export default {
 
   created() {
     this.createMenu();
+  },
+
+  activated() {
+    if (this.$fetchState.timestamp <= Date.now() - CACHE_LIMIT) {
+      this.$fetch();
+    }
   },
 
   methods: {

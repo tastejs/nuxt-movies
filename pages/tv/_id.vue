@@ -66,6 +66,7 @@ import Images from '~/components/Images';
 import Credits from '~/components/Credits';
 import Episodes from '~/components/tv/Episodes';
 import ListingCarousel from '~/components/ListingCarousel';
+import { CACHE_LIMIT } from '~/config/cache';
 
 export default {
   components: {
@@ -198,6 +199,12 @@ export default {
   created() {
     this.createMenu();
     this.initRecommended();
+  },
+
+  activated() {
+    if (this.$fetchState.timestamp <= Date.now() - CACHE_LIMIT) {
+      this.$fetch();
+    }
   },
 
   methods: {
