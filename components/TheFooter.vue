@@ -21,7 +21,7 @@
     <ul class="nolist">
       <li>
         <a
-          href="https://twitter.com/jasonujmaalvis"
+          href="https://twitter.com/addyosmani"
           target="_blank"
           aria-label="Link to Twitter account"
           rel="noopener">
@@ -56,7 +56,7 @@
       </li>
       <li>
         <a
-          href="https://www.linkedin.com/in/jason-ujma-alvis"
+          href="https://www.linkedin.com/in/osmani/"
           target="_blank"
           aria-label="Link to LinkedIn account"
           rel="noopener">
@@ -73,7 +73,7 @@
       </li>
       <li>
         <a
-          href="mailto:hello@jason.codes"
+          href="mailto:antonkarlovskiy@outlook.com"
           aria-label="Link to Email"
           rel="noopener">
           <svg
