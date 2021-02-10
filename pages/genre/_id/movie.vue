@@ -46,10 +46,10 @@ export default {
         this.items = items;
         this.genre = genre;
       } else {
-        this.$nuxt.context.error({ message: 'Page not found' });
+        this.$nuxt.error({ message: 'Page not found' });
       }
     } catch {
-      this.$nuxt.context.error({
+      this.$nuxt.error({
         statusCode: 504,
         message: 'Data not available'
       });

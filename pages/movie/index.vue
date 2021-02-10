@@ -74,7 +74,7 @@ export default {
       this.upcoming = upcoming;
       this.nowPlaying = nowPlaying;
     } catch {
-      this.$nuxt.context.error({
+      this.$nuxt.error({
         statusCode: 504,
         message: 'Data not available'
       });

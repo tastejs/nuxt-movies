@@ -61,12 +61,12 @@ export default {
       const person = await getPerson(this.$route.params.id);
 
       if (person.adult) {
-        this.$nuxt.context.error({ message: 'This person is not available' });
+        this.$nuxt.error({ message: 'This person is not available' });
       } else {
         this.person = person;
       }
     } catch {
-      this.$nuxt.context.error({ message: 'Page not found' });
+      this.$nuxt.error({ message: 'Page not found' });
     }
   },
 
@@ -132,14 +132,18 @@ export default {
     },
 
     knownForShown() {
-      return this.knownFor?.results.length;
+      // ray test touch <
+      return this.knownFor?.results?.length;
+      // ray test touch >
     }
   },
 
+  // ray test touch <
   created() {
     this.createMenu();
     this.initKnownFor();
   },
+  // ray test touch >
 
   methods: {
     truncate(string, length) {

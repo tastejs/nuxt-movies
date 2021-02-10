@@ -74,7 +74,7 @@ export default {
       this.airingToday = airingToday;
       this.featured = await getTvShow(popular.results[0].id);
     } catch {
-      this.$nuxt.context.error({
+      this.$nuxt.error({
         statusCode: 504,
         message: 'Data not available'
       });

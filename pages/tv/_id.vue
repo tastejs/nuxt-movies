@@ -100,12 +100,12 @@ export default {
       const item = await getTvShow(this.$route.params.id);
 
       if (item.adult) {
-        this.$nuxt.context.error({ message: 'This tv show is not available' });
+        this.$nuxt.error({ message: 'This tv show is not available' });
       } else {
         this.item = item;
       }
     } catch {
-      this.$nuxt.context.error({ message: 'Page not found' });
+      this.$nuxt.error({ message: 'Page not found' });
     }
   },
 

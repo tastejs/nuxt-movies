@@ -65,7 +65,7 @@ export default {
         this.featured = await getTvShow(randomItem.id);
       }
     } catch {
-      this.$nuxt.context.error({
+      this.$nuxt.error({
         statusCode: 504,
         message: 'Data not available'
       });
