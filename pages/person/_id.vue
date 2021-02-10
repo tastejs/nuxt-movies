@@ -64,6 +64,7 @@ export default {
         this.$nuxt.error({ message: 'This person is not available' });
       } else {
         this.person = person;
+        this.initKnownFor();
       }
     } catch {
       this.$nuxt.error({ message: 'Page not found' });
@@ -132,18 +133,13 @@ export default {
     },
 
     knownForShown() {
-      // ray test touch <
-      return this.knownFor?.results?.length;
-      // ray test touch >
+      return this.knownFor?.results.length;
     }
   },
 
-  // ray test touch <
   created() {
     this.createMenu();
-    this.initKnownFor();
   },
-  // ray test touch >
 
   methods: {
     truncate(string, length) {
