@@ -73,7 +73,9 @@ export default {
     },
 
     title() {
+      // ray test touch <
       return getListItem('movie', this.$route.params.name).TITLE;
+      // ray test touch >
     },
 
     listingShown() {

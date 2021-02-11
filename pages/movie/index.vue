@@ -63,6 +63,7 @@ export default {
         upcoming,
         nowPlaying
       ] = await Promise.all([
+        // TODO: could fetch data at component level thanks to fetch hook
         getMovies('popular'),
         getMovies('top_rated'),
         getMovies('upcoming'),

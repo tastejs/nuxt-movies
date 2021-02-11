@@ -39,6 +39,7 @@ export default {
         genres
       ] = await Promise.all([
         getMediaByGenre('movie', this.$route.params.id),
+        // TODO: could be getStaticProps use case in Next.js
         getGenreList('movie')
       ]);
       const genre = genres.find(genre => genre.id === parseInt(this.$route.params.id));
