@@ -96,14 +96,12 @@ import {
   trailer
 } from '~/mixins/Details';
 import Modal from '~/components/Modal';
-import ImgTransition from '~/components/ImgTransition';
 import CirclePlayIcon from '~/assets/images/circle-play.svg?inline';
 import PlayIcon from '~/assets/images/play.svg?inline';
 
 export default {
   components: {
     Modal,
-    ImgTransition,
     CirclePlayIcon,
     PlayIcon
   },
