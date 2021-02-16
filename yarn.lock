@@ -1052,10 +1052,10 @@
   resolved "https://registry.yarnpkg.com/@nuxt/h2/-/h2-0.0.14.tgz#30628ccb9965777326e5e6d116ccb7560b56ec9b"
   integrity sha512-rBiYoJvh7Ns5gwR5hKUGIORg7OfPdgMfxbnzxt204gZRW4sruogJxDm2Vlc5weTagPpugY+rXhwRGQKWKs4JUQ==
 
-"@nuxt/image@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@nuxt/image/-/image-0.4.0.tgz#19529c8625946e3b1176a5edc4476a21c2237aca"
-  integrity sha512-nuQd6kRWu/qFTEWWHjBbJDuArKZRh3IgfLwAcipJcms/Z6MpgexwzhhhAr7524U8/siSQxAEPmngwD4WHOdWtw==
+"@nuxt/image@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@nuxt/image/-/image-0.4.1.tgz#b22cf7b671310c6d36c43dd55674ecb6dbe1096a"
+  integrity sha512-4CjvUgincnXR5Sesy8CvyB+L8DdgA3+QZJuDIN8Jm+WN2p/5MkIuK71Nh0MsAjJC4DLmk9YzGwxnu+A+hQElrg==
   dependencies:
     allowlist "^0.1.1"
     consola "^2.15.3"
