@@ -14,9 +14,10 @@
           </button>
 
           <img-transition v-if="backdrop">
-            <nuxt-img
+            <nuxt-picture
               :class="$style.image"
               :alt="name"
+              sizes="xs:100vw small:100vw xsmall:100vw medium:71vw"
               :src="backdrop" />
           </img-transition>
         </div>
