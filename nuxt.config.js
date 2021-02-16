@@ -1,7 +1,10 @@
 export default {
   modern: process.env.NODE_ENV === 'production',
 
-  serverMiddleware: [require.resolve('./api/swr.js')],
+  serverMiddleware: {
+    '/': '~/api/swr.js',
+    '/_ipx': '~/api/ipx.js'
+  },
 
   /*
   ** App bundle process.env
@@ -26,12 +29,16 @@ export default {
   ],
 
   image: {
-    provider: 'tmdb',
-    providers: {
-      tmdb: {
-        provider: require.resolve('./providers/tmdb-image')
-      }
-    }
+    provider: 'ipx',
+    screens: {
+      // _variables.scss
+      xsmall: 640,
+      small: 768,
+      medium: 1024,
+      large: 1200,
+      xlarge: 1400
+    },
+    ipx: {}
   },
 
   /*
@@ -78,7 +85,7 @@ export default {
         rel: 'icon',
         type: 'image/x-icon',
         href: '/favicon.ico'
-      },
+      }
       // TODO: fallback to the system fonts
       // {
       //   rel: 'stylesheet',
@@ -88,10 +95,10 @@ export default {
       //   rel: 'preconnect',
       //   href: 'http://fonts.gstatic.com'
       // },
-      {
-        rel: 'preconnect',
-        href: 'https://image.tmdb.org'
-      }
+      // {
+      //   rel: 'preconnect',
+      //   href: 'https://image.tmdb.org'
+      // }
     ]
   },
 

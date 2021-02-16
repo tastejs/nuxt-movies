@@ -12,13 +12,11 @@
             @click="openModal">
             <CirclePlayIcon />
           </button>
-
-          <img-transition v-if="backdrop">
-            <nuxt-img
-              :class="$style.image"
-              :alt="name"
-              :src="backdrop" />
-          </img-transition>
+          <nuxt-picture
+            :class="$style.image"
+            :alt="name"
+            sizes="xs:100vw small:100vw xsmall:100vw medium:71vw"
+            :src="backdrop" />
         </div>
       </div>
 
@@ -98,14 +96,12 @@ import {
   trailer
 } from '~/mixins/Details';
 import Modal from '~/components/Modal';
-import ImgTransition from '~/components/ImgTransition';
 import CirclePlayIcon from '~/assets/images/circle-play.svg?inline';
 import PlayIcon from '~/assets/images/play.svg?inline';
 
 export default {
   components: {
     Modal,
-    ImgTransition,
     CirclePlayIcon,
     PlayIcon
   },
