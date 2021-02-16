@@ -8,7 +8,7 @@
         <img-transition v-if="poster">
           <nuxt-img
             loading="lazy"
-            sizes="640:20vw 768:20vw 1500:14vw 1800:12vw 2500:370"
+            sizes="xsmall:20vw small:20vw 1500:14vw 1800:12vw 2500:370"
             :alt="name"
             :src="poster" />
         </img-transition>

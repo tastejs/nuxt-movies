@@ -30,6 +30,14 @@ export default {
 
   image: {
     provider: 'ipx',
+    screens: {
+      // _variables.scss
+      xsmall: 640,
+      small: 768,
+      medium: 1024,
+      large: 1200,
+      xlarge: 1400
+    },
     ipx: {}
   },
 
