@@ -1,10 +1,13 @@
 export default {
   modern: process.env.NODE_ENV === 'production',
 
+  // ray test touch <
   serverMiddleware: {
     '/': '~/api/swr.js',
     '/_ipx': '~/api/ipx.js'
   },
+  // serverMiddleware: [require.resolve('./api/swr.js')],
+  // ray test touch >
 
   /*
   ** App bundle process.env
@@ -44,6 +47,7 @@ export default {
   },
 
   image: {
+    // ray test touch <
     provider: 'ipx',
     screens: {
       // _variables.scss
@@ -54,6 +58,13 @@ export default {
       xlarge: 1400
     },
     ipx: {}
+    // provider: 'tmdb',
+    // providers: {
+    //   tmdb: {
+    //     provider: require.resolve('./providers/tmdb-image')
+    //   }
+    // }
+    // ray test touch >
   },
 
   /*

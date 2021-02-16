@@ -126,7 +126,10 @@ export default {
       if (!this.person.profile_path) {
         return '';
       }
+      // ray test touch <
       return this.$img(this.person.profile_path, { width: 500 });
+      // return this.$img(this.person.profile_path, { modifiers: { width: 500 } }).url;
+      // ray test touch >
     },
 
     imagesShown() {

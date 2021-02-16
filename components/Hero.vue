@@ -12,11 +12,19 @@
             @click="openModal">
             <CirclePlayIcon />
           </button>
+          <!-- ray test touch < -->
           <nuxt-picture
             :class="$style.image"
             :alt="name"
             sizes="xs:100vw small:100vw xsmall:100vw medium:71vw"
             :src="backdrop" />
+          <!-- <img-transition v-if="backdrop">
+            <nuxt-img
+              :class="$style.image"
+              :alt="name"
+              :src="backdrop" />
+          </img-transition> -->
+          <!-- ray test touch > -->
         </div>
       </div>
 
