@@ -1,6 +1,9 @@
 
 // ray test touch <
-import { createIPX, createIPXMiddleware } from 'ipx';
+import {
+  createIPX,
+  createIPXMiddleware
+} from 'ipx';
 
 const TMDB_IMAGE_URL = 'https://image.tmdb.org/t/p';
 
