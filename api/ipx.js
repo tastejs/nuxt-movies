@@ -16,7 +16,8 @@ const ipx = createIPX({
 const middleware = createIPXMiddleware(ipx);
 
 export default (req, res) => {
-  req.url = '/' + TMDB_IMAGE_URL + '/original' + req.url;
+  req.url = `/${TMDB_IMAGE_URL}/original${req.url}`;
+
   return middleware(req, res);
 };
 // ray test touch >

@@ -58,12 +58,7 @@ export const yearEnd = {
 export const backdrop = {
   computed: {
     backdrop() {
-      // ray test touch <
       return this.item.backdrop_path;
-      // if (this.item.backdrop_path) {
-      //   return this.$img(this.item.backdrop_path).url;
-      // }
-      // ray test touch >
     }
   }
 };
