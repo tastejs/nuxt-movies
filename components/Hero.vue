@@ -16,6 +16,7 @@
           <nuxt-picture
             :class="$style.image"
             :alt="name"
+            format="webp"
             sizes="xs:100vw small:100vw xsmall:100vw medium:71vw"
             :src="backdrop" />
           <!-- ray test touch > -->
