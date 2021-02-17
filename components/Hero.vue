@@ -12,14 +12,12 @@
             @click="openModal">
             <CirclePlayIcon />
           </button>
-          <!-- ray test touch < -->
           <nuxt-picture
             :class="$style.image"
             :alt="name"
             format="webp"
-            sizes="xs:100vw small:100vw xsmall:100vw medium:71vw"
+            sizes="xsmall:100vw medium:71.1vw"
             :src="backdrop" />
-          <!-- ray test touch > -->
         </div>
       </div>
 
@@ -227,7 +225,7 @@ export default {
   }
 }
 
-.image {
+.image > img {
   display: inline-block;
   max-width: none;
   height: 100%;

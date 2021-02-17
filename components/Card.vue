@@ -6,7 +6,6 @@
       :to="{ name: `${media}-id`, params: { id: item.id } }">
       <div class="card__img">
         <img-transition v-if="poster">
-          <!-- ray test touch < -->
           <nuxt-img
             loading="lazy"
             width="370"
@@ -14,7 +13,6 @@
             sizes="xsmall:20vw small:20vw xlarger1:14vw xlarger2:12vw xlarger3:370"
             :alt="name"
             :src="poster" />
-          <!-- ray test touch > -->
         </img-transition>
         <PlaceholderIcon v-else />
       </div>
