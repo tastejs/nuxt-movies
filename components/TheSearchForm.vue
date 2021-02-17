@@ -106,7 +106,7 @@ export default {
   z-index: 10;
 
   @media (min-width: $breakpoint-large) {
-    left: 10rem;
+    left: $layout-nav-width;
   }
 
   input[type='text'] {

@@ -7,14 +7,9 @@
       <div class="card__img">
         <img-transition v-if="poster">
           <!-- ray test touch < -->
-          <!-- <nuxt-img
-            loading="lazy"
-            sizes="xsmall:20vw small:20vw 1500:14vw 1800:12vw 2500:370"
-            :alt="name"
-            :src="poster" /> -->
           <nuxt-img
             loading="lazy"
-            :sizes="sizes"
+            sizes="xsmall:20vw small:20vw xlarger1:14vw xlarger2:12vw xlarger3:370"
             :alt="name"
             :src="poster" />
           <!-- ray test touch > -->
@@ -82,13 +77,7 @@ export default {
       } else {
         return 'movie';
       }
-    },
-
-    // ray test touch <
-    sizes() {
-      return 'xsmall:20vw small:20vw 1500:14vw 1800:12vw 2500:370';
     }
-    // ray test touch >
   }
 };
 </script>

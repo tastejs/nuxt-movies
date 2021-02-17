@@ -317,7 +317,7 @@ body.modal-open {
   background-color: #000;
 
   @media (min-width: $breakpoint-large) {
-    padding: 4.4rem 10rem;
+    padding: 4.4rem $layout-nav-width;
   }
 }
 
@@ -405,7 +405,7 @@ body.modal-open {
   @media (min-width: $breakpoint-large) {
     position: fixed;
     top: 50%;
-    width: 10rem;
+    width: $layout-nav-width;
     height: 10rem;
     margin-top: -5rem;
   }

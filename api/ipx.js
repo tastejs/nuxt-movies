@@ -1,5 +1,4 @@
 
-// ray test touch <
 import {
   createIPX,
   createIPXMiddleware
@@ -20,4 +19,3 @@ export default (req, res) => {
 
   return middleware(req, res);
 };
-// ray test touch >
