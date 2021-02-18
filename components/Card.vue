@@ -5,16 +5,16 @@
       class="card__link"
       :to="{ name: `${media}-id`, params: { id: item.id } }">
       <div class="card__img">
-        <img-transition v-if="poster">
-          <nuxt-picture
-            loading="lazy"
-            width="370"
-            height="556"
-            format="webp"
-            sizes="xsmall:20vw small:20vw xlarger1:14vw xlarger2:12vw xlarger3:342"
-            :alt="name"
-            :src="poster" />
-        </img-transition>
+        <nuxt-picture
+          v-if="poster"
+          loading="lazy"
+          width="370"
+          height="556"
+          format="webp"
+          sizes="xsmall:20vw small:20vw xlarger1:14vw xlarger2:12vw xlarger3:342"
+          :alt="name"
+          :src="poster" />
+        <!-- TODO: should remove according to https://github.com/addyosmani/nuxt-movies/pull/47#issuecomment-781264171 -->
         <PlaceholderIcon v-else />
       </div>
 
@@ -43,12 +43,10 @@
 
 <script>
 import { name, stars } from '~/mixins/Details';
-import ImgTransition from '~/components/ImgTransition';
 import PlaceholderIcon from '~/assets/images/placeholder.svg?inline';
 
 export default {
   components: {
-    ImgTransition,
     PlaceholderIcon
   },
 

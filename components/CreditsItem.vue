@@ -5,15 +5,15 @@
       class="credits-item__link"
       :to="{ name: 'person-id', params: { id: person.id } }">
       <div class="credits-item__img">
-        <img-transition v-if="poster">
-          <nuxt-img
-            loading="lazy"
-            width="370"
-            height="556"
-            sizes="xsmall:29vw small:29vw medium:17vw large:14vw xlarge:13vw xlarge1:11vw xlarge2:12vw xlarge3:342"
-            :alt="person.name"
-            :src="poster" />
-        </img-transition>
+        <nuxt-picture
+          v-if="poster"
+          loading="lazy"
+          width="370"
+          height="556"
+          format="webp"
+          sizes="xsmall:29vw small:29vw medium:17vw large:14vw xlarge:13vw xlarge1:11vw xlarge2:12vw xlarge3:342"
+          :alt="person.name"
+          :src="poster" />
         <PlaceholderIcon v-else />
       </div>
 
@@ -29,12 +29,10 @@
 </template>
 
 <script>
-import ImgTransition from '~/components/ImgTransition';
 import PlaceholderIcon from '~/assets/images/placeholder.svg?inline';
 
 export default {
   components: {
-    ImgTransition,
     PlaceholderIcon
   },
 
