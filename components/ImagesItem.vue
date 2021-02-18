@@ -8,9 +8,11 @@
         <img-transition v-if="image.thumbSrc">
           <nuxt-img
             loading="lazy"
-            :src="image.thumbSrc"
             :width="image.thumbWidth"
-            :height="image.thumbHeight" />
+            :height="image.thumbHeight"
+            format="webp"
+            :sizes="image.sizes"
+            :src="image.thumbSrc" />
         </img-transition>
       </div>
     </a>
