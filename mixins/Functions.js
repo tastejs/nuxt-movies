@@ -2,7 +2,7 @@
  * Debounce
  */
 
-export const debounce = function (func, delay, ...args) {
+const debounce = function (func, delay, ...args) {
   let timeoutID;
 
   return function () {
@@ -20,7 +20,7 @@ export const debounce = function (func, delay, ...args) {
  * Check if localStorage is supported
  */
 
-export const supportsLocalStorage = function () {
+const supportsLocalStorage = function () {
   let supports = true;
 
   try {
@@ -32,4 +32,9 @@ export const supportsLocalStorage = function () {
   }
 
   return supports;
+};
+
+export {
+  debounce,
+  supportsLocalStorage
 };
