@@ -11,7 +11,7 @@
             width="370"
             height="556"
             format="webp"
-            sizes="xsmall:20vw small:20vw xlarger1:14vw xlarger2:12vw xlarger3:370"
+            sizes="xsmall:20vw small:20vw xlarger1:14vw xlarger2:12vw xlarger3:342"
             :alt="name"
             :src="poster" />
         </img-transition>

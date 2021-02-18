@@ -10,6 +10,7 @@
             loading="lazy"
             width="370"
             height="556"
+            sizes="xsmall:29vw small:29vw medium:17vw large:14vw xlarge:13vw xlarge1:11vw xlarge2:12vw xlarge3:342"
             :alt="person.name"
             :src="poster" />
         </img-transition>
