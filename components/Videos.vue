@@ -89,9 +89,13 @@ export default {
       // video params
       this.videos.forEach(video => {
         // TODO: could use constants
+        // TODO: should handle via image proxy
         this.$set(video, 'thumb', `https://img.youtube.com/vi/${video.key}/mqdefault.jpg`);
         this.$set(video, 'src', `https://www.youtube.com/embed/${video.key}?rel=0&showinfo=0&autoplay=1`);
         this.$set(video, 'url', `https://youtube.com/watch?v=${video.key}`);
+        this.$set(video, 'width', 320);
+        this.$set(video, 'height', 180);
+        this.$set(video, 'sizes', 'xsmall:93vw small:46vw medium:44vw large:30vw xlarge:27vw xlarge1:20vw xlarge3:780');
       });
 
       // get video duration from YouTube api

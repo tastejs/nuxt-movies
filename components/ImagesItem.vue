@@ -9,7 +9,6 @@
           loading="lazy"
           :width="image.thumbWidth"
           :height="image.thumbHeight"
-          format="webp"
           :sizes="image.sizes"
           :src="image.thumbSrc" />
       </div>

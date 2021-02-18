@@ -76,6 +76,7 @@ export default {
     }
   },
 
+  // TODO: should use fetch hook to avoid layout shifting
   mounted() {
     this.getEpisodes();
   },

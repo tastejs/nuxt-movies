@@ -2,13 +2,14 @@
 <template>
   <div :class="$style.item">
     <div :class="$style.image">
-      <img-transition v-if="poster">
-        <nuxt-img
-          loading="lazy"
-          width="400"
-          :src="poster"
-          :alt="episode.name" />
-      </img-transition>
+      <nuxt-picture
+        v-if="poster"
+        loading="lazy"
+        width="400"
+        height="225"
+        sizes="xsmall:93vw small:46vw medium:45vw large:30vw xlarge:28vw xlarge1:21vw xlarge3:780"
+        :alt="episode.name"
+        :src="poster" />
       <PlaceholderIcon v-else />
     </div>
 
@@ -29,12 +30,10 @@
 </template>
 
 <script>
-import ImgTransition from '~/components/ImgTransition';
 import PlaceholderIcon from '~/assets/images/placeholder.svg?inline';
 
 export default {
   components: {
-    ImgTransition,
     PlaceholderIcon
   },
 

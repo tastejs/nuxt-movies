@@ -10,8 +10,7 @@
           loading="lazy"
           width="370"
           height="556"
-          format="webp"
-          sizes="xsmall:20vw small:20vw xlarger1:14vw xlarger2:12vw xlarger3:342"
+          sizes="xsmall:20vw small:20vw xlarger1:14vw xlarger2:12vw xlarger3:500"
           :alt="name"
           :src="poster" />
         <!-- TODO: should remove according to https://github.com/addyosmani/nuxt-movies/pull/47#issuecomment-781264171 -->

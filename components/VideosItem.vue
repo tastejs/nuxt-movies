@@ -7,12 +7,14 @@
       @click.prevent="handleVideo(index)">
 
       <div :class="$style.image">
-        <img-transition v-if="video.thumb">
-          <nuxt-img
-            loading="lazy"
-            :src="video.thumb"
-            :alt="video.name" />
-        </img-transition>
+        <nuxt-picture
+          v-if="video.thumb"
+          loading="lazy"
+          :width="video.width"
+          :height="video.height"
+          :sizes="video.sizes"
+          :alt="video.name"
+          :src="video.thumb" />
 
         <div
           v-if="video.duration"
@@ -35,12 +37,10 @@
 </template>
 
 <script>
-import ImgTransition from '~/components/ImgTransition';
 import CirclePlayIcon from '~/assets/images/circle-play.svg?inline';
 
 export default {
   components: {
-    ImgTransition,
     CirclePlayIcon
   },
 
@@ -159,6 +159,10 @@ export default {
 .image {
   position: relative;
   background-color: $secondary-color;
+
+  & img {
+    width: 100%;
+  }
 
   // TODO: should add styling for span element
 

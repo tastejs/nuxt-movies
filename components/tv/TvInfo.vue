@@ -3,13 +3,13 @@
   <div class="spacing" :class="$style.info">
     <div :class="$style.left">
       <div :class="$style.poster">
-        <img-transition v-if="poster">
-          <nuxt-img
-            width="370"
-            height="556"
-            :src="poster"
-            :alt="name" />
-        </img-transition>
+        <nuxt-picture
+          v-if="poster"
+          width="370"
+          height="556"
+          sizes="large:20vw xlarge:20vw xlarge1:18vw xlarge3:780"
+          :alt="name"
+          :src="poster" />
         <PlaceholderIcon v-else />
       </div>
     </div>
@@ -129,13 +129,11 @@
 <script>
 import { name, creators } from '~/mixins/Details';
 import ExternalLinks from '~/components/ExternalLinks';
-import ImgTransition from '~/components/ImgTransition';
 import PlaceholderIcon from '~/assets/images/placeholder.svg?inline';
 
 export default {
   components: {
     ExternalLinks,
-    ImgTransition,
     PlaceholderIcon
   },
 

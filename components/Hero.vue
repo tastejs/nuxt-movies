@@ -14,9 +14,8 @@
           </button>
           <nuxt-picture
             :class="$style.image"
-            :alt="name"
-            format="webp"
             sizes="xsmall:100vw medium:71.1vw"
+            :alt="name"
             :src="backdrop" />
         </div>
       </div>
