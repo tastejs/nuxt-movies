@@ -6,7 +6,7 @@
       @click.prevent="handleGallery(index)">
       <div :class="$style.image">
         <img-transition v-if="image.thumbSrc">
-          <nuxt-img
+          <nuxt-picture
             loading="lazy"
             :width="image.thumbWidth"
             :height="image.thumbHeight"

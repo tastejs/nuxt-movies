@@ -6,7 +6,7 @@
       :to="{ name: `${media}-id`, params: { id: item.id } }">
       <div class="card__img">
         <img-transition v-if="poster">
-          <nuxt-img
+          <nuxt-picture
             loading="lazy"
             width="370"
             height="556"
