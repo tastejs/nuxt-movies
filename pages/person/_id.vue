@@ -126,7 +126,7 @@ export default {
       if (!this.person.profile_path) {
         return '';
       }
-      return this.$img(this.person.profile_path, { modifiers: { width: 500 } }).url;
+      return this.$img(this.person.profile_path, { width: 500 });
     },
 
     imagesShown() {
