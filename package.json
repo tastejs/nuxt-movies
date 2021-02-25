@@ -34,6 +34,7 @@
     "@nuxt/image": "^0.4.1",
     "@nuxt/sigma": "^0.0.65",
     "@nuxtjs/eslint-config": "latest",
+    "@nuxtjs/google-fonts": "^1.2.0",
     "@nuxtjs/pwa": "^3.3.2",
     "@nuxtjs/svg": "^0.1.12",
     "@nuxtjs/web-vitals": "^0.1.4",

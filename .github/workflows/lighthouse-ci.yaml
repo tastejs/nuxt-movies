@@ -25,7 +25,7 @@ jobs:
           API_COUNTRY: ${{ secrets.API_COUNTRY }}
       - name: Run Lighthouse CI
         run: |
-          npm install -g @lhci/cli@0.6.x
+          npm install -g @lhci/cli@0.7.x
           lhci autorun || echo "LHCI failed!"
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}

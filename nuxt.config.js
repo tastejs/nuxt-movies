@@ -26,11 +26,21 @@ export default {
     '@nuxtjs/pwa',
     '@nuxt/image',
     '@nuxtjs/svg',
-    '@nuxtjs/web-vitals'
+    '@nuxtjs/web-vitals',
+    '@nuxtjs/google-fonts'
   ],
 
   webVitals: {
     debug: true
+  },
+
+  googleFonts: {
+    families: {
+      Roboto: {
+        wght: [300, 400, 500]
+      }
+    },
+    display: 'swap'
   },
 
   image: {
@@ -90,20 +100,11 @@ export default {
         rel: 'icon',
         type: 'image/x-icon',
         href: '/favicon.ico'
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://image.tmdb.org'
       }
-      // TODO: fallback to the system fonts
-      // {
-      //   rel: 'stylesheet',
-      //   href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500'
-      // },
-      // {
-      //   rel: 'preconnect',
-      //   href: 'http://fonts.gstatic.com'
-      // },
-      // {
-      //   rel: 'preconnect',
-      //   href: 'https://image.tmdb.org'
-      // }
     ]
   },
 
