@@ -51,7 +51,10 @@ export default {
       small: 768,
       medium: 1024,
       large: 1200,
-      xlarge: 1400
+      xlarge: 1400,
+      xlarger1: 1500,
+      xlarger2: 1800,
+      xlarger3: 2500
     },
     ipx: {}
   },
@@ -100,10 +103,6 @@ export default {
         rel: 'icon',
         type: 'image/x-icon',
         href: '/favicon.ico'
-      },
-      {
-        rel: 'preconnect',
-        href: 'https://image.tmdb.org'
       }
     ]
   },

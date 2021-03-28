@@ -14,8 +14,8 @@
           </button>
           <nuxt-picture
             :class="$style.image"
+            sizes="xsmall:100vw medium:71.1vw"
             :alt="name"
-            sizes="xs:100vw small:100vw xsmall:100vw medium:71vw"
             :src="backdrop" />
         </div>
       </div>
@@ -224,7 +224,7 @@ export default {
   }
 }
 
-.image {
+.image > img {
   display: inline-block;
   max-width: none;
   height: 100%;

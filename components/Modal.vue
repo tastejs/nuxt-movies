@@ -26,14 +26,14 @@
 
           <div :class="`modal__${type}`">
             <iframe
-              v-if="type === 'iframe' && activeItem"
+              v-if="activeItemIframeShown"
               :src="activeItem.src"
               frameborder="0"
               allow="autoplay; encrypted-media"
               allowfullscreen />
-            <img-transition v-if="type === 'image' && activeItem && activeItem.src">
-              <nuxt-img :src="activeItem.src" />
-            </img-transition>
+            <nuxt-picture
+              v-if="activeItemImageShown"
+              :src="activeItem.src" />
           </div>
 
           <div
@@ -68,7 +68,6 @@
 
 <script>
 import { debounce } from '~/mixins/Functions';
-import ImgTransition from '~/components/ImgTransition';
 import CrossIcon from '~/assets/images/cross.svg?inline';
 import ChevronLeftIcon from '~/assets/images/chevron-left.svg?inline';
 import ChevronRightIcon from '~/assets/images/chevron-right.svg?inline';
@@ -80,7 +79,6 @@ let lastFocusableEl;
 
 export default {
   components: {
-    ImgTransition,
     CrossIcon,
     ChevronLeftIcon,
     ChevronRightIcon
@@ -162,6 +160,14 @@ export default {
       } else {
         return null;
       }
+    },
+
+    activeItemIframeShown() {
+      return this.type === 'iframe' && this.activeItem;
+    },
+
+    activeItemImageShown() {
+      return this.type === 'image' && this.activeItem?.src;
     }
   },
 
@@ -317,7 +323,7 @@ body.modal-open {
   background-color: #000;
 
   @media (min-width: $breakpoint-large) {
-    padding: 4.4rem 10rem;
+    padding: 4.4rem $layout-nav-width;
   }
 }
 
@@ -405,7 +411,7 @@ body.modal-open {
   @media (min-width: $breakpoint-large) {
     position: fixed;
     top: 50%;
-    width: 10rem;
+    width: $layout-nav-width;
     height: 10rem;
     margin-top: -5rem;
   }

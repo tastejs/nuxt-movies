@@ -19,6 +19,7 @@
     "lazyloading",
     "lhci",
     "maxage",
+    "maxresdefault",
     "nuxt",
     "nuxtjs",
     "ohmyfetch",
@@ -26,6 +27,9 @@
     "slidedown",
     "smoothscroll",
     "vercel",
-    "wght"
+    "wght",
+    "xlarge",
+    "xlarger",
+    "xsmall"
   ]
 }

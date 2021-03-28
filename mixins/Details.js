@@ -1,7 +1,7 @@
 /**
  * Name
  */
-export const name = {
+const name = {
   computed: {
     name() {
       return this.item.title ? this.item.title : this.item.name;
@@ -12,7 +12,7 @@ export const name = {
 /**
  * Star rating
  */
-export const stars = {
+const stars = {
   computed: {
     stars() {
       if (this.item.vote_average) {
@@ -25,7 +25,7 @@ export const stars = {
 /**
  * Year started
  */
-export const yearStart = {
+const yearStart = {
   computed: {
     yearStart() {
       const date = this.item.release_date ? this.item.release_date : this.item.first_air_date;
@@ -40,7 +40,7 @@ export const yearStart = {
 /**
  * Year ended
  */
-export const yearEnd = {
+const yearEnd = {
   computed: {
     yearEnd() {
       const date = this.item.last_air_date;
@@ -55,7 +55,7 @@ export const yearEnd = {
 /**
  * Backdrop
  */
-export const backdrop = {
+const backdrop = {
   computed: {
     backdrop() {
       return this.item.backdrop_path;
@@ -66,7 +66,7 @@ export const backdrop = {
 /**
  * Certification
  */
-export const cert = {
+const cert = {
   computed: {
     cert() {
       // movie
@@ -105,7 +105,7 @@ export const cert = {
 /**
  * Trailer
  */
-export const trailer = {
+const trailer = {
   computed: {
     trailer() {
       let videos = this.item.videos.results;
@@ -134,7 +134,7 @@ export const trailer = {
 /**
  * Directors
  */
-export const directors = {
+const directors = {
   computed: {
     directors() {
       const people = this.item.credits.crew;
@@ -151,7 +151,7 @@ export const directors = {
 /**
  * Creators
  */
-export const creators = {
+const creators = {
   computed: {
     creators() {
       const people = this.item.created_by;
@@ -161,4 +161,16 @@ export const creators = {
       }
     }
   }
+};
+
+export {
+  name,
+  stars,
+  yearStart,
+  yearEnd,
+  backdrop,
+  cert,
+  trailer,
+  directors,
+  creators
 };

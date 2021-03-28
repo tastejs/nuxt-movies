@@ -83,6 +83,10 @@ export default {
         image.thumbSrc = image.file_path;
         image.thumbWidth = this.type === 'poster' ? 370 : 533;
         image.thumbHeight = this.type === 'poster' ? 556 : 300;
+        image.sizes =
+        this.type === 'poster' ?
+          'xsmall:30vw small:21vw medium:22vw large:18vw xlarge:16vw xlarge1:17vw xlarge3:342' :
+          'xsmall:46vw small:28vw medium:30vw large:22vw xlarge:21vw xlarge1:21vw xlarge3:780';
         image.src = image.file_path;
       }
     },

@@ -3,13 +3,13 @@
   <div class="spacing" :class="$style.info">
     <div :class="$style.left">
       <div :class="$style.poster">
-        <img-transition v-if="avatar">
-          <nuxt-img
-            :src="avatar"
-            width="370"
-            height="556"
-            :alt="person.name" />
-        </img-transition>
+        <nuxt-picture
+          v-if="avatar"
+          :width="AVATAR_WIDTH"
+          :height="AVATAR_HEIGHT"
+          :sizes="AVATAR_SIZES"
+          :alt="person.name"
+          :src="avatar" />
         <PlaceholderIcon v-else />
       </div>
     </div>
@@ -21,13 +21,13 @@
         </h2>
 
         <div v-if="person.biography">
-          <img-transition v-if="avatar">
-            <nuxt-img
-              :src="avatar"
-              width="370"
-              height="556"
-              :alt="person.name" />
-          </img-transition>
+          <nuxt-picture
+            v-if="avatar"
+            :width="AVATAR_WIDTH"
+            :height="AVATAR_HEIGHT"
+            :sizes="AVATAR_SIZES"
+            :alt="person.name"
+            :src="avatar" />
           <!-- eslint-disable-next-line vue/no-v-html -->
           <div v-html="formatContent(person.biography)" />
         </div>
@@ -87,13 +87,11 @@
 
 <script>
 import ExternalLinks from '~/components/ExternalLinks';
-import ImgTransition from '~/components/ImgTransition';
 import PlaceholderIcon from '~/assets/images/placeholder.svg?inline';
 
 export default {
   components: {
     ExternalLinks,
-    ImgTransition,
     PlaceholderIcon
   },
 
@@ -129,6 +127,10 @@ export default {
       // eslint-disable-next-line vue/no-mutating-props
       this.person.external_ids.homepage = this.person.homepage;
     }
+
+    this.AVATAR_SIZES = 'large:20vw xlarge:20vw xlarge1:18vw xlarge3:780';
+    this.AVATAR_WIDTH = 370;
+    this.AVATAR_HEIGHT = 556;
   },
 
   methods: {

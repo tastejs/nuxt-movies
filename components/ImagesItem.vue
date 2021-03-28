@@ -5,26 +5,19 @@
       :href="image.thumbSrc"
       @click.prevent="handleGallery(index)">
       <div :class="$style.image">
-        <img-transition v-if="image.thumbSrc">
-          <nuxt-img
-            loading="lazy"
-            :src="image.thumbSrc"
-            :width="image.thumbWidth"
-            :height="image.thumbHeight" />
-        </img-transition>
+        <nuxt-picture
+          loading="lazy"
+          :width="image.thumbWidth"
+          :height="image.thumbHeight"
+          :sizes="image.sizes"
+          :src="image.thumbSrc" />
       </div>
     </a>
   </div>
 </template>
 
 <script>
-import ImgTransition from '~/components/ImgTransition';
-
 export default {
-  components: {
-    ImgTransition
-  },
-
   props: {
     image: {
       type: Object,
@@ -72,15 +65,15 @@ export default {
     width: 25%;
   }
 
-  @media (min-width: 1500px) {
+  @media (min-width: $breakpoint-xlarger1) {
     width: 20%;
   }
 
-  @media (min-width: 1800px) {
+  @media (min-width: $breakpoint-xlarger2) {
     width: 16.6666667%;
   }
 
-  @media (min-width: 2500px) {
+  @media (min-width: $breakpoint-xlarger3) {
     width: 14.2857143%;
   }
 }
@@ -96,15 +89,15 @@ export default {
     width: 20%;
   }
 
-  @media (min-width: 1500px) {
+  @media (min-width: $breakpoint-xlarger1) {
     width: 16.6666667%;
   }
 
-  @media (min-width: 1800px) {
+  @media (min-width: $breakpoint-xlarger2) {
     width: 14.2857143%;
   }
 
-  @media (min-width: 2500px) {
+  @media (min-width: $breakpoint-xlarger3) {
     width: 12.5%;
   }
 }
