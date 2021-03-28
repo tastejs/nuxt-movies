@@ -45,6 +45,7 @@
 import { getYouTubeVideo } from '~/services/tmdbAPI';
 import VideosItem from '~/components/VideosItem';
 import Modal from '~/components/Modal';
+import { YOUTUBE_THUMBNAIL_QUALITY_NAME } from '~/utils/constants/images';
 
 export default {
   components: {
@@ -88,9 +89,8 @@ export default {
 
       // video params
       this.videos.forEach(video => {
+        this.$set(video, 'thumb', `${video.key}/${YOUTUBE_THUMBNAIL_QUALITY_NAME}`);
         // TODO: could use constants
-        // TODO: should handle via image proxy
-        this.$set(video, 'thumb', `https://img.youtube.com/vi/${video.key}/mqdefault.jpg`);
         this.$set(video, 'src', `https://www.youtube.com/embed/${video.key}?rel=0&showinfo=0&autoplay=1`);
         this.$set(video, 'url', `https://youtube.com/watch?v=${video.key}`);
         this.$set(video, 'width', 320);

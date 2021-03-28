@@ -19,6 +19,7 @@
     "lazyloading",
     "lhci",
     "maxage",
+    "maxresdefault",
     "nuxt",
     "nuxtjs",
     "ohmyfetch",
