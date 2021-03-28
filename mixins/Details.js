@@ -58,7 +58,7 @@ const yearEnd = {
 const backdrop = {
   computed: {
     backdrop() {
-      return this.item.backdrop_path;
+      return this.item.backdrop_path ?? '';
     }
   }
 };
