@@ -2,9 +2,8 @@
 <template>
   <footer :class="$style.footer">
     <p>
-      <!-- TODO: should change the copyright name -->
       &copy; {{ new Date().getFullYear() }} The Nuxt Movies authors. All rights reserved.&nbsp;
-      <a target="_blank" href="https://jason.codes/cookie-policy" rel="noopener">
+      <a target="_blank" href="https://addyosmani.codes/cookie-policy" rel="noopener">
         Cookie Policy
       </a>
       .
@@ -17,11 +16,10 @@
       .
     </p>
 
-    <!-- TODO: should change the owner's social links -->
     <ul class="nolist">
       <li>
         <a
-          href="https://twitter.com/jasonujmaalvis"
+          href="https://twitter.com/addyosmani"
           target="_blank"
           aria-label="Link to Twitter account"
           rel="noopener">
@@ -40,7 +38,7 @@
       </li>
       <li>
         <a
-          href="https://www.linkedin.com/in/jason-ujma-alvis"
+          href="https://www.linkedin.com/in/osmani"
           target="_blank"
           aria-label="Link to LinkedIn account"
           rel="noopener">
@@ -49,7 +47,7 @@
       </li>
       <li>
         <a
-          href="mailto:hello@jason.codes"
+          href="mailto:addyosmani@google.com"
           aria-label="Link to Email"
           rel="noopener">
           <EmailIcon />
