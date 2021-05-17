@@ -11,7 +11,7 @@
       &nbsp;
       <a
         target="_blank"
-        href="https://jason.codes/cookie-policy"
+        href="https://addyosmani.codes/cookie-policy"
         rel="noopener">
         Find out more
       </a>

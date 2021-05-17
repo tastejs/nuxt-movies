@@ -10,7 +10,11 @@ module.exports = {
         'http://localhost:3000/search?q=mulan',
         'http://localhost:3000/movie/464052',
         'http://localhost:3000/tv/96677',
-        'http://localhost:3000/person/90633'
+        'http://localhost:3000/person/90633',
+        'http://localhost:3000/genre/14/movie',
+        'http://localhost:3000/genre/9648/tv',
+        'http://localhost:3000/movie/category/top_rated',
+        'http://localhost:3000/tv/category/top_rated'
       ],
       numberOfRuns: 5
     },

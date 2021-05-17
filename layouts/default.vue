@@ -10,7 +10,11 @@
     </transition>
 
     <TheNav />
-    <nuxt />
+    <!-- TODO: should double-check key use-case -->
+    <nuxt
+      :key="$route.params.name"
+      keep-alive
+      :keep-alive-props="{ max: 10 }" />
     <TheFooter />
   </div>
 </template>

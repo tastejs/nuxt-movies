@@ -58,7 +58,7 @@ const yearEnd = {
 const backdrop = {
   computed: {
     backdrop() {
-      return this.item.backdrop_path;
+      return this.item.backdrop_path ?? '';
     }
   }
 };
@@ -108,10 +108,10 @@ const cert = {
 const trailer = {
   computed: {
     trailer() {
-      let videos = this.item.videos.results;
+      let videos = this.item.videos?.results;
 
       // if no videos, do nothing
-      if (!videos.length) {
+      if (!videos?.length) {
         return null;
       }
 
@@ -137,7 +137,7 @@ const trailer = {
 const directors = {
   computed: {
     directors() {
-      const people = this.item.credits.crew;
+      const people = this.item.credits?.crew;
 
       if (people) {
         return people.filter(

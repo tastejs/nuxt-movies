@@ -37,6 +37,7 @@ import {
 } from '~/services/tmdbAPI';
 import Hero from '~/components/Hero';
 import ListingCarousel from '~/components/ListingCarousel';
+import { CACHE_LIMIT } from '~/config/cache';
 
 export default {
   components: {
@@ -44,23 +45,37 @@ export default {
     ListingCarousel
   },
 
-  async asyncData({ error }) {
-    try {
-      const popular = await getTvShows('popular');
-      const topRated = await getTvShows('top_rated');
-      const onAir = await getTvShows('on_the_air');
-      const airingToday = await getTvShows('airing_today');
-      const featured = await getTvShow(popular.results[0].id);
+  data() {
+    return {
+      popular: {},
+      topRated: {},
+      onAir: {},
+      airingToday: {},
+      featured: {}
+    };
+  },
 
-      return {
+  async fetch() {
+    try {
+      const [
         popular,
         topRated,
         onAir,
-        airingToday,
-        featured
-      };
+        airingToday
+      ] = await Promise.all([
+        getTvShows('popular'),
+        getTvShows('top_rated'),
+        getTvShows('on_the_air'),
+        getTvShows('airing_today')
+      ]);
+
+      this.popular = popular;
+      this.topRated = topRated;
+      this.onAir = onAir;
+      this.airingToday = airingToday;
+      this.featured = await getTvShow(popular.results[0].id);
     } catch {
-      error({
+      this.$nuxt.error({
         statusCode: 504,
         message: 'Data not available'
       });
@@ -87,11 +102,11 @@ export default {
 
   computed: {
     popularShown() {
-      return this.popular?.results.length;
+      return this.popular?.results?.length;
     },
 
     popularTitle() {
-      return getListItem('tv', 'popular').title;
+      return getListItem('tv', 'popular').TITLE;
     },
 
     popularUrl() {
@@ -104,11 +119,11 @@ export default {
     },
 
     topRatedShown() {
-      return this.topRated?.results.length;
+      return this.topRated?.results?.length;
     },
 
     topRatedTitle() {
-      return getListItem('tv', 'top_rated').title;
+      return getListItem('tv', 'top_rated').TITLE;
     },
 
     topRatedUrl() {
@@ -121,11 +136,11 @@ export default {
     },
 
     onAirShown() {
-      return this.onAir?.results.length;
+      return this.onAir?.results?.length;
     },
 
     onAirTitle() {
-      return getListItem('tv', 'on_the_air').title;
+      return getListItem('tv', 'on_the_air').TITLE;
     },
 
     onAirUrl() {
@@ -138,11 +153,11 @@ export default {
     },
 
     airingTodayShown() {
-      return this.airingToday?.results.length;
+      return this.airingToday?.results?.length;
     },
 
     airingTodayTitle() {
-      return getListItem('tv', 'airing_today').title;
+      return getListItem('tv', 'airing_today').TITLE;
     },
 
     airingTodayUrl() {
@@ -152,6 +167,12 @@ export default {
           name: 'airing_today'
         }
       };
+    }
+  },
+
+  activated() {
+    if (this.$fetchState.timestamp <= Date.now() - CACHE_LIMIT) {
+      this.$fetch();
     }
   }
 };

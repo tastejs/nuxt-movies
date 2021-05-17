@@ -13,6 +13,8 @@
 <script>
 import { search } from '~/services/tmdbAPI';
 import SearchResults from '~/components/search/SearchResults';
+import { CACHE_LIMIT } from '~/config/cache';
+
 let fromPagePath = '/';
 
 export default {
@@ -46,30 +48,26 @@ export default {
     }
   },
 
-  async asyncData({
-    query,
-    error,
-    redirect
-  }) {
-    try {
-      if (query.q) {
-        const items = await search(query.q, 1);
-        return { items };
-      } else {
-        redirect('/');
-      }
-    } catch {
-      error({ message: 'Page not found' });
-    }
-  },
-
   data() {
     return {
       // TODO: <
       // TODO: should use enums for loading state
       // TODO: >
-      loading: false
+      loading: false,
+      items: {}
     };
+  },
+
+  async fetch() {
+    try {
+      if (this.$nuxt.context.query.q) {
+        this.items = await search(this.$nuxt.context.query.q, 1);
+      } else {
+        this.$nuxt.context.redirect('/');
+      }
+    } catch {
+      this.$nuxt.error({ message: 'Page not found' });
+    }
   },
 
   head() {
@@ -103,13 +101,19 @@ export default {
     },
 
     searchResultsShown() {
-      return this.items?.results.length;
+      return this.items?.results?.length;
     }
   },
 
   mounted() {
     this.$search.openSearchForm();
     this.$search.setFromPage(fromPagePath);
+  },
+
+  activated() {
+    if (this.$fetchState.timestamp <= Date.now() - CACHE_LIMIT) {
+      this.$fetch();
+    }
   },
 
   methods: {

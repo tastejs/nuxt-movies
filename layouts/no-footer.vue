@@ -2,7 +2,10 @@
 <template>
   <div>
     <TheNav />
-    <nuxt />
+    <nuxt
+      :key="$route.params.name"
+      keep-alive
+      :keep-alive-props="{ max: 10 }" />
   </div>
 </template>
 

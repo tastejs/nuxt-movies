@@ -21,7 +21,6 @@
 
     <template v-if="activeMenu === 'photos' && imagesShown">
       <Images
-        v-if="person.images.profiles.length"
         title="Photos"
         type="poster"
         :images="person.images.profiles" />
@@ -37,6 +36,7 @@ import MediaNav from '~/components/MediaNav';
 import CreditsHistory from '~/components/person/CreditsHistory';
 import Images from '~/components/Images';
 import Listing from '~/components/Listing';
+import { CACHE_LIMIT } from '~/config/cache';
 
 export default {
   components: {
@@ -48,29 +48,28 @@ export default {
     Listing
   },
 
-  async asyncData({
-    params,
-    error
-  }) {
-    try {
-      const person = await getPerson(params.id);
-
-      if (person.adult) {
-        error({ message: 'This person is not available' });
-      } else {
-        return { person };
-      }
-    } catch {
-      error({ message: 'Page not found' });
-    }
-  },
-
   data() {
     return {
       menu: [],
       activeMenu: 'known-for',
-      knownFor: null
+      knownFor: null,
+      person: {}
     };
+  },
+
+  async fetch() {
+    try {
+      const person = await getPerson(this.$route.params.id);
+
+      if (person.adult) {
+        this.$nuxt.error({ message: 'This person is not available' });
+      } else {
+        this.person = person;
+        this.initKnownFor();
+      }
+    } catch {
+      this.$nuxt.error({ message: 'Page not found' });
+    }
   },
 
   head() {
@@ -111,7 +110,7 @@ export default {
 
   computed: {
     metaTitle() {
-      return this.person.name;
+      return this.person.name || '';
     },
 
     metaDescription() {
@@ -141,7 +140,12 @@ export default {
 
   created() {
     this.createMenu();
-    this.initKnownFor();
+  },
+
+  activated() {
+    if (this.$fetchState.timestamp <= Date.now() - CACHE_LIMIT) {
+      this.$fetch();
+    }
   },
 
   methods: {
@@ -184,13 +188,13 @@ export default {
       // TODO: should use enums for department types
       // TODO: >
       if (department === 'Acting') {
-        results = this.person.combined_credits.cast;
+        results = this.person.combined_credits?.cast;
       } else if (department === 'Directing') {
-        results = this.person.combined_credits.crew.filter(item => item.department === 'Directing');
+        results = this.person.combined_credits?.crew.filter(item => item.department === 'Directing');
       } else if (department === 'Production') {
-        results = this.person.combined_credits.crew.filter(item => item.department === 'Production');
+        results = this.person.combined_credits?.crew.filter(item => item.department === 'Production');
       } else if (department === 'Writing' || department === 'Creator') {
-        results = this.person.combined_credits.crew.filter(item => item.department === 'Writing');
+        results = this.person.combined_credits?.crew.filter(item => item.department === 'Writing');
       }
 
       // if no results, return

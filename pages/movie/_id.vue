@@ -60,6 +60,7 @@ import Videos from '~/components/Videos';
 import Images from '~/components/Images';
 import Credits from '~/components/Credits';
 import ListingCarousel from '~/components/ListingCarousel';
+import { CACHE_LIMIT } from '~/config/cache';
 
 export default {
   components: {
@@ -78,29 +79,27 @@ export default {
     yearStart
   ],
 
-  async asyncData({
-    params,
-    error
-  }) {
-    try {
-      const item = await getMovie(params.id);
-
-      if (item.adult) {
-        error({ message: 'This movie is not available' });
-      } else {
-        return { item };
-      }
-    } catch {
-      error({ message: 'Page not found' });
-    }
-  },
-
   data() {
     return {
       menu: [],
       activeMenu: 'overview',
-      recommendedItems: null
+      recommendedItems: null,
+      item: {}
     };
+  },
+
+  async fetch() {
+    try {
+      const item = await getMovie(this.$route.params.id);
+
+      if (item.adult) {
+        this.$nuxt.error({ message: 'This movie is not available' });
+      } else {
+        this.item = item;
+      }
+    } catch {
+      this.$nuxt.error({ message: 'Page not found' });
+    }
   },
 
   head() {
@@ -186,6 +185,12 @@ export default {
   created() {
     this.createMenu();
     this.initRecommended();
+  },
+
+  activated() {
+    if (this.$fetchState.timestamp <= Date.now() - CACHE_LIMIT) {
+      this.$fetch();
+    }
   },
 
   methods: {

@@ -74,7 +74,10 @@ export default {
 
     links: {
       type: Object,
-      required: true
+      required: true,
+      default() {
+        return {};
+      }
     }
   },
 

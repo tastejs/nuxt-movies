@@ -20,6 +20,7 @@ import {
 } from '~/services/tmdbAPI';
 import TheTopNav from '~/components/TheTopNav';
 import Listing from '~/components/Listing';
+import { CACHE_LIMIT } from '~/config/cache';
 
 export default {
   components: {
@@ -27,22 +28,22 @@ export default {
     Listing
   },
 
-  async asyncData({
-    params,
-    error
-  }) {
-    try {
-      const items = params.name === 'trending' ? await getTrending('movie') : await getMovies(params.name);
-      return { items };
-    } catch {
-      error({ message: 'Page not found' });
-    }
-  },
-
   data() {
     return {
-      loading: false
+      loading: false,
+      items: {}
     };
+  },
+
+  async fetch() {
+    try {
+      this.items =
+        this.$route.params.name === 'trending' ?
+          await getTrending('movie') :
+          await getMovies(this.$route.params.name);
+    } catch {
+      this.$nuxt.error({ message: 'Page not found' });
+    }
   },
 
   head() {
@@ -72,11 +73,17 @@ export default {
     },
 
     title() {
-      return getListItem('movie', this.$route.params.name).title;
+      return getListItem('movie', this.$route.params.name).TITLE;
     },
 
     listingShown() {
-      return this.items?.results.length;
+      return this.items?.results?.length;
+    }
+  },
+
+  activated() {
+    if (this.$fetchState.timestamp <= Date.now() - CACHE_LIMIT) {
+      this.$fetch();
     }
   },
 

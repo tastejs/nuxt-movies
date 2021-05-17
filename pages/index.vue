@@ -24,6 +24,7 @@ import {
 } from '~/services/tmdbAPI';
 import Hero from '~/components/Hero';
 import ListingCarousel from '~/components/ListingCarousel';
+import { CACHE_LIMIT } from '~/config/cache';
 
 export default {
   components: {
@@ -31,33 +32,41 @@ export default {
     ListingCarousel
   },
 
-  async asyncData({ error }) {
+  data() {
+    return {
+      trendingMovies: {},
+      trendingTv: {},
+      featured: {}
+    };
+  },
+
+  async fetch() {
     try {
-      const trendingMovies = await getTrending('movie');
-      const trendingTv = await getTrending('tv');
-      let featured;
+      const [
+        trendingMovies,
+        trendingTv
+      ] = await Promise.all([
+        getTrending('movie'),
+        getTrending('tv')
+      ]);
+      this.trendingMovies = trendingMovies;
+      this.trendingTv = trendingTv;
 
       // feature a random item from movies or tv
       const items = [
-        ...trendingMovies.results,
-        ...trendingTv.results
+        ...this.trendingMovies.results,
+        ...this.trendingTv.results
       ];
       const randomItem = items[Math.floor(Math.random() * items.length)];
       const media = randomItem.title ? 'movie' : 'tv';
 
       if (media === 'movie') {
-        featured = await getMovie(randomItem.id);
+        this.featured = await getMovie(randomItem.id);
       } else {
-        featured = await getTvShow(randomItem.id);
+        this.featured = await getTvShow(randomItem.id);
       }
-
-      return {
-        trendingMovies,
-        trendingTv,
-        featured
-      };
     } catch {
-      error({
+      this.$nuxt.error({
         statusCode: 504,
         message: 'Data not available'
       });
@@ -66,11 +75,11 @@ export default {
 
   computed: {
     trendingMoviesShown() {
-      return this.trendingMovies?.results.length;
+      return this.trendingMovies?.results?.length;
     },
 
     trendingMoviesTitle() {
-      return getListItem('movie', 'trending').title;
+      return getListItem('movie', 'trending').TITLE;
     },
 
     trendingMoviesUrl() {
@@ -83,11 +92,11 @@ export default {
     },
 
     trendingTvShown() {
-      return this.trendingTv?.results.length;
+      return this.trendingTv?.results?.length;
     },
 
     trendingTvTitle() {
-      return getListItem('tv', 'trending').title;
+      return getListItem('tv', 'trending').TITLE;
     },
 
     trendingTvUrl() {
@@ -97,6 +106,13 @@ export default {
           name: 'trending'
         }
       };
+    }
+  },
+
+  activated() {
+    // Call fetch again if last fetch more than a minute ago
+    if (this.$fetchState.timestamp <= Date.now() - CACHE_LIMIT) {
+      this.$fetch();
     }
   }
 };
