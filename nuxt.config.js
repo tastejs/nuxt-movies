@@ -18,6 +18,16 @@ export default {
     GA: process.env.GA || ''
   },
 
+  build: {
+    extend(config) {
+      config.module.rules.unshift({
+        test: /\.mjs/,
+        type: 'javascript/auto',
+        include: /node_modules/
+      });
+    }
+  },
+
   /*
   ** Build-only modules
   */
